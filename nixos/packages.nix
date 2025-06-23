@@ -1,0 +1,19 @@
+{ pkgs, ... }:
+{ 
+  # List packages installed in system profile. To search, run:
+  # $ nix search wget
+  environment.systemPackages = with pkgs; [
+    pkgs.neovim
+    pkgs.zsh
+    pkgs.fastfetch
+    pkgs.wget
+    pkgs.git
+    pkgs.dconf
+    pkgs.xwayland
+    pkgs.home-manager
+    pkgs.nixfmt-rfc-style
+    pkgs.ranger
+    pkgs.bat
+    pkgs.tree
+  ];
+}
