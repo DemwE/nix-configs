@@ -16,6 +16,7 @@ in
       "SUPER, T, exec, ${terminal} -F"
 
       # Apps
+      "SUPER, D, exec, rofi -show drun"
       "SUPER_SHIFT, F, exec, ${files}"
       "SUPER_SHIFT, E, exec, ${editor}"
       "SUPER_SHIFT, W, exec, ${browser}"

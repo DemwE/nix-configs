@@ -12,7 +12,7 @@
     pkgs.xwayland
     pkgs.home-manager
     pkgs.nixfmt-rfc-style
-    pkgs.ranger
+    pkgs.yazi
     pkgs.bat
     pkgs.tree
   ];

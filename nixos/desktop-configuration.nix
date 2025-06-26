@@ -2,7 +2,21 @@
 {
   # Display Menager
   services.xserver.enable = true;
-  services.displayManager.sddm.enable = true;
+  # services.displayManager.sddm.enable = true;
+  environment.systemPackages = [
+    (pkgs.catppuccin-sddm.override {
+      flavor = "mocha";
+      font = "Noto Sans";
+      fontSize = "9";
+      background = "${./config-resources/login-background.jpg}";
+      loginBackground = true;
+    })
+  ];
+  services.displayManager.sddm = {
+    enable = true;
+    theme = "catppuccin-mocha";
+    package = pkgs.kdePackages.sddm;
+  };
 
   # Hyprland
   programs.hyprland = {

@@ -6,11 +6,12 @@
       ./home-configuration.nix
       ./desktop/default.nix
       ./packages.nix
+      ./xdg.nix
       ./git.nix
       ./zsh.nix
       ./kitty.nix
       ./fastfetch.nix
-      ./xdg.nix
+      ./yazi.nix
     ];
   # The home.packages option allows you to install Nix packages into your
   # environment.
