@@ -7,5 +7,7 @@
       ./binds.nix
       ./waybar.nix
       ./hyprpaper.nix
+      ./hyprlock.nix
+      ./rofi.nix
     ];
 }

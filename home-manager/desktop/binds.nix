@@ -29,6 +29,7 @@ in
       "SUPER, S, pseudo,"
       "SUPER, Space, togglefloating,"
       "SUPER, Space, centerwindow,"
+      "SUPER, L, exec, hyprlock"
 
       # Change Focus
       "SUPER, left,  movefocus, l"

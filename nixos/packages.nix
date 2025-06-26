@@ -11,6 +11,7 @@
     pkgs.dconf
     pkgs.xwayland
     pkgs.home-manager
+    pkgs.hyprlock
     pkgs.nixfmt-rfc-style
     pkgs.yazi
     pkgs.bat

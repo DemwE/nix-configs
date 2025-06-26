@@ -9,6 +9,7 @@ NIXOS_DEST="$REPO_DIR/nixos"
 HM_DEST="$REPO_DIR/home-manager"
 
 echo "==> Cleaning old data in the repo"
+sudo chmod -R a+rw "$NIXOS_DEST" "$HM_DEST"
 rm -rf "$NIXOS_DEST" "$HM_DEST"
 mkdir -p "$NIXOS_DEST" "$HM_DEST"
 

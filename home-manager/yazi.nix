@@ -1,10 +1,13 @@
-{ config, lib, ... }:
+{ config, pkgs, ... }:
 {
   programs.yazi = {
     enable = true;
     enableZshIntegration = true;
-    theme = {
-      config = toString ./config-resources/yazi-theme.toml;
+    plugins = {
+      yatline-catppuccin = pkgs.yaziPlugins.yatline-catppuccin;
+      git = pkgs.yaziPlugins.git;
+      nvim = pkgs.vimPlugins.yazi-nvim;
     };
+    theme = builtins.fromTOML (builtins.readFile ./config-resources/yazi-theme.toml);
   };
 }

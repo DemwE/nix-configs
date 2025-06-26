@@ -8,7 +8,6 @@
     pkgs.dunst
     pkgs.waybar
     pkgs.rofi-wayland
-    pkgs.rofi-wayland
     pkgs.xfce.thunar
     pkgs.xfce.thunar-volman
     pkgs.catppuccin-cursors.mochaLavender

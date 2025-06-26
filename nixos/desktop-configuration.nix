@@ -32,6 +32,11 @@
     NIXOS_OZONE_WL = "1";
   };
 
+  # Hyprlock
+  security.pam.services.hyprlock = { 
+    enable = true;
+  };
+
   # Polkit
   systemd = {
     user.services.polkit-gnome-authentication-agent-1 = {
