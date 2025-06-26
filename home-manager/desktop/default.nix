@@ -9,5 +9,6 @@
       ./hyprpaper.nix
       ./hyprlock.nix
       ./rofi.nix
+      ./dunst.nix
     ];
 }
