@@ -30,7 +30,7 @@ in
       "SUPER, Space, togglefloating,"
       "SUPER, Space, centerwindow,"
       "SUPER, L, exec, hyprlock"
-      "SUPER, X, exec, wlogout"
+      "SUPER, X, exec, wlogout -b 4 -c 32"
 
       # Change Focus
       "SUPER, left,  movefocus, l"

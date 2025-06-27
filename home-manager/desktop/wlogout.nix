@@ -1,4 +1,4 @@
-{ config, ... }:
+{ config, lib, ... }:
 
 {
   programs.wlogout = {
@@ -6,7 +6,7 @@
     layout = [
       {
         label = "lock";
-        action = "loginctl lock-session";
+        action = "hyprlock";
         text = "Lock";
         keybind = "l";
       }
@@ -30,52 +30,134 @@
       }
     ];
     style = ''
-* {
-    background-image: none;
-}
+      /* Catppuccin Mocha Color Palette */
+      @define-color base #1e1e2e;
+      @define-color mantle #181825;
+      @define-color crust #11111b;
+      @define-color text #cdd6f4;
+      @define-color subtext0 #a6adc8;
+      @define-color subtext1 #bac2de;
+      @define-color surface0 #313244;
+      @define-color surface1 #45475a;
+      @define-color surface2 #585b70;
+      @define-color overlay0 #6c7086;
+      @define-color overlay1 #7f849c;
+      @define-color overlay2 #9399b2;
+      @define-color blue #89b4fa;
+      @define-color lavender #b4befe;
+      @define-color sapphire #74c7ec;
+      @define-color sky #89dceb;
+      @define-color teal #94e2d5;
+      @define-color green #a6e3a1;
+      @define-color yellow #f9e2af;
+      @define-color peach #fab387;
+      @define-color maroon #eba0ac;
+      @define-color red #f38ba8;
+      @define-color mauve #cba6f7;
+      @define-color pink #f5c2e7;
+      @define-color flamingo #f2cdcd;
+      @define-color rosewater #f5e0dc;
 
-window {
-    background-color: rgba(25, 0, 46, 0.5);
-}
+      * {
+          background-image: none;
+          font-family: "Inter", "JetBrainsMono Nerd Font", monospace;
+          font-size: 14px;
+      }
 
-button {
-    color: rgb(255, 14, 130);
-    font-size: 16px;
-    background-color: rgb(36, 0, 65);
-    border-style: none;
-    background-repeat: no-repeat;
-    background-position: center;
-    background-size: 35%;
-    border-radius: 30px;
-    margin: 182px 5px;
-    text-shadow: 0px 0px;
-    box-shadow: 0px 0px;
-}
+      window {
+          background-color: alpha(@crust, 0.95);
+      }
 
-button:focus,
-button:active,
-button:hover {
-    background-color: rgb(144, 0, 72);
-    outline-style: none;
-}
+      button {
+          color: @text;
+          font-size: 18px;
+          font-weight: 500;
+          background-color: @surface0;
+          border: 2px solid @surface1;
+          background-repeat: no-repeat;
+          background-position: center;
+          background-size: 40px;
+          border-radius: 20px;
+          margin: 20px;
+          padding: 40px;
+          min-width: 90px;
+          min-height: 80px;
+          box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+          transition: all 200ms ease-in-out;
+      }
 
-#lock {
-    background-image: image(url("/home/Lord_Worm/.config/wlogout/lock.png"));
-}
+      button:focus,
+      button:active {
+          background-color: @surface1;
+          outline: none;
+          box-shadow: 0 6px 16px rgba(0, 0, 0, 0.4);
+      }
 
-#suspend {
-    background-image: image(url("/home/Lord_Worm/.config/wlogout/suspend.png"));
-}
+      button:hover {
+          background-color: @surface1;
+          border-color: @surface2;
+          box-shadow: 0 6px 16px rgba(0, 0, 0, 0.4);
+      }
 
-#shutdown {
-    background-image: image(
-        url("/home/Lord_Worm/.config/wlogout/shutdown.png")
-    );
-}
+      /* Lock button */
+      #lock {
+          background-image: image(url("${toString .././config-resources/wlogout/lock.png}"));
+          border-color: @yellow;
+      }
 
-#reboot {
-    background-image: image(url("/home/Lord_Worm/.config/wlogout/reboot.png"));
-}
+      #lock:hover,
+      #lock:focus,
+      #lock:active {
+          border-color: @yellow;
+          color: @yellow;
+          box-shadow: 0 6px 20px alpha(@yellow, 0.3);
+          background-color: alpha(@yellow, 0.05);
+      }
+
+      /* Logout button */
+      #logout {
+          background-image: image(url("${toString .././config-resources/wlogout/logout.png}"));
+          border-color: @blue;
+      }
+
+      #logout:hover,
+      #logout:focus,
+      #logout:active {
+          border-color: @blue;
+          color: @blue;
+          box-shadow: 0 6px 20px alpha(@blue, 0.3);
+          background-color: alpha(@blue, 0.05);
+      }
+
+      /* Shutdown button */
+      #shutdown {
+          background-image: image(url("${toString .././config-resources/wlogout/shutdown.png}"));
+          border-color: @red;
+      }
+
+      #shutdown:hover,
+      #shutdown:focus,
+      #shutdown:active {
+          border-color: @red;
+          color: @red;
+          box-shadow: 0 6px 20px alpha(@red, 0.3);
+          background-color: alpha(@red, 0.05);
+      }
+
+      /* Reboot button */
+      #reboot {
+          background-image: image(url("${toString .././config-resources/wlogout/reboot.png}"));
+          border-color: @green;
+      }
+
+      #reboot:hover,
+      #reboot:focus,
+      #reboot:active {
+          border-color: @green;
+          color: @green;
+          box-shadow: 0 6px 20px alpha(@green, 0.3);
+          background-color: alpha(@green, 0.05);
+      }
     '';
   };
 }
