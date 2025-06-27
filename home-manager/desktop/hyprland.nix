@@ -31,7 +31,6 @@
         permanent_direction_override = false;
         special_scale_factor = 0.8;
         split_width_multiplier = 1.0;
-        # no_gaps_when_only = false;
         use_active_for_splits = true;
         default_split_ratio = 1.0;
       };
@@ -43,10 +42,8 @@
         new_status = "slave";
         new_on_top = false;
         new_on_active = "none";
-        # no_gaps_when_only = false;
         orientation = "left";
         inherit_fullscreen = true;
-        # always_center_master = false;
         smart_resizing = true;
         drop_at_cursor = true;
       };
@@ -56,9 +53,21 @@
         disable_hyprland_logo = false; # If true disables the random hyprland logo / anime girl background. :(
       };
 
+      workspace = [
+        "1,monitor:DP-1"
+        "2,monitor:DP-1"
+        "3,monitor:DP-1"
+        "4,monitor:DP-1"
+        "5,monitor:DP-1"
+        "6,monitor:DP-1"
+        "7,monitor:DP-1"
+        "8,monitor:HDMI-A-1"
+      ];
+
       decoration = {
         rounding = 10;
         rounding_power = 2;
+        
 
         # Change transparency of focused and unfocused windows
         active_opacity = 1.0;
@@ -79,6 +88,14 @@
 
           vibrancy = 0.1696;
         };
+      };
+
+      general = {
+        gaps_in = 10; # Gaps between windows
+        gaps_out = 14; # Gaps between windows and screen edges
+        border_size = 2; # Size of the window borders
+        "col.active_border" = "rgba(b7bdf8ff)"; # Color of the active window border
+        "col.inactive_border" = "rgba(585b70ff)"; # Color of the inactive window border
       };
 
       # https://wiki.hyprland.org/Configuring/Variables/#animations

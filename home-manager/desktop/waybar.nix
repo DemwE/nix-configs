@@ -2,18 +2,21 @@
 
 let
   modulesLeft = [
-    "hyprland/workspaces"
+    "custom/spacer"
+    "hyprland/window"
   ];
 
   modulesCenter = [
-    "hyprland/window"
+    "hyprland/workspaces"
   ];
 
   modulesRight = [
     "pulseaudio"
+    "custom/spacer"
     "network"
-    "custom/notification"
+    "custom/spacer"
     "clock"
+    "custom/spacer"
   ];
 in
 {
@@ -25,9 +28,9 @@ in
         layer = "top";
         position = "top";
         mod = "dock";
-        margin-left = 10;
-        margin-right = 10;
-        margin-top = 7;
+        margin-left = 14;
+        margin-right = 14;
+        margin-top = 8;
         margin-bottom = 0;
         exclusive = true;
         passthrough = false;
@@ -47,68 +50,22 @@ in
           on-click-right = "pkill waybar & hyprctl dispatch exec waybar";
         };
 
-        "group/expand-4" = {
-          orientation = "horizontal";
-          drawer = {
-            transition-duration = 600;
-            children-class = "not-power";
-            transition-to-left = true;
-            click-to-reveal = true;
-          };
-          modules = [ "upower" ];
-        };
-
-        "custom/smallspacer" = {
-          format = " ";
-        };
-        "custom/spacer" = {
-          format = "|";
-        };
-
-        tray = {
+        pulseaudio = {
+          format = "{icon} {volume}%";
           icon-size = 16;
-          rotate = 0;
-          spacing = 3;
-        };
-
-        "group/expand" = {
-          orientation = "horizontal";
-          drawer = {
-            transition-duration = 600;
-            children-class = "not-power";
-            transition-to-left = true;
-          };
-          modules = [
-            "custom/menu"
-            "custom/spacer"
-            "tray"
-          ];
-        };
-
-        "custom/menu" = {
-          format = "󰅃";
-          rotate = 90;
-        };
-
-        "custom/notification" = {
+          on-click = "pavucontrol";
           tooltip = false;
-          format = "{icon}";
-          format-icons = {
-            notification = "󰅸";
-            none = "󰂜";
-            dnd-notification = "󰅸";
-            dnd-none = "󱏨";
-            inhibited-notification = "󰅸";
-            inhibited-none = "󰂜";
-            dnd-inhibited-notification = "󰅸";
-            dnd-inhibited-none = "󱏨";
-          };
-          return-type = "json";
-          exec-if = "which swaync-client";
-          exec = "swaync-client -swb";
-          on-click-right = "swaync-client -d -sw";
-          on-click = "swaync-client -t -sw";
-          escape = true;
+        };
+
+        network = {
+          format = " {bandwidthUpBytes}  {bandwidthDownBytes}";
+          tooltip = false;
+        };
+
+        clock = {
+          format = "{:%H:%M}";
+          format-alt = "{:%d %B %Y}";
+          tooltip = false;
         };
 
         "hyprland/window" = {
@@ -118,64 +75,33 @@ in
           icon-size = 13;
         };
 
-        "custom/power" = {
-          format = "@{}";
-          rotate = 0;
-          on-click = "ags -t ControlPanel";
-          on-click-right = "pkill ags";
-          tooltip = true;
+        "custom/spacer" = {
+          format = "  ";
         };
 
         "hyprland/workspaces" = {
           format = "{icon}";
           format-icons = {
-            default = "";
-            active = "";
+            default = " ";
+            active = " ";
           };
-        };
-
-        # Padding modules
-        "custom/l_end" = {
-          format = " ";
-          interval = "once";
-          tooltip = false;
-        };
-        "custom/r_end" = {
-          format = " ";
-          interval = "once";
-          tooltip = false;
-        };
-        "custom/sl_end" = {
-          format = " ";
-          interval = "once";
-          tooltip = false;
-        };
-        "custom/sr_end" = {
-          format = " ";
-          interval = "once";
-          tooltip = false;
-        };
-        "custom/rl_end" = {
-          format = " ";
-          interval = "once";
-          tooltip = false;
-        };
-        "custom/rr_end" = {
-          format = " ";
-          interval = "once";
-          tooltip = false;
-        };
-        "custom/padd" = {
-          format = "  ";
-          interval = "once";
-          tooltip = false;
+          show-special = false;
+          all-outputs = false;
+          active-only = false;
+          persistent-workspaces = {
+            "DP-1" = [
+              1
+              2
+              3
+            ];
+          };
         };
       }
     ];
   };
 
   programs.waybar.style = ''
-        @define-color mocha-base      #1e1e2e;
+    @define-color mocha-base      #1e1e2e;
     @define-color mocha-mantle    #181825;
     @define-color mocha-crust     #11111b;
     @define-color mocha-surface0  #313244;
@@ -202,6 +128,53 @@ in
     @define-color mocha-flamingo  #f2cdcd;
     @define-color mocha-rosewater #f5e0dc;
 
-    
+    * {
+      border: none;
+      border-radius: 0;
+      font-family: "JetBrainsMono Nerd Font";
+      font-weight: bold;
+      font-size: 14px;
+      min-height: 0;
+      color: @mocha-text;
+    }
+
+    window#waybar {
+      background: @mocha-base;
+      border-radius: 10px;
+      border: 2px solid @mocha-surface2;
+    }
+
+    #workspaces {
+      background: transparent;
+      margin: 5px;
+      padding: 0px 5px;
+      border-radius: 15px;
+    }
+
+    #workspaces button {
+      padding: 0;
+      margin: 3px;
+      border-radius: 50%;
+      border: none;
+      min-width: 20px;
+      min-height: 20px;
+      background-color: @mocha-overlay0;
+      color: @mocha-text;
+      transition: all 0.3s ease-in-out;
+    }
+
+    #workspaces button.active {
+      background-color: @mocha-lavender;
+      color: @mocha-base;
+      box-shadow: 0 0 6px @mocha-lavender;
+    }
+
+    #workspaces button:hover {
+      background-color: @mocha-overlay1;
+    }
+
+    #workspaces button.active:hover {
+      background-color: @mocha-sky;
+    }
   '';
 }

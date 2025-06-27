@@ -16,5 +16,6 @@
     pkgs.yazi
     pkgs.bat
     pkgs.tree
+    pkgs.btop
   ];
 }

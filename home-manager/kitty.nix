@@ -7,7 +7,7 @@
     enableGitIntegration = true;
 
     settings = {
-      window_padding_width = 4;
+      window_padding_width = 6;
     };
   };
 }

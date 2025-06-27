@@ -10,5 +10,6 @@
       ./hyprlock.nix
       ./rofi.nix
       ./dunst.nix
+      ./wlogout.nix
     ];
 }

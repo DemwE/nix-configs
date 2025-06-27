@@ -11,8 +11,9 @@
     pkgs.xfce.thunar
     pkgs.xfce.thunar-volman
     pkgs.catppuccin-cursors.mochaLavender
-    pkgs.magnetic-catppuccin-gtk
     pkgs.discord
     pkgs.gh
+    pkgs.grim
+    pkgs.pavucontrol
   ];
 }
