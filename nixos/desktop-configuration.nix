@@ -33,7 +33,7 @@
   };
 
   # Hyprlock
-  security.pam.services.hyprlock = { 
+  security.pam.services.hyprlock = {
     enable = true;
   };
 
@@ -50,6 +50,9 @@
         Restart = "on-failure";
         RestartSec = 1;
         TimeoutStopSec = 10;
+        Environment = [
+          "GTK_THEME=catppuccin-mocha-lavender-standard"
+        ];
       };
     };
   };
