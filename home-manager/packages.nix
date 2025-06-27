@@ -10,6 +10,8 @@
     pkgs.rofi-wayland
     pkgs.xfce.thunar
     pkgs.xfce.thunar-volman
+    pkgs.xfce.thunar-vcs-plugin
+    pkgs.xfce.thunar-archive-plugin
     pkgs.catppuccin-cursors.mochaLavender
     pkgs.discord
     pkgs.gh

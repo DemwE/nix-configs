@@ -23,10 +23,14 @@
       gtk-theme-name = "catppuccin-mocha-lavender-standard";
       gtk-icon-theme-name = "Papirus-Dark";
     };
-    
+
     gtk4.extraConfig = {
       gtk-theme-name = "catppuccin-mocha-lavender-standard";
       gtk-icon-theme-name = "Papirus-Dark";
     };
+  };
+
+  home.sessionVariables = {
+    GTK_THEME = "catppuccin-mocha-lavender-standard";
   };
 }
