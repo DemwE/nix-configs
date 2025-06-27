@@ -39,5 +39,6 @@
     pkgs.slurp
     pkgs.swappy
     pkgs.waybar
+    pkgs.qalculate-gtk
   ];
 }
