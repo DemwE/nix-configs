@@ -14,6 +14,8 @@
     pkgs.discord
     pkgs.gh
     pkgs.grim
+    pkgs.slurp
+    pkgs.swappy
     pkgs.pavucontrol
   ];
 }

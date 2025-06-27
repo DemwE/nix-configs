@@ -31,6 +31,7 @@ in
       "SUPER, Space, centerwindow,"
       "SUPER, L, exec, hyprlock"
       "SUPER, X, exec, wlogout -b 4 -c 32"
+      "SUPER_SHIFT, S, exec, grim -g \"$(slurp)\" - | swappy -f -"
 
       # Change Focus
       "SUPER, left,  movefocus, l"
