@@ -170,11 +170,11 @@ in
     }
 
     #workspaces button:hover {
-      background-color: @mocha-overlay1;
+      background-color: @mocha-overlay2;
     }
 
     #workspaces button.active:hover {
-      background-color: @mocha-sky;
+      background-color: @mocha-sapphire;
     }
   '';
 }
