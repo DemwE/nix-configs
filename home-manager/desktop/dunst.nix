@@ -4,7 +4,7 @@
     enable = true;
     settings = {
       global = {
-        font = "JetBrainsMono Nerd Font Mono 12";
+        font = "JetBrainsMono Nerd Font Mono 10";
         frame_color = "#89b4fa";
         separator_color = "frame";
         highlight = "#89b4fa";
