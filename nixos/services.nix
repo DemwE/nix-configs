@@ -5,5 +5,6 @@
     gvfs.enable = true;
     udisks2.mountOnMedia = true;
     tumbler.enable = true; 
+    gnome.gnome-keyring.enable = true;
   };
 }

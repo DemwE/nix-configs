@@ -1,11 +1,15 @@
-{ pkgs, ... }:
+{ config, pkgs, ... }:
+
+let
+  unstable = import (fetchTarball "https://github.com/NixOS/nixpkgs/archive/nixos-unstable.tar.gz") { config.allowUnfree = true; };
+in
 {
   home.packages = [
     # Browsers
     pkgs.brave
 
     # Communication
-    pkgs.discord
+    unstable.discord
 
     # Cursors/Themes
     pkgs.catppuccin-cursors.mochaLavender
@@ -16,7 +20,8 @@
     pkgs.jetbrains.webstorm
     pkgs.nodejs_24
     pkgs.rustc
-    pkgs.vscode
+    pkgs.rustup
+    unstable.vscode
 
     # File Manager
     pkgs.xfce.thunar
@@ -40,5 +45,6 @@
     pkgs.swappy
     pkgs.waybar
     pkgs.qalculate-gtk
+    pkgs.file-roller
   ];
 }

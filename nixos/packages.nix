@@ -17,5 +17,8 @@
     pkgs.bat
     pkgs.tree
     pkgs.btop
+    pkgs.gcc
+    pkgs.duf
+    pkgs.gnome-keyring
   ];
 }
