@@ -22,6 +22,7 @@ in
     pkgs.rustc
     pkgs.rustup
     unstable.vscode
+    pkgs.gmp
 
     # File Manager
     pkgs.xfce.thunar
