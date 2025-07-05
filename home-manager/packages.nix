@@ -18,11 +18,9 @@ in
     pkgs.gh
     pkgs.jetbrains.rust-rover
     pkgs.jetbrains.webstorm
-    pkgs.nodejs_24
     pkgs.rustc
     pkgs.rustup
     unstable.vscode
-    pkgs.gmp
 
     # File Manager
     pkgs.xfce.thunar
