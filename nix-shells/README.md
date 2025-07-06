@@ -34,8 +34,14 @@ list-packages -c
 # Show package descriptions
 list-packages -d
 
+# Show package sizes
+list-packages -s
+
 # Detailed info about specific package
 package-info <full-package-name>
+
+# Environment summary
+env-info
 ```
 
 ### Example Output
@@ -58,6 +64,16 @@ package-info <full-package-name>
   Commands: cmake, cpack, ctest
 ```
 
+**With sizes (`-s`):**
+
+```
+📦 Package sizes in C Development:
+• gcc-wrapper (14.2.1.20250322) [245 MB]
+• cmake (3.31.6) [89 MB]
+=================================================
+Total Size: 334 MB
+```
+
 **Package details (`package-info gcc-wrapper`):**
 
 ```
@@ -74,6 +90,16 @@ Store Path: /nix/store/abc123-gcc-wrapper/
 🔗 Dependencies:
   • glibc
   • binutils-wrapper
+```
+
+**Environment summary (`env-info`):**
+
+```
+🏗️ Environment Information
+==========================
+Name: C Development
+Packages: 3
+Total Size: 425 MB
 ```
 
 ## Creating New Environments
