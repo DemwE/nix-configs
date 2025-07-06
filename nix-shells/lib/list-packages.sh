@@ -1,41 +1,19 @@
 #!/bin/bash
 
-# Function to find and prioritize commands for a package
+# Function to find and list commands for a package
 find_package_commands() {
     local pkg_path="$1"
-    local original_name="$2"
+    local package_name="$2"
     
     if [ ! -d "$pkg_path/bin" ]; then
         return
     fi
     
-    # Get all commands and prioritize the main one
+    # Get all commands, sorted alphabetically (like ls does)
     local all_commands=$(ls "$pkg_path/bin" 2>/dev/null | sort)
-    local main_command=""
-    local other_commands=""
     
-    # Check if the original name exists as a command
-    if echo "$all_commands" | grep -q "^$original_name$"; then
-        main_command="$original_name"
-        other_commands=$(echo "$all_commands" | grep -v "^$original_name$" | head -4)
-    else
-        # If not, just take first 5
-        other_commands=$(echo "$all_commands" | head -5)
-    fi
-    
-    # Combine and format
-    local commands=""
-    if [ -n "$main_command" ]; then
-        if [ -n "$other_commands" ]; then
-            commands="$main_command, $(echo "$other_commands" | tr '\n' ',' | sed 's/,/, /g' | sed 's/, $//')"
-        else
-            commands="$main_command"
-        fi
-    else
-        commands=$(echo "$other_commands" | tr '\n' ',' | sed 's/,/, /g' | sed 's/, $//')
-    fi
-    
-    if [ -n "$commands" ]; then
+    if [ -n "$all_commands" ]; then
+        local commands=$(echo "$all_commands" | tr '\n' ',' | sed 's/,/, /g' | sed 's/, $//')
         echo "  Commands: $commands"
     fi
 }
