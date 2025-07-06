@@ -92,6 +92,13 @@
     jack.enable = true;
   };
 
+  # Garbage collector
+  # This will automatically delete old generations of the system profile.
+  nix.gc.automatic = true;
+  nix.gc.dates = "daily";
+  nix.gc.options = "--delete-older-than 5d";
+  nix.settings.auto-optimise-store = true;
+
   # Some programs need SUID wrappers, can be configured further or are
   # started in user sessions.
   # programs.mtr.enable = true;

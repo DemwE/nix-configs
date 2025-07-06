@@ -4,6 +4,7 @@ let
   envBuildInputs = with pkgs; [
     gcc
     gmp
+    cmake
   ];
   lib = import ./lib/default.nix { 
     name = "C Development"; 

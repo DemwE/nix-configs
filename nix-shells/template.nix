@@ -2,10 +2,10 @@
 
 let
   envBuildInputs = with pkgs; [
-    # packages
+    # package names
   ];
   lib = import ./lib/default.nix { 
-    name = "environment name"; 
+    name = "Template"; 
     inherit pkgs; 
     buildInputs = envBuildInputs;
   };

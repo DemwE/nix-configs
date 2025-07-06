@@ -1,17 +1,26 @@
 { name, pkgs ? import <nixpkgs> {}, buildInputs ? [] }:
 let
-  list-packages = pkgs.writeShellScriptBin "list-packages" ''
-    echo "📦 Declared packages in ${name}:"
-    echo "================================================="
+  # Generate the package processing logic
+  packageProcessingLogic = pkgs.lib.concatMapStringsSep "\n" (pkg: 
+    let
+      nixName = pkg.pname or pkg.name or "unknown";
+      version = if pkg ? version then " (${pkg.version})" else "";
+      description = pkg.meta.description or "No description available";
+    in
+    ''display_package_info "${nixName}" "${version}" "${description}" "${pkg}"''
+  ) buildInputs;
+  
+  # Read the base script and inject the package processing logic
+  baseScript = builtins.readFile ./list-packages.sh;
+  finalScript = builtins.replaceStrings 
+    ["PACKAGE_INFO_PLACEHOLDER"] 
+    [packageProcessingLogic] 
+    baseScript;
+  
+  list-packages = pkgs.writeShellScript "list-packages" ''
+    export ENVIRONMENT_NAME="${name}"
     
-    # List the explicitly declared buildInputs
-    ${pkgs.lib.concatMapStringsSep "\n" (pkg: 
-      "echo \"• ${pkg.pname or pkg.name or "unknown"}${pkgs.lib.optionalString (pkg ? version) " (${pkg.version})"}\""
-    ) buildInputs}
-    
-    echo
-    echo "💡 Use 'which <command>' to see the full path of a specific command"
-    echo "💡 Use 'nix-store -q --tree \$NIX_STORE_PATH' for dependency tree"
+    ${finalScript}
   '';
 in
 {
@@ -24,5 +33,7 @@ in
     exec zsh
   '';
   
-  buildInputs = [ list-packages ];
+  buildInputs = [ 
+    (pkgs.writeShellScriptBin "list-packages" ''exec ${list-packages} "$@"'')
+  ];
 }
