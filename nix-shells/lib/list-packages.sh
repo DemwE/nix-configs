@@ -73,4 +73,5 @@ PACKAGE_INFO_PLACEHOLDER
 
 echo
 echo "💡 Use 'list-packages -c' for commands, '-d' for descriptions, '-c -d' for both"
+echo "💡 Use 'package-info <name>' for detailed package information"
 echo "💡 Use 'which <command>' to see the full path of a specific command"

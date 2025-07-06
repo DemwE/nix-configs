@@ -46,11 +46,7 @@ nix-configs/
 │       ├── gtk.nix           # GTK theming
 │       └── binds.nix         # Keybindings
 └── nix-shells/               # Development environments
-    ├── c-development.nix
-    ├── node20-development.nix
-    ├── node22-development.nix
-    ├── node24-development.nix
-    ├── template.nix
+    ├── <enviroments>.nix
     └── lib/                  # Shared library functions
 ```
 
