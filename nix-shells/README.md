@@ -42,6 +42,9 @@ package-info <full-package-name>
 
 # Environment summary
 env-info
+
+# Show help with all available commands
+help
 ```
 
 ### Example Output
@@ -100,6 +103,24 @@ Store Path: /nix/store/abc123-gcc-wrapper/
 Name: C Development
 Packages: 3
 Total Size: 425 MB
+```
+
+**Help (`help`):**
+
+```
+🛠️ Available Commands in C Development
+=============================================
+
+📦 Package Management:
+  list-packages              List all packages in environment
+  list-packages -c           Show available commands for each package
+  list-packages -d           Show package descriptions
+  list-packages -s           Show package sizes
+  package-info <name>        Detailed information about specific package
+
+🏗️ Environment Information:
+  env-info                   Show environment summary
+  help                       Show this help message
 ```
 
 ## Creating New Environments
