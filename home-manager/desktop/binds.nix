@@ -4,7 +4,7 @@ let
   terminal = "kitty";
   browser = "brave";
   editor = "code";
-  files = "thunar";
+  files = "nemo";
 in
 {
   wayland.windowManager.hyprland.settings = {

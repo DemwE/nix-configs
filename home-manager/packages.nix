@@ -23,10 +23,9 @@ in
     unstable.vscode
 
     # File Manager
-    pkgs.xfce.thunar
-    pkgs.xfce.thunar-archive-plugin
-    pkgs.xfce.thunar-vcs-plugin
-    pkgs.xfce.thunar-volman
+    pkgs.nemo-with-extensions
+    pkgs.nemo-fileroller
+
 
     # Games
     pkgs.prismlauncher
@@ -45,5 +44,8 @@ in
     pkgs.waybar
     pkgs.qalculate-gtk
     pkgs.file-roller
+    pkgs.ffmpeg-full
+    pkgs.gnome-disk-utility
+    pkgs.gparted
   ];
 }

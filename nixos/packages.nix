@@ -17,8 +17,9 @@
     pkgs.bat
     pkgs.tree
     pkgs.btop
-    pkgs.gcc
     pkgs.duf
     pkgs.gnome-keyring
+    pkgs.qemu
+    pkgs.virt-manager
   ];
 }

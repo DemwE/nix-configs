@@ -2,21 +2,16 @@
 
 let
   envBuildInputs = with pkgs; [
-    gcc
-    tinycc
-    gmp
-    cmake
-    glibc
-    musl
-    musl.dev
-    # glibc.dev
-    # glibc.static
-    # glibcLocales
-    binutils
+    kotlin
+    openjdk21
+    gradle
+    maven
+    ktlint
+    detekt
   ];
-  lib = import ./lib/default.nix { 
-    name = "C Development"; 
-    inherit pkgs; 
+  lib = import ./lib/default.nix {
+    name = "Kotlin Development";
+    inherit pkgs;
     buildInputs = envBuildInputs;
   };
 in

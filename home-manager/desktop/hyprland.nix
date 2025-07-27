@@ -130,6 +130,11 @@
           "workspacesOut, 1, 1.94, almostLinear, fade"
         ];
       };
+
+      # Window rules
+      windowrulev2 = [
+        "float,class:^(qalculate-gtk)$"
+      ];
     };
   };
 }

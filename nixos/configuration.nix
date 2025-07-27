@@ -7,8 +7,8 @@
 {
   imports = [
     # Include the results of the hardware scan.
-    ./hardware-configuration.nix
     <home-manager/nixos>
+    ./hardware-configuration.nix
     ./nvidia-configuration.nix
     ./desktop-configuration.nix
     ./packages.nix
@@ -65,6 +65,7 @@
       "wheel"
       "storage"
       "plugdev"
+      "libvirtd"
     ];
     packages = with pkgs; [ ];
   };
@@ -90,6 +91,25 @@
     alsa.support32Bit = true;
     pulse.enable = true;
     jack.enable = true;
+  };
+
+  # Virtualization
+  virtualisation.libvirtd = {
+    enable = true;
+    qemu = {
+      package = pkgs.qemu_kvm;
+      runAsRoot = true;
+      swtpm.enable = true;
+      ovmf = {
+        enable = true;
+        packages = [
+          (pkgs.OVMF.override {
+            secureBoot = true;
+            tpmSupport = true;
+          }).fd
+        ];
+      };
+    };
   };
 
   # Garbage collector
