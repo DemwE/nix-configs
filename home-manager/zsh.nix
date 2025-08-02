@@ -24,6 +24,10 @@
       lt = "ls -ltFh";
       ll = "ls -l";
 
+      # nfs mounts
+      mount-nfs-public = "sudo mount /mnt/public";
+      unmount-nfs-public = "sudo umount /mnt/public";
+
       # other
       cls = "clear";
       nupdate = "sudo nixos-rebuild switch --upgrade";
