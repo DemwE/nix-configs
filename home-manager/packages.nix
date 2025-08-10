@@ -47,5 +47,7 @@ in
     pkgs.ffmpeg-full
     pkgs.gnome-disk-utility
     pkgs.gparted
+    pkgs.s-tui
+    pkgs.stress
   ];
 }
