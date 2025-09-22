@@ -12,9 +12,10 @@
         kb_layout = "pl";
         repeat_rate = 25;
         repeat_delay = 600;
-        sensitivity = 1.0;
+        sensitivity = 0.5;
         follow_mouse = 1;
         mouse_refocus = true;
+        accel_profile = "flat";
 
         touchpad = {
           disable_while_typing = true;

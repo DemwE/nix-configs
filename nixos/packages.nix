@@ -21,5 +21,6 @@
     pkgs.gnome-keyring
     pkgs.qemu
     pkgs.virt-manager
+    pkgs.docker
   ];
 }

@@ -58,7 +58,7 @@ in
         };
 
         network = {
-          format = " {bandwidthUpBytes}  {bandwidthDownBytes}";
+          format = " {bandwidthUpBits}  {bandwidthDownBits}";
           tooltip = false;
         };
 

@@ -30,8 +30,8 @@
 
       # other
       cls = "clear";
-      nupdate = "sudo nixos-rebuild switch --upgrade";
-      hupdate = "home-manager switch -b backup";
+      update-nixos = "sudo nixos-rebuild switch --upgrade";
+      update-home-manager = "home-manager switch -b backup";
       update-channels = "sudo nix-channel --update";
       update-all = "sudo nixos-rebuild switch --upgrade && home-manager switch -b backup";
       use = "nix-shell";
