@@ -1,0 +1,1 @@
+sudo nixos-rebuild dry-run -I nixos-config=./configuration.nix --show-trace

@@ -13,7 +13,8 @@ in {
       flavor = theme.flavor;
       font = theme.font.family;
       fontSize = theme.font.sizeSDDM;
-      background = toString ../../resources/wallpaper.jpg;
+      # Use centralized resources path
+      background = "${config.my.paths.resources}/wallpaper.jpg";
       loginBackground = true;
     }) ];
     # Core SDDM settings

@@ -1,5 +1,9 @@
 { pkgs, ... }:
 {
+  imports = [
+    ./home.nix
+  ];
+
   users.users.demwe = {
     isNormalUser = true;
     description = "DemwE";

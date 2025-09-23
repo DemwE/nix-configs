@@ -6,6 +6,6 @@
 */
 {
   imports = [
-    ./demwe.nix
+    ./demwe
   ];
 }

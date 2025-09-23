@@ -29,8 +29,8 @@ in {
   };
   config = {
     my.theme.packageName = "catppuccin-${cfg.flavor}";
-    my.theme.sddmTheme  = "catppuccin-${cfg.flavor}";
-    my.theme.gtkTheme   = "catppuccin-${cfg.flavor}-${cfg.accent}-standard";
-    my.theme.palette    = palette;
+    my.theme.sddmTheme = "catppuccin-${cfg.flavor}";
+    my.theme.gtkTheme = "catppuccin-${cfg.flavor}-${cfg.accent}-standard";
+    my.theme.palette = palette;
   };
 }
