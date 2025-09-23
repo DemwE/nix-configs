@@ -1,4 +1,4 @@
 { ... }:
 {
-  # Base profile: core system modules & defaults may be added here later.
+  # Base profile reserved for future shared defaults.
 }

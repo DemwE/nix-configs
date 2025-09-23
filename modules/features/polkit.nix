@@ -2,11 +2,12 @@
 let
   cfg = config.my.features.polkit;
   inherit (lib) mkEnableOption mkIf;
- in {
-  options.my.features.polkit.enable = mkEnableOption "Enable polkit agent + base rules";
+in {
+  options.my.features.polkit.enable = mkEnableOption "Enable polkit agent and base policy rules";
   config = mkIf cfg.enable {
+    # User session service launching the GTK polkit agent
     systemd.user.services.polkit-gnome-authentication-agent-1 = {
-      description = "polkit-gnome-authentication-agent-1";
+      description = "Polkit authentication agent (GTK)";
       wantedBy = [ "graphical-session.target" ];
       wants = [ "graphical-session.target" ];
       after = [ "graphical-session.target" ];
@@ -19,7 +20,9 @@ let
         Environment = [ "GTK_THEME=${config.my.theme.gtkTheme}" ];
       };
     };
+    # Core polkit daemon
     security.polkit.enable = true;
+    # Custom rule: allow reboot/poweroff without re‑auth for normal users
     security.polkit.extraConfig = ''
       polkit.addRule(function(action, subject) {
         if (subject.isInGroup("users") && (

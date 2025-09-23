@@ -1,22 +1,28 @@
 { lib, config, pkgs, ... }:
 let
   cfg = config.my.features.qemu;
-  inherit (lib) mkEnableOption mkIf;
+  inherit (lib) mkEnableOption mkIf mkMerge;
 in {
-  options.my.features.qemu.enable = mkEnableOption "Enable QEMU virtualization stack (libvirtd, OVMF, virt-manager)";
-  config = mkIf cfg.enable {
-    virtualisation.libvirtd = {
-      enable = true;
-      qemu = {
-        package = pkgs.qemu_kvm;
-        runAsRoot = true;
-        swtpm.enable = true;
-        ovmf = {
-          enable = true;
-          packages = [ (pkgs.OVMF.override { secureBoot = true; tpmSupport = true; }).fd ];
+  options.my.features.qemu.enable = mkEnableOption "Enable full virtualization stack (libvirtd + QEMU + OVMF + swtpm + virt-manager)";
+  config = mkIf cfg.enable (mkMerge [
+    {
+      # libvirtd core daemon with QEMU backend configuration
+      virtualisation.libvirtd = {
+        enable = true;
+        qemu = {
+          package = pkgs.qemu_kvm;
+          runAsRoot = true; # needed for some device passthrough scenarios
+          swtpm.enable = true; # provide virtual TPM
+          ovmf = {
+            enable = true;
+            packages = [ (pkgs.OVMF.override { secureBoot = true; tpmSupport = true; }).fd ];
+          };
         };
       };
-    };
-    environment.systemPackages = [ pkgs.qemu pkgs.virt-manager ];
-  };
+      # Tooling packages (CLI + GUI)
+      environment.systemPackages = [ pkgs.qemu pkgs.virt-manager ];
+      # Ensure libvirtd group exists so user membership can be added elsewhere
+      users.groups.libvirtd = { };
+    }
+  ]);
 }

@@ -1,7 +1,9 @@
 { ... }:
 {
-  # Timezone & locale definitions
+  # Timezone configuration
   time.timeZone = "Europe/Warsaw";
+
+  # Primary locale & extended locale environment
   i18n.defaultLocale = "en_US.UTF-8";
   i18n.extraLocaleSettings = {
     LC_ADDRESS = "pl_PL.UTF-8";
@@ -15,7 +17,7 @@
     LC_TIME = "pl_PL.UTF-8";
   };
 
-  # Keyboard layout (X11 + console)
+  # Keyboard layouts (graphical + console)
   services.xserver.xkb.layout = "pl";
   console.keyMap = "pl2";
 }
