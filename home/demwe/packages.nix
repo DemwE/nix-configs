@@ -21,6 +21,7 @@ in
     pkgs.rustc
     pkgs.rustup
     unstable.vscode
+    pkgs.nixfmt-rfc-style
 
     # File Manager
     pkgs.nemo-with-extensions
