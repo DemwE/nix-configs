@@ -1,7 +1,8 @@
-{ config, pkgs, ... }:
+{ config, pkgs, lib, ... }:
 let
-  wallpaper = "${config.my.paths.resources}/wallpaper.jpg";
-  wallpaperAlt = "${config.my.paths.resources}/wallpaper-alt.jpg";
+  resources = config.my.paths.resources;
+  wallpaper = "${resources}/wallpaper.jpg";
+  wallpaper-alt = "${resources}/wallpaper-alt.jpg";
 in {
   services.hyprpaper = {
     enable = true;
@@ -9,11 +10,11 @@ in {
     settings = {
       preload = [
         wallpaper
-        wallpaperAlt
+        wallpaper-alt
       ];
       wallpaper = [
         "DP-1,${wallpaper}"
-        "HDMI-A-1,${wallpaperAlt}"
+        "HDMI-A-1,${wallpaper-alt}"
       ];
     };
   };

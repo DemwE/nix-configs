@@ -8,7 +8,7 @@
     ./services.nix
     ./groups.nix
     ./theme/core.nix
-    ./channels
+      ./channels                  # External channels (home-manager import)
     # Aggregated collections
     ./users
     ./system
