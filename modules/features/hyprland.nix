@@ -36,6 +36,7 @@ in
     environment.systemPackages = [
       pkgs.dconf
       pkgs.gnome-keyring
+      pkgs.wl-clipboard
     ];
     # Secret storage integration (GNOME Keyring components)
     services.gnome.gnome-keyring.enable = true;

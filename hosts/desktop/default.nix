@@ -11,6 +11,8 @@
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
   boot.loader.systemd-boot.configurationLimit = 8;
+  # Use latest stable kernel for better hardware support
+  boot.kernelPackages = pkgs.linuxPackages_latest;
 
   # Networking configuration
   networking.hostName = "DemwE_PC";

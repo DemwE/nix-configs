@@ -2,6 +2,8 @@
 let
   hmRoot = config.my.paths.homeManager + "/demwe/home.nix";
 in {
+  # Make Home Manager use the system's pkgs (with overlays applied)
+  home-manager.useGlobalPkgs = true;
   home-manager.sharedModules = [
     ({ lib, ... }: {
       options.my.paths.resources = lib.mkOption {

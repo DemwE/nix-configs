@@ -19,6 +19,11 @@
       name = "Papirus-Dark";
     };
 
+    cursorTheme = {
+      package = pkgs.catppuccin-cursors.mochaLavender;
+      name = "Catppuccin-Mocha-Lavender";
+    };
+
     gtk3.extraConfig = {
       gtk-theme-name = "catppuccin-mocha-lavender-standard";
       gtk-icon-theme-name = "Papirus-Dark";
