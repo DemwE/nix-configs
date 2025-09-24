@@ -18,7 +18,7 @@
   # Let Home Manager install and manage itself.
   programs.home-manager.enable = true;
 
-  # Allow unfree packages
+  # Allow unfree packages within Home Manager evaluation (JetBrains, etc.)
   nixpkgs.config.allowUnfree = true;
 
 }

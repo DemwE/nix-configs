@@ -5,4 +5,5 @@
   my.features.docker.enable = true;
   my.features.qemu.enable = true;
   my.features.polkit.enable = true;
+  my.features.bluetooth.enable = false;
 }

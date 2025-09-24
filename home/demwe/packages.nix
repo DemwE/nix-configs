@@ -1,7 +1,9 @@
 { config, pkgs, ... }:
 
 let
-  unstable = import (fetchTarball "https://github.com/NixOS/nixpkgs/archive/nixos-unstable.tar.gz") { config.allowUnfree = true; };
+  unstable = import (fetchTarball "https://github.com/NixOS/nixpkgs/archive/nixos-unstable.tar.gz") {
+    config.allowUnfree = true;
+  };
 in
 {
   home.packages = [
@@ -27,7 +29,6 @@ in
     pkgs.nemo-with-extensions
     pkgs.nemo-fileroller
 
-
     # Games
     pkgs.prismlauncher
 
@@ -35,14 +36,11 @@ in
     pkgs.mpv
 
     # Utilities
-    pkgs.dunst
+    # dunst, kitty, rofi-wayland, waybar are managed by programs.* in HM
     pkgs.grim
-    pkgs.kitty
     pkgs.pavucontrol
-    pkgs.rofi-wayland
     pkgs.slurp
     pkgs.swappy
-    pkgs.waybar
     pkgs.qalculate-gtk
     pkgs.file-roller
     pkgs.ffmpeg-full

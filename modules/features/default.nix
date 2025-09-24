@@ -9,5 +9,6 @@
     ./polkit.nix
     ./hyprland.nix
     ./sddm.nix
+    ./bluetooth.nix
   ];
 }

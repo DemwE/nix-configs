@@ -12,8 +12,8 @@ in
     bind = [
       # Terminal
       "SUPER, Return, exec, ${terminal}"
-      "SUPER_SHIFT, Return, exec, ${terminal} -f"
-      "SUPER, T, exec, ${terminal} -F"
+      # "SUPER_SHIFT, Return, exec, ${terminal} -f"
+      # "SUPER, T, exec, ${terminal} -F"
 
       # Apps
       "SUPER, D, exec, rofi -show drun"
@@ -26,7 +26,7 @@ in
       "SUPER, C, killactive,"
       "CTRL_ALT, Delete, exit,"
       "SUPER, F, fullscreen, 0"
-      "SUPER, S, pseudo,"
+      # "SUPER, S, pseudo,"
       "SUPER, Space, togglefloating,"
       "SUPER, Space, centerwindow,"
       "SUPER, L, exec, hyprlock"

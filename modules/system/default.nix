@@ -7,5 +7,6 @@
     ./shell.nix
     ./fonts.nix
     ./audio.nix
+    ./housekeeping.nix
   ];
 }
