@@ -31,7 +31,13 @@ in
       "SUPER, Space, centerwindow,"
       "SUPER, L, exec, hyprlock"
       "SUPER, X, exec, wlogout -b 4 -c 32"
-      "SUPER_SHIFT, S, exec, grim -g \"$(slurp)\" - | swappy -f -"
+      # Screenshots (auto-save to Pictures/Screenshots and open in swappy)
+      # Area (manual selection) using grim + slurp + swappy, with auto-save
+      ''SUPER_SHIFT, S, exec, sh -c 'if [ -n "$XDG_SCREENSHOTS_DIR" ]; then dir="$XDG_SCREENSHOTS_DIR"; elif [ -n "$XDG_PICTURES_DIR" ]; then dir="$XDG_PICTURES_DIR/Screenshots"; else dir="$HOME/Pictures/Screenshots"; fi; mkdir -p "$dir"; f="$dir/$(date +%F_%H-%M-%S).png"; grim -g "$(slurp)" - | tee "$f" | swappy -f - -o "$f"' ''
+      # Full screen with edit and auto-save
+      ''SUPER, Print, exec, sh -c 'if [ -n "$XDG_SCREENSHOTS_DIR" ]; then dir="$XDG_SCREENSHOTS_DIR"; elif [ -n "$XDG_PICTURES_DIR" ]; then dir="$XDG_PICTURES_DIR/Screenshots"; else dir="$HOME/Pictures/Screenshots"; fi; mkdir -p "$dir"; f="$dir/$(date +%F_%H-%M-%S).png"; grim - | tee "$f" | swappy -f - -o "$f"' ''
+      # Clipboard picker
+      "SUPER, V, exec, cliphist list | rofi -dmenu -p clipboard | cliphist decode | wl-copy"
 
       # Change Focus
       "SUPER, left,  movefocus, l"

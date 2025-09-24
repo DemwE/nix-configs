@@ -28,10 +28,7 @@
 
     # Utilities
     # dunst, kitty, rofi-wayland, waybar are managed by programs.* in HM
-    pkgs.grim
     pkgs.pavucontrol
-    pkgs.slurp
-    pkgs.swappy
     pkgs.qalculate-gtk
     pkgs.file-roller
     pkgs.ffmpeg-full

@@ -21,5 +21,6 @@ in {
     })
     (import ../../theme/core.nix)
   ];
+  home-manager.backupFileExtension = ".backup";
   home-manager.users.demwe = import hmRoot;
 }
