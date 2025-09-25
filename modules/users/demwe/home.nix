@@ -20,6 +20,7 @@ in {
       config.my.paths.homeManager = config.my.paths.homeManager;
     })
     (import ../../theme/core.nix)
+    (import ../../desktop.nix)
   ];
   home-manager.backupFileExtension = ".backup";
   home-manager.users.demwe = import hmRoot;

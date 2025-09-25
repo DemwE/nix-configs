@@ -1,25 +1,19 @@
-{ ... }:
+{ config, ... }:
 
-let
-  terminal = "kitty";
-  browser = "brave";
-  editor = "code";
-  files = "nemo";
-in
 {
   wayland.windowManager.hyprland.settings = {
     # Keyboard Buttons
     bind = [
       # Terminal
-      "SUPER, Return, exec, ${terminal}"
+      "SUPER, Return, exec, ${config.my.desktop.defaultTerminal.command}"
       # "SUPER_SHIFT, Return, exec, ${terminal} -f"
       # "SUPER, T, exec, ${terminal} -F"
 
       # Apps
       "SUPER, D, exec, rofi -show drun"
-      "SUPER_SHIFT, F, exec, ${files}"
-      "SUPER_SHIFT, E, exec, ${editor}"
-      "SUPER_SHIFT, W, exec, ${browser}"
+      "SUPER_SHIFT, F, exec, ${config.my.desktop.defaultFileManager.command}"
+      "SUPER_SHIFT, E, exec, ${config.my.desktop.defaultEditor.command}"
+      "SUPER_SHIFT, W, exec, ${config.my.desktop.defaultBrowser.command}"
 
       # Hyprland
       "SUPER, Q, killactive,"

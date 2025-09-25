@@ -6,4 +6,8 @@
   my.features.qemu.enable = true;
   my.features.polkit.enable = true;
   my.features.bluetooth.enable = false;
+
+  my.desktop = {
+    # Check available options in modules/desktop.nix
+  };
 }

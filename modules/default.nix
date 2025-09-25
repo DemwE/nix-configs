@@ -4,6 +4,7 @@
     # Base independent modules
     ./nvidia.nix
     ./paths.nix
+    ./desktop.nix
     ./packages.nix
     ./services.nix
     ./groups.nix

@@ -26,12 +26,18 @@ in
     # Hyprlock PAM entry
     security.pam.services.hyprlock.enable = true;
     # Portals for proper XDG integration (Wayland aware)
-    xdg.portal.enable = true;
-    # Include GTK portal alongside Hyprland for better file pickers and app integration
-    xdg.portal.extraPortals = [
-      pkgs.xdg-desktop-portal-hyprland
-      pkgs.xdg-desktop-portal-gtk
-    ];
+    xdg.portal = {
+      enable = true;
+      xdgOpenUsePortal = true; # route xdg-open through portals
+      # Include GTK portal alongside Hyprland for better file pickers and app integration
+      extraPortals = [
+        pkgs.xdg-desktop-portal-hyprland
+        pkgs.xdg-desktop-portal-gtk
+      ];
+      # Prefer hyprland for screencast/screenshot, fallback to gtk for file chooser
+      config.common.default = [ "hyprland" "gtk" ];
+      config.hyprland.default = [ "hyprland" "gtk" ];
+    };
     # Desktop session utilities specific to graphical environment
     environment.systemPackages = [
       pkgs.dconf

@@ -33,10 +33,7 @@
     enable = true;
     settings = {
       # no extra env
-      monitor = [
-        "DP-1,2560x1440@165,0x0,1"
-        "HDMI-A-1,1920x1080@60,-1080x-150,1,transform,1"
-      ];
+      monitor = config.my.desktop.monitors;
 
       input = {
         kb_layout = "pl";
