@@ -1,8 +1,8 @@
-{ ... }:
+{ pkgs, ... }:
 {
   # Base profile reserved for future shared defaults.
   imports = [
-    "../modules" # Aggregated modules (default.nix)
+    ../modules # Aggregated modules (default.nix)
   ];
 
   # Common packages for all systems

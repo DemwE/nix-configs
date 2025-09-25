@@ -47,6 +47,7 @@
             enabled = true;
             border-radius = mkLiteral "15px";
             background-color = mkLiteral "@bg";
+            border = mkLiteral "2px solid @border-color";
           };
           "mainbox" = {
             enabled = true;
