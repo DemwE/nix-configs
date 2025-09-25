@@ -1,4 +1,6 @@
 { ... }:
 {
-  imports = [ ./hosts/desktop ];
+  imports = [
+    ./hosts/desktop # Host-specific configuration
+  ];
 }

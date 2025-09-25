@@ -1,5 +1,9 @@
 { ... }:
 {
+  imports = [
+    ../base.nix # Base profile (kept for future shared logic)
+  ];
+
   my.features.hyprland.enable = true;
   my.features.sddm.enable = true;
   my.features.docker.enable = true;

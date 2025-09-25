@@ -2,8 +2,6 @@
 {
   imports = [
     ./hardware-configuration.nix      # Machine-specific hardware profile
-    ../../modules                     # Aggregated modules (default.nix)
-    ../../profiles/base.nix           # Base profile (kept for future shared logic)
     ../../profiles/desktop.nix        # Desktop feature bundle (enables Hyprland, etc.)
   ];
 

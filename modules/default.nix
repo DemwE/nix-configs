@@ -5,7 +5,6 @@
     ./nvidia.nix
     ./paths.nix
     ./desktop.nix
-    ./packages.nix
     ./services.nix
     ./groups.nix
     ./theme/core.nix
