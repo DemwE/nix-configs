@@ -1,7 +1,7 @@
 { ... }:
 {
   imports = [
-    ../base.nix # Base profile (kept for future shared logic)
+    ./base.nix # Base profile (kept for future shared logic)
   ];
 
   my.features.hyprland.enable = true;
