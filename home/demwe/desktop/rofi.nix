@@ -28,7 +28,7 @@
             bg = mkLiteral p.base;
             bg-alt = mkLiteral p.surface0;
             foreground = mkLiteral p.text;
-            selected = mkLiteral p.mauve;
+            selected = mkLiteral p.overlay0;
             active = mkLiteral p.green;
             text-selected = mkLiteral p.base;
             text-color = mkLiteral p.text;
@@ -47,7 +47,9 @@
             enabled = true;
             border-radius = mkLiteral "15px";
             background-color = mkLiteral "@bg";
-            border = mkLiteral "2px solid @border-color";
+            border-color = mkLiteral "@border-color";
+            border = mkLiteral "2px";
+
           };
           "mainbox" = {
             enabled = true;
