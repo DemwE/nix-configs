@@ -8,6 +8,8 @@ in {
   options.my.features.sddm.enable = mkEnableOption "Enable SDDM display manager (Catppuccin themed)";
   config = mkIf cfg.enable {
     services.xserver.enable = true;
+    # Prevent the fallback XTerm desktop session from being enabled/installed
+    services.xserver.excludePackages = [ pkgs.xterm ];
 
     environment.systemPackages = [
       (pkgs.catppuccin-sddm.override {
