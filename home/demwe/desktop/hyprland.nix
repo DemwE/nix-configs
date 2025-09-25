@@ -81,16 +81,7 @@
         disable_hyprland_logo = false; # If true disables the random hyprland logo / anime girl background. :(
       };
 
-      workspace = [
-        "1,monitor:DP-1"
-        "2,monitor:DP-1"
-        "3,monitor:DP-1"
-        "4,monitor:DP-1"
-        "5,monitor:DP-1"
-        "6,monitor:DP-1"
-        "7,monitor:DP-1"
-        "8,monitor:HDMI-A-1"
-      ];
+      workspace = config.my.desktop.workspaces;
 
       decoration = {
         rounding = 10;

@@ -80,5 +80,26 @@ in
         "HDMI-A-1,1920x1080@60,1920x0,1"
       ];
     };
+
+    # Hyprland workspace-to-monitor mapping
+    workspaces = mkOption {
+      type = types.listOf types.str;
+      default = [
+        "1,monitor:DP-1"
+        "2,monitor:DP-1"
+        "3,monitor:DP-1"
+        "4,monitor:DP-1"
+        "5,monitor:DP-1"
+        "6,monitor:DP-1"
+        "7,monitor:DP-1"
+        "8,monitor:HDMI-A-1"
+      ];
+      description = "List of Hyprland workspace assignments (strings like \"<n>,monitor:<name>\").";
+      example = [
+        "1,monitor:eDP-1"
+        "2,monitor:eDP-1"
+        "3,monitor:HDMI-A-1"
+      ];
+    };
   };
 }
