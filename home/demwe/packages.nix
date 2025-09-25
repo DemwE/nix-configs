@@ -36,5 +36,11 @@
     pkgs.gparted
     pkgs.s-tui
     pkgs.stress
+    pkgs.gnome-text-editor
+    pkgs.papers
+    pkgs.decibels
+    pkgs.loupe
+    pkgs.collision
+    pkgs.apostrophe
   ];
 }

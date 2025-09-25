@@ -7,6 +7,7 @@
       ./desktop/default.nix
       ./packages.nix
       ./xdg.nix
+      ./dconf.nix
       ./git.nix
       ./zsh.nix
       ./kitty.nix

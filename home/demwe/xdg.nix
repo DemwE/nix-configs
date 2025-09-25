@@ -1,6 +1,9 @@
 { config, pkgs, ... }:
 let
-  eogDesktop = "org.gnome.eog.desktop"; # Eye of GNOME desktop entry
+  loupeDesktop = "org.gnome.Loupe.desktop"; # GNOME Loupe (Image Viewer) desktop entry
+  geditDesktop = "org.gnome.gedit.desktop"; # GNOME Text Editor desktop entry
+  papersDesktop = "org.gnome.papers.desktop"; # GNOME Papers desktop entry
+  decibelsDesktop = "org.gnome.Decibels.desktop"; # Decibels desktop entry
 in
 {
   xdg = {
@@ -8,31 +11,42 @@ in
     mime.enable = true;
     mimeApps = {
       enable = true;
-      # Prefer eog for images over browser handlers
+      # Prefer Loupe for images over browser handlers
       defaultApplications = {
-        # Images -> eog
-        "image/jpeg" = [ eogDesktop ];
-        "image/jpg" = [ eogDesktop ];
-        "image/png" = [ eogDesktop ];
-        "image/webp" = [ eogDesktop ];
-        "image/gif" = [ eogDesktop ];
-        "image/bmp" = [ eogDesktop ];
-        "image/tiff" = [ eogDesktop ];
-        "image/svg+xml" = [ eogDesktop ];
-        # Uncomment if you want eog to try opening HEIC/AVIF when supported by gdk-pixbuf plugins
-        # "image/heic" = [ eogDesktop ];
-        # "image/avif" = [ eogDesktop ];
+        # Images -> Loupe
+        "image/jpeg" = [ loupeDesktop ];
+        "image/jpg" = [ loupeDesktop ];
+        "image/png" = [ loupeDesktop ];
+        "image/webp" = [ loupeDesktop ];
+        "image/gif" = [ loupeDesktop ];
+        "image/bmp" = [ loupeDesktop ];
+        "image/tiff" = [ loupeDesktop ];
+        "image/svg+xml" = [ loupeDesktop ];
+        # Uncomment if you want Loupe to try opening HEIC/AVIF when supported by gdk-pixbuf plugins
+        # "image/heic" = [ loupeDesktop ];
+        # "image/avif" = [ loupeDesktop ];
 
         # Files & text -> editor / file manager
-        "text/plain" = [ config.my.desktop.defaultEditor.desktop ];
+        "text/plain" = [ geditDesktop ];
         "inode/directory" = [ config.my.desktop.defaultFileManager.desktop ];
+
+        # Audio
+        "audio/mpeg" = [ decibelsDesktop ];
+        "audio/ogg" = [ decibelsDesktop ];
+        "audio/wav" = [ decibelsDesktop ];
+        "audio/flac" = [ decibelsDesktop ];
+        "audio/aac" = [ decibelsDesktop ];
+        "audio/mp4a" = [ decibelsDesktop ];
+        "audio/mp3" = [ decibelsDesktop ];
+        
+        # PDFs
+        "application/pdf" = [ papersDesktop ];
 
         # Web content -> browser
         "text/html" = [ config.my.desktop.defaultBrowser.desktop ];
         "x-scheme-handler/http" = [ config.my.desktop.defaultBrowser.desktop ];
         "x-scheme-handler/https" = [ config.my.desktop.defaultBrowser.desktop ];
         "x-scheme-handler/about" = [ config.my.desktop.defaultBrowser.desktop ];
-        "application/pdf" = [ config.my.desktop.defaultBrowser.desktop ];
       };
     };
     # Portals are managed system-wide (modules/features/hyprland.nix)

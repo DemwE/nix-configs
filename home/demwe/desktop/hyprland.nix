@@ -8,7 +8,6 @@
     slurp             # region selection helper for grim
     jq                # for parsing hyprctl JSON in binds
     swappy            # used by grimblast edit
-    eog               # image viewer
   ];
 
   # Clipboard history daemon (stores selections via wl-paste -> cliphist)

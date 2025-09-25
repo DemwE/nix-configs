@@ -16,6 +16,6 @@ in {
       config.my.desktop = nixosConfig.my.desktop;
     })
   ];
-  home-manager.backupFileExtension = ".backup";
+  home-manager.backupFileExtension = "backup";
   home-manager.users.demwe = import hmRoot;
 }
