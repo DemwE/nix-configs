@@ -12,6 +12,7 @@
   my.features.polkit.enable = true;
   my.features.wifi.enable = false;
   my.features.bluetooth.enable = false;
+  my.features.mobile-applets.enable = true;
 
   my.desktop = {
     # Check available options in modules/desktop.nix

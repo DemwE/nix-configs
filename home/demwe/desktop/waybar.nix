@@ -1,6 +1,7 @@
 { config, pkgs, ... }:
 
 let
+  useMobileApplets = (config.nixosConfig or { my = { features = { mobile-applets = { enable = false; }; }; }; }).my.features.mobile-applets.enable;
   modulesLeft = [
     "custom/spacer"
     "hyprland/window"
@@ -10,14 +11,26 @@ let
     "hyprland/workspaces"
   ];
 
-  modulesRight = [
+  baseRight = [
     "pulseaudio"
     "custom/spacer"
+  ];
+
+  mobileRight = [
     "network"
     "custom/spacer"
+    "bluetooth"
+    "custom/spacer"
+    "battery"
+    "custom/spacer"
+  ];
+
+  tailRight = [
     "clock"
     "custom/spacer"
   ];
+
+  modulesRight = baseRight ++ (if useMobileApplets then mobileRight else [ "network" "custom/spacer" ]) ++ tailRight;
 in
 {
   programs.waybar = {
@@ -58,8 +71,49 @@ in
         };
 
         network = {
-          format = " {bandwidthUpBits}  {bandwidthDownBits}";
-          tooltip = false;
+          # When mobile applets are enabled, show connection state; otherwise bandwidth
+          format = if useMobileApplets then "{ifname} {icon} {signalStrength}%" else " {bandwidthUpBits}  {bandwidthDownBits}";
+          format-wifi = "  {essid} {signalStrength}%";
+          format-ethernet = "󰈀   {bandwidthUpBits}  {bandwidthDownBits}";
+          format-disconnected = "󰤭  offline";
+          tooltip = true;
+          tooltip-format = "{ipaddr}\n{gwaddr}";
+        };
+
+        bluetooth = {
+          format = " {status}";
+          format-connected = " {num_connected} conn";
+          format-disabled = " off";
+          tooltip = true;
+          on-click = "blueman-manager";
+        };
+
+        battery = {
+          # Hidden automatically on desktops without a battery
+          interval = 10;
+          states = {
+            good = 80;
+            warning = 30;
+            critical = 15;
+          };
+          format = "{icon} {capacity}%";
+          format-charging = " {capacity}%";
+          format-plugged = " {capacity}%";
+          format-alt = "{timeTo} {capacity}%";
+          tooltip = true;
+          # Icons pulled from Nerd Font set
+          format-icons = [
+            "󰁺" # 10%
+            "󰁻"
+            "󰁼"
+            "󰁽"
+            "󰁾"
+            "󰁿"
+            "󰂀"
+            "󰂁"
+            "󰂂"
+            "󰁹" # 100%
+          ];
         };
 
         clock = {
