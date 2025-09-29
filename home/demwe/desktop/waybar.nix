@@ -17,6 +17,8 @@ let
   ];
 
   mobileRight = [
+    "tray"
+    "custom/spacer"
     "network"
     "custom/spacer"
     "bluetooth"
@@ -74,10 +76,14 @@ in
           # When mobile applets are enabled, show connection state; otherwise bandwidth
           format = if useMobileApplets then "{ifname} {icon} {signalStrength}%" else " {bandwidthUpBits}  {bandwidthDownBits}";
           format-wifi = "  {essid} {signalStrength}%";
-          format-ethernet = "󰈀   {bandwidthUpBits}  {bandwidthDownBits}";
+          format-ethernet = "󰈀  {ifname}";
           format-disconnected = "󰤭  offline";
           tooltip = true;
           tooltip-format = "{ipaddr}\n{gwaddr}";
+          # Use nm-applet on click; ensure it is running, otherwise start it
+          on-click = "${pkgs.bash}/bin/bash -lc 'pgrep -x nm-applet >/dev/null || (nm-applet --indicator & disown)'";
+          # Open network connections editor on right click
+          on-click-right = "nm-connection-editor";
         };
 
         bluetooth = {
@@ -86,6 +92,11 @@ in
           format-disabled = " off";
           tooltip = true;
           on-click = "blueman-manager";
+        };
+
+        tray = {
+          icon-size = 16;
+          spacing = 8;
         };
 
         battery = {
