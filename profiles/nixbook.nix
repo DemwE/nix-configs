@@ -10,7 +10,7 @@
   my.features.docker.enable = false;
   my.features.qemu.enable = false;
   my.features.polkit.enable = true;
-  my.features.wifi.enable = false;
+  my.features.wifi.enable = true;
   my.features.bluetooth.enable = true;
 
   my.desktop = {
