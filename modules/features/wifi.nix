@@ -10,16 +10,17 @@ let
 in
 {
   options.my.features.wifi.enable =
-    mkEnableOption "Enable Wi‑Fi via NetworkManager (desktop-friendly wireless management)";
+    mkEnableOption "Enable Wi-Fi via NetworkManager (desktop-friendly wireless management)";
 
   config = mkIf cfg.enable {
-    # Use NetworkManager for networking (handles Wi‑Fi, Ethernet, VPNs)
+    # Use NetworkManager for networking (handles Wi-Fi, Ethernet, VPNs)
     networking.networkmanager.enable = true;
 
     # Optional: uncomment to prefer iwd backend over wpa_supplicant
     # networking.networkmanager.wifi.backend = "iwd";  # requires modern hardware
 
     # Ensure the applet is available if you use a system tray (HM/Waybar may also show state)
-    programs.nm-applet.enable = lib.mkDefault true;
+    environment.systemPackages = [ pkgs.networkmanagerapplet ];
+    programs.nm-applet.enable = true;
   };
 }

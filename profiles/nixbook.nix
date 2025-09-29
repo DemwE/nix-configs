@@ -12,7 +12,6 @@
   my.features.polkit.enable = true;
   my.features.wifi.enable = false;
   my.features.bluetooth.enable = true;
-  # my.features.gnome.enable = true;
 
   my.desktop = {
     # Check available options in modules/desktop.nix
