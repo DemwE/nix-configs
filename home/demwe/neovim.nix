@@ -11,8 +11,8 @@
     source = pkgs.fetchFromGitHub {
       owner = "NvChad";
       repo = "NvChad";
-      rev = "v2.5";
-      sha256 = "sha256-+UcDn0rTYKlaPi0ybUhYtsdPGPqKChDIPtafjf/in8g=";
+      tag = "v2.5";
+      sha256 = "sha256-U81M3RFMP7jKirxj3ROCsyqTRXGCrtN6VsPrewlPSLI=";
     };
     recursive = true;
   };
