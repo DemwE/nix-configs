@@ -5,10 +5,12 @@
   ];
 
   my.features.hyprland.enable = true;
+  my.features.nvidia.enable = true;
   my.features.sddm.enable = true;
   my.features.docker.enable = true;
   my.features.qemu.enable = true;
   my.features.polkit.enable = true;
+  my.features.wifi.enable = false;
   my.features.bluetooth.enable = false;
 
   my.desktop = {

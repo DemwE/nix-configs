@@ -4,6 +4,8 @@
   # option definitions; actual activation is still controlled via
   # my.features.<name>.enable in profiles or host configs.
   imports = [
+    ./nvidia.nix
+    ./wifi.nix
     ./docker.nix
     ./qemu.nix
     ./polkit.nix

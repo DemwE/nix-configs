@@ -2,7 +2,6 @@
 {
   imports = [
     # Base independent modules
-    ./nvidia.nix
     ./paths.nix
     ./desktop.nix
     ./services.nix
