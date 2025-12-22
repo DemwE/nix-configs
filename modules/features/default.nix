@@ -12,6 +12,5 @@
     ./hyprland.nix
     ./sddm.nix
     ./bluetooth.nix
-    ./mobile-applets.nix
   ];
 }

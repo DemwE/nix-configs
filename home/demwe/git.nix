@@ -3,7 +3,15 @@
   programs.git = {
     enable = true;
     lfs.enable = true;
-    userName = "Mateusz Czarnecki";
-    userEmail = "mateuszczarnecki360@gmail.com";
+    settings.user = {
+      name = "Mateusz Czarnecki";
+      email = "mateuszczarnecki360@gmail.com";
+    };
+  };
+  programs.gh = {
+    enable = true;
+    gitCredentialHelper = {
+      enable = true;
+    };
   };
 }

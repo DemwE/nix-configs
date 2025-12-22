@@ -1,7 +1,6 @@
 { config, pkgs, ... }:
 
 let
-  useMobileApplets = (config.nixosConfig or { my = { features = { mobile-applets = { enable = false; }; }; }; }).my.features.mobile-applets.enable;
   modulesLeft = [
     "custom/spacer"
     "hyprland/window"
@@ -11,28 +10,14 @@ let
     "hyprland/workspaces"
   ];
 
-  baseRight = [
+  modulesRight = [
     "pulseaudio"
-    "custom/spacer"
-  ];
-
-  mobileRight = [
-    "tray"
     "custom/spacer"
     "network"
     "custom/spacer"
-    "bluetooth"
-    "custom/spacer"
-    "battery"
-    "custom/spacer"
-  ];
-
-  tailRight = [
     "clock"
     "custom/spacer"
   ];
-
-  modulesRight = baseRight ++ (if useMobileApplets then mobileRight else [ "network" "custom/spacer" ]) ++ tailRight;
 in
 {
   programs.waybar = {
@@ -73,17 +58,13 @@ in
         };
 
         network = {
-          # When mobile applets are enabled, show connection state; otherwise bandwidth
-          format = if useMobileApplets then "{ifname} {icon} {signalStrength}%" else " {bandwidthUpBits}  {bandwidthDownBits}";
-          format-wifi = "  {essid} {signalStrength}%";
+          format = " {bandwidthUpBits}  {bandwidthDownBits}";
+          format-wifi = "  {essid} {signalStrength}%";
           format-ethernet = "󰈀  {ifname}";
           format-disconnected = "󰤭  offline";
           tooltip = true;
           tooltip-format = "{ipaddr}\n{gwaddr}";
-          # Use nm-applet on click; ensure it is running, otherwise start it
-          on-click = "${pkgs.bash}/bin/bash -lc 'pgrep -x nm-applet >/dev/null || (nm-applet --indicator & disown)'";
-          # Open network connections editor on right click
-          on-click-right = "nm-connection-editor";
+          on-click = "nm-connection-editor";
         };
 
         bluetooth = {
@@ -97,40 +78,6 @@ in
         tray = {
           icon-size = 16;
           spacing = 8;
-        };
-
-        battery = {
-          # Hidden automatically on desktops without a battery
-          interval = 10;
-          states = {
-            good = 80;
-            warning = 30;
-            critical = 15;
-          };
-          format = "{icon} {capacity}%";
-          format-charging = " {capacity}%";
-          format-plugged = " {capacity}%";
-          format-alt = "{timeTo} {capacity}%";
-          tooltip = true;
-          # Icons pulled from Nerd Font set
-          format-icons = [
-            "󰁺" # 10%
-            "󰁻"
-            "󰁼"
-            "󰁽"
-            "󰁾"
-            "󰁿"
-            "󰂀"
-            "󰂁"
-            "󰂂"
-            "󰁹" # 100%
-          ];
-        };
-
-        clock = {
-          format = "{:%H:%M}";
-          format-alt = "{:%d %B %Y}";
-          tooltip = false;
         };
 
         "hyprland/window" = {
