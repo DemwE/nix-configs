@@ -71,6 +71,10 @@
       "SUPER,7,workspace,7"
       "SUPER,8,workspace,8"
 
+      # Switch workspaces
+      "CTRL_ALT,left,workspace,e-1"
+      "CTRL_ALT,right,workspace,e+1"
+
       # Send to Workspaces
       "SUPER_SHIFT,1,movetoworkspace,1"
       "SUPER_SHIFT,2,movetoworkspace,2"

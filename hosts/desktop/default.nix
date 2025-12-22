@@ -18,5 +18,5 @@
 
   nixpkgs.config.allowUnfree = true; # Allow unfree packages globally (NVIDIA, etc.)
 
-  system.stateVersion = "25.05"; 
+  system.stateVersion = "25.11"; 
 }

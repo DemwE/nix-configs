@@ -11,10 +11,16 @@
     pkgs.gh
     pkgs.jetbrains.rust-rover
     pkgs.jetbrains.webstorm
+    pkgs.jetbrains.clion
     pkgs.rustc
     pkgs.rustup
     pkgs.unstable.vscode
     pkgs.nixfmt-rfc-style
+
+    # Creativity
+    pkgs.unstable.davinci-resolve
+    pkgs.unstable.obs-studio
+    pkgs.unstable.krita
 
     # File Manager
     pkgs.nemo-with-extensions
@@ -42,5 +48,6 @@
     pkgs.loupe
     pkgs.collision
     pkgs.apostrophe
+    pkgs.winbox4
   ];
 }

@@ -11,7 +11,6 @@
       enable = true;
       plugins = [
         "git"
-        "thefuck"
         "sudo"
       ];
     };
@@ -30,7 +29,7 @@
 
       # other
       cls = "clear";
-      update-nixos = "sudo nixos-rebuild switch --upgrade";
+      update-nixos = "sudo nixos-rebuild switch --upgrade --log-format bar-with-logs";
       update-channels = "sudo nix-channel --update";
       use = "nix-shell";
     };
@@ -51,8 +50,4 @@
     enable = true;
     useTheme = "catppuccin";
   };
-
-  home.packages = [
-    pkgs.thefuck
-  ];
 }

@@ -20,15 +20,15 @@ in
           package = pkgs.qemu_kvm;
           runAsRoot = true; # needed for some device passthrough scenarios
           swtpm.enable = true; # provide virtual TPM
-          ovmf = {
-            enable = true;
-            packages = [
-              (pkgs.OVMF.override {
-                secureBoot = true;
-                tpmSupport = true;
-              }).fd
-            ];
-          };
+          # ovmf = {
+          #   enable = true;
+          #   packages = [
+          #     (pkgs.OVMF.override {
+          #       secureBoot = true;
+          #       tpmSupport = true;
+          #     }).fd
+          #   ];
+          # };
         };
       };
       # Tooling packages (CLI + GUI)
