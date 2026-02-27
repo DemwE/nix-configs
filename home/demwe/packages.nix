@@ -9,11 +9,11 @@
 
     # Development
     pkgs.gh
-    pkgs.unstable.jetbrains.rust-rover
-    pkgs.unstable.jetbrains.webstorm
-    pkgs.unstable.jetbrains.clion
     pkgs.unstable.vscode
     pkgs.nixfmt-rfc-style
+    pkgs.custom.rust-rover
+    pkgs.custom.webstorm
+    pkgs.custom.clion
 
     # Creativity
     # pkgs.unstable.davinci-resolve
@@ -39,10 +39,9 @@
     pkgs.cpufetch
     pkgs.gpufetch
 
-    # Rust toolchain (includes rustfmt, clippy, and cargo)
-    pkgs.rustup
-    pkgs.rustc
-    pkgs.gcc
-    pkgs.gnumake
+    # Toolchains
+    pkgs.custom.toolchain-rust
+    pkgs.custom.toolchain-cpp
+    pkgs.custom.toolchain-nodejs
   ];
 }

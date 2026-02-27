@@ -13,6 +13,6 @@
     ./users
     ./system
     ./features
-    ./directives
+    ./directives/system.nix
   ];
 }
