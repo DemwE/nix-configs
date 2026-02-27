@@ -36,8 +36,8 @@
     pkgs.collision
     pkgs.apostrophe
     pkgs.winbox4
-    pkgs.cpufetch
-    pkgs.gpufetch
+    pkgs.custom.compress
+    pkgs.custom.decompress
 
     # Toolchains
     pkgs.custom.toolchain-rust

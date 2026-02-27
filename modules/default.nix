@@ -13,6 +13,5 @@
     ./users
     ./system
     ./features
-    ./directives/system.nix
   ];
 }
