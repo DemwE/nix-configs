@@ -6,11 +6,12 @@ pkgs: {
     name = "toolchain-cpp";
     paths = [
       pkgs.gcc
-      pkgs.clang
       pkgs.cmake
       pkgs.gnumake
       pkgs.gdb
       pkgs.pkg-config
+      pkgs.llvmPackages.clang-unwrapped
+      pkgs.clang-tools
     ];
   };
 }

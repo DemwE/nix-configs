@@ -13,7 +13,7 @@
     pkgs.nixfmt-rfc-style
     pkgs.custom.rust-rover
     pkgs.custom.webstorm
-    pkgs.custom.clion
+    # pkgs.custom.clion
 
     # Creativity
     # pkgs.unstable.davinci-resolve
@@ -38,10 +38,19 @@
     pkgs.winbox4
     pkgs.custom.compress
     pkgs.custom.decompress
+    pkgs.dust
 
     # Toolchains
     pkgs.custom.toolchain-rust
-    pkgs.custom.toolchain-cpp
     pkgs.custom.toolchain-nodejs
+    # pkgs.custom.toolchain-cpp
+
+    # Java
+    pkgs.custom.java25
+    pkgs.custom.java25.versioned
+    pkgs.custom.java17.versioned
+    pkgs.custom.java21.versioned
+    pkgs.custom.java11.versioned
+    pkgs.custom.java8.versioned
   ];
 }

@@ -31,7 +31,8 @@
       cls = "clear";
       update-nixos = "sudo nixos-rebuild switch --upgrade --log-format bar-with-logs";
       update-channels = "sudo nix-channel --update";
-      # use = "nix-shell";
+      check-size = "du -sh";
+      use = "nix-shell";
       nix-remove-garbage = "sudo nix-collect-garbage -d";
     };
 

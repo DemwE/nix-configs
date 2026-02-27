@@ -35,7 +35,7 @@
 
   # Enable features
   my.features.nvidia.enable = true;
-  my.features.docker.enable = true;
+  my.features.docker.enable = false;
   my.features.qemu.enable = false;
   my.features.polkit.enable = true;
   my.features.gdm.enable = true;

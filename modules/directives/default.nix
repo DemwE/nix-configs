@@ -5,6 +5,7 @@ pkgs:
     ./utils/compress.nix
     ./toolchains
     ./ide
+    ./libericaJDK
     # ./cli
     # ./fonts
   ])

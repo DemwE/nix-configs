@@ -25,6 +25,9 @@ in
       gnome-tour
       epiphany
       geary
+      gnome-weather
+      gnome-maps
+      gnome-contacts
     ];
   };
 }
