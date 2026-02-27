@@ -12,5 +12,8 @@
     ./hyprland.nix
     ./sddm.nix
     ./bluetooth.nix
+    ./ly.nix
+    ./gdm.nix
+    ./gnome.nix
   ];
 }

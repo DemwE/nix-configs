@@ -9,18 +9,16 @@
 
     # Development
     pkgs.gh
-    pkgs.jetbrains.rust-rover
-    pkgs.jetbrains.webstorm
-    pkgs.jetbrains.clion
-    pkgs.rustc
-    pkgs.rustup
+    pkgs.unstable.jetbrains.rust-rover
+    pkgs.unstable.jetbrains.webstorm
+    pkgs.unstable.jetbrains.clion
     pkgs.unstable.vscode
     pkgs.nixfmt-rfc-style
 
     # Creativity
-    pkgs.unstable.davinci-resolve
-    pkgs.unstable.obs-studio
-    pkgs.unstable.krita
+    # pkgs.unstable.davinci-resolve
+    # pkgs.unstable.obs-studio
+    # pkgs.unstable.krita
 
     # File Manager
     pkgs.nemo-with-extensions
@@ -49,5 +47,11 @@
     pkgs.collision
     pkgs.apostrophe
     pkgs.winbox4
+
+    # Rust toolchain (includes rustfmt, clippy, and cargo)
+    pkgs.rustup
+    pkgs.rustc
+    pkgs.gcc
+    pkgs.gnumake
   ];
 }

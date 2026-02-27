@@ -11,6 +11,6 @@
       ./rofi.nix
       ./dunst.nix
       ./wlogout.nix
-      ./gtk.nix
+      # ./gtk.nix
     ];
 }

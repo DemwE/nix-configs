@@ -30,7 +30,7 @@ in
       powerManagement.finegrained = false;
 
       # Use the NVIDIA open source kernel module? (Turing+ only)
-      open = false;
+      open = true;
 
       # Enable the NVIDIA settings tool (`nvidia-settings`)
       nvidiaSettings = true;

@@ -7,7 +7,7 @@ let
   # For reproducibility, you may want to pin to a specific commit instead.
   stableUrl = "https://github.com/NixOS/nixpkgs/archive/nixos-25.11.tar.gz";
   stablePkgs = import (builtins.fetchTarball { url = stableUrl; }) {
-    inherit (prev) system;
+    system = prev.stdenv.hostPlatform.system;
     config = prev.config or {};
   };
 in {

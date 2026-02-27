@@ -6,8 +6,7 @@ let
   unstablePkgs = import (builtins.fetchTarball {
     url = "https://github.com/NixOS/nixpkgs/archive/nixos-unstable.tar.gz";
   }) {
-    inherit (prev) system;
-    # Reuse the same nixpkgs configuration (e.g., allowUnfree)
+    system = prev.stdenv.hostPlatform.system;
     config = prev.config or {};
   };
 in {
