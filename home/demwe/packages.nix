@@ -20,33 +20,24 @@
     # pkgs.unstable.obs-studio
     # pkgs.unstable.krita
 
-    # File Manager
-    pkgs.nemo-with-extensions
-    pkgs.nemo-fileroller
-
     # Games
-    pkgs.prismlauncher
+    pkgs.unstable.prismlauncher
+    pkgs.unstable.vintagestory
 
     # Media
     pkgs.mpv
 
     # Utilities
     # dunst, kitty, rofi-wayland, waybar are managed by programs.* in HM
-    pkgs.pavucontrol
-    pkgs.qalculate-gtk
-    pkgs.file-roller
     pkgs.ffmpeg-full
-    pkgs.gnome-disk-utility
     pkgs.gparted
     pkgs.s-tui
     pkgs.stress
-    pkgs.gnome-text-editor
-    pkgs.papers
-    pkgs.decibels
-    pkgs.loupe
     pkgs.collision
     pkgs.apostrophe
     pkgs.winbox4
+    pkgs.cpufetch
+    pkgs.gpufetch
 
     # Rust toolchain (includes rustfmt, clippy, and cargo)
     pkgs.rustup

@@ -4,17 +4,16 @@
   imports = 
     [
       ./home-configuration.nix
-      ./desktop/default.nix
       ./packages.nix
       ./xdg.nix
       ./dconf.nix
       ./git.nix
       ./zsh.nix
-      ./kitty.nix
       ./fastfetch.nix
       ./yazi.nix
       ./btop.nix
       ./neovim.nix
+      ./gnome.nix
     ];
   # The home.packages option allows you to install Nix packages into your
   # environment.

@@ -5,14 +5,9 @@
   # my.features.<name>.enable in profiles or host configs.
   imports = [
     ./nvidia.nix
-    ./wifi.nix
     ./docker.nix
     ./qemu.nix
     ./polkit.nix
-    ./hyprland.nix
-    ./sddm.nix
-    ./bluetooth.nix
-    ./ly.nix
     ./gdm.nix
     ./gnome.nix
   ];
