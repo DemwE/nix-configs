@@ -12,7 +12,7 @@
   boot.initrd.kernelModules = [ ];
   boot.kernelModules = [ "kvm-amd" ];
   boot.extraModulePackages = [ ];
-  boot.supportedFilesystems = [ "nfs" ];
+  #boot.supportedFilesystems = [ "nfs" ];
 
   fileSystems."/" = {
     device = "/dev/disk/by-uuid/3abf709c-7b38-48f5-8056-6bf3949caa95";
@@ -25,11 +25,11 @@
     options = [ "fmask=0077" "dmask=0077" ];
   };
 
-  fileSystems."/mnt/public" = {
-    device = "192.168.7.131:/data/public";
-    fsType = "nfs";
-    options = [ "soft" "timeo=10" "retrans=3" "noauto" ];
-  };
+  #fileSystems."/mnt/public" = {
+  #  device = "192.168.7.131:/data/public";
+  #  fsType = "nfs";
+  #  options = [ "soft" "timeo=10" "retrans=3" "noauto" ];
+  #};
 
   swapDevices = [ ];
 

@@ -3,6 +3,7 @@
   imports = [
     ./home.nix
     ./packages.nix
+    ./avatar.nix
   ];
 
   users.users.demwe = {

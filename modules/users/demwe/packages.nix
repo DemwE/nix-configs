@@ -14,6 +14,7 @@
     nixfmt-rfc-style
     custom.rust-rover
     custom.webstorm
+    custom.pycharm
     # custom.clion
 
     # Creativity
@@ -43,6 +44,7 @@
     # Toolchains
     custom.toolchain-rust
     custom.toolchain-nodejs
+    custom.toolchain-python
     # custom.toolchain-cpp
 
     # Java
