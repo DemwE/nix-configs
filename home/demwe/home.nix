@@ -4,8 +4,6 @@
   imports = 
     [
       ./home-configuration.nix
-      ./packages.nix
-      ./xdg.nix
       ./dconf.nix
       ./git.nix
       ./zsh.nix

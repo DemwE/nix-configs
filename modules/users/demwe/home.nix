@@ -10,11 +10,6 @@ in {
     # Ensure HM knows about the same custom options used by the system
     (import ../../paths.nix)
     (import ../../theme/core.nix)
-    (import ../../desktop.nix)
-    # Bridge system-level desktop values into Home Manager (after options are declared)
-    ({ nixosConfig, ... }: {
-      config.my.desktop = nixosConfig.my.desktop;
-    })
   ];
   home-manager.backupFileExtension = "backup";
   home-manager.users.demwe = import hmRoot;

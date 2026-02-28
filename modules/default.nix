@@ -3,7 +3,6 @@
   imports = [
     # Base independent modules
     ./paths.nix
-    ./desktop.nix
     ./services.nix
     ./groups.nix
     ./theme/core.nix
