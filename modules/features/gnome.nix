@@ -28,6 +28,7 @@ in
       gnome-weather
       gnome-maps
       gnome-contacts
+      gnome-software
     ];
   };
 }

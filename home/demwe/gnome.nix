@@ -4,7 +4,6 @@
   programs.gnome-shell.extensions = [
     { package = pkgs.gnomeExtensions.blur-my-shell; }
     { package = pkgs.gnomeExtensions.appindicator; }
-    { package = pkgs.gnomeExtensions.ulauncher-toggle; }
     { package = pkgs.gnomeExtensions.clipboard-indicator; }
   ];
 
