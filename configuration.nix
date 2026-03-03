@@ -3,6 +3,7 @@
   imports = [
     ./hardware-configuration.nix
     ./modules
+    ./specialisations.nix
   ];
 
   # Bootloader configuration for UEFI systems
