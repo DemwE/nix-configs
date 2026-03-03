@@ -30,12 +30,15 @@
       # other
       cls = "clear";
       update-nixos = "sudo nixos-rebuild switch --upgrade --log-format bar-with-logs";
+      update-nixos-no-upgrade = "sudo nixos-rebuild switch --log-format bar-with-logs";
       update-channels = "sudo nix-channel --update";
       check-size = "du -sh";
       use = "nix-shell";
       nix-remove-garbage = "sudo nix-collect-garbage -d";
       gpu-status = "cat /sys/bus/pci/devices/0000:01:00.0/power/runtime_status";
       gpu-panel = "nvidia-smi";
+      mode-hybrid = "supergfxctl --mode Hybrid";
+      mode-integrated = "supergfxctl --mode Integrated";
     };
 
     initContent = "fastfetch";

@@ -36,7 +36,7 @@
 
   # Enable features
   my.features.nvidia.enable = true;
-  my.features.nvidia.finegrainedPowerManagement = true;
+  my.features.nvidia.finegrainedPowerManagement = false;
   my.features.nvidia.prime.enable = true;
   my.features.docker.enable = false;
   my.features.flatpak.enable = true;
@@ -45,9 +45,10 @@
   my.features.gdm.enable = true;
   my.features.gnome.enable = true;
   my.features.fprintd.enable = true;
-  my.features.howdy.enable = true;
-  my.features.iioSensorProxy.enable = true;
+  my.features.howdy.enable = false;
+  my.features.iioSensorProxy.enable = false;
   my.features.steam.enable = true;
+  my.features.supergfxd.enable = true;
 
   # Sytem channel and versioning
   system.stateVersion = "25.11"; 
