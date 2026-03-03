@@ -37,21 +37,10 @@ in
   };
 
   config = mkIf cfg.enable {
-    # Enable OpenGL/graphics stack
-    hardware.graphics = {
-      enable = true;
-      # Required for Steam and other 32-bit games/apps
-      enable32Bit = true;
-      extraPackages = with pkgs; [
-        # Intel iGPU VA-API (hardware video decode for browser etc.)
-        intel-media-driver   # Gen 8+ (Broadwell+)
-        # NVIDIA VA-API bridge (for apps running on dGPU)
-        nvidia-vaapi-driver
-      ];
-      extraPackages32 = with pkgs.pkgsi686Linux; [
-        libva
-      ];
-    };
+    # NVIDIA-specific VA-API bridge — merges into hardware.graphics set by system/graphics.nix
+    hardware.graphics.extraPackages = with pkgs; [
+      nvidia-vaapi-driver
+    ];
 
     # Load NVIDIA driver for Xorg and Wayland
     services.xserver.videoDrivers = [ "nvidia" ];

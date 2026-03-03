@@ -7,6 +7,7 @@
     ./shell.nix
     ./fonts.nix
     ./audio.nix
+    ./graphics.nix
     ./housekeeping.nix
     ./power-profiles.nix
   ];
