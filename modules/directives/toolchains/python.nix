@@ -6,7 +6,6 @@ pkgs: {
     name = "toolchain-python";
     paths = [
       pkgs.python313
-      pkgs.pipx
     ];
   };
 }

@@ -17,6 +17,8 @@
     gvfs.enable = true;
     # Thumbnail generation for file managers
     tumbler.enable = true;
+    # Printing support (CUPS)
+    printing.enable = true;
   };
 
   # Basic network hardening

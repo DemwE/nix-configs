@@ -17,6 +17,7 @@ in
 
     # GNOME services
     services.gnome.gnome-keyring.enable = true;
+    security.pam.services.gdm-password.enableGnomeKeyring = true;
     services.gnome.localsearch.enable = true;
     services.gnome.tinysparql.enable = true;
     

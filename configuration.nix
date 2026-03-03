@@ -13,7 +13,7 @@
   boot.kernelPackages = pkgs.unstable.linuxPackages;
 
   # Networking configuration
-  networking.hostName = "DemwE_PC";
+  networking.hostName = "NixBook";
   networking.networkmanager.enable = true;
   
   # Allow unfree packages globally (NVIDIA, etc.)
@@ -35,12 +35,18 @@
 
   # Enable features
   my.features.nvidia.enable = true;
+  my.features.nvidia.finegrainedPowerManagement = true;
+  my.features.nvidia.prime.enable = true;
   my.features.docker.enable = false;
   my.features.flatpak.enable = true;
   my.features.qemu.enable = false;
   my.features.polkit.enable = true;
   my.features.gdm.enable = true;
   my.features.gnome.enable = true;
+  my.features.fprintd.enable = true;
+  my.features.howdy.enable = true;
+  my.features.iioSensorProxy.enable = true;
+  my.features.steam.enable = true;
 
   # Sytem channel and versioning
   system.stateVersion = "25.11"; 

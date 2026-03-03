@@ -11,5 +11,9 @@
     ./polkit.nix
     ./gdm.nix
     ./gnome.nix
+    ./fprintd.nix
+    ./howdy.nix
+    ./iio-sensor-proxy.nix
+    ./steam.nix
   ];
 }
