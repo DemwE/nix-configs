@@ -41,6 +41,8 @@
     custom.compress
     custom.decompress
     dust
+    killall
+    powertop
 
     # Toolchains
     custom.toolchain-rust

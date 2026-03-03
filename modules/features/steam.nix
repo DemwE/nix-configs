@@ -11,12 +11,14 @@
    - enable programs.steam (NixOS module, not a raw package)
    - enable 32-bit graphics stack required by Steam/games
    - open firewall ports for Steam Remote Play
-   - when NVIDIA PRIME offload is also enabled, launch Steam and games
-     on the dGPU automatically via __NV_PRIME_RENDER_OFFLOAD
+
+  Steam launcher runs on Intel iGPU (saves battery).
+  All games automatically run on NVIDIA dGPU via PRIME offload env vars
+  injected through the package override — no duplicate icon in GNOME,
+  no per-game launch options needed.
 */
 let
   cfg = config.my.features.steam;
-  nvidiaPrime = config.my.features.nvidia.prime.enable or false;
   inherit (lib) mkEnableOption mkIf;
 in
 {
@@ -30,16 +32,19 @@ in
     programs.steam = {
       enable = true;
       remotePlay.openFirewall = true;
-      # If PRIME offload is active, force Steam (and all launched games)
-      # onto the NVIDIA dGPU automatically — no per-game launch options needed.
-      package = mkIf nvidiaPrime (pkgs.steam.override {
+
+      # Override the steam package to inject PRIME offload env vars into the
+      # FHS environment. These are inherited by all child processes (games)
+      # so they run on the NVIDIA dGPU automatically — same desktop icon, no duplicate.
+      # The launcher UI itself (GTK) stays on iGPU as GTK ignores these vars.
+      package = pkgs.steam.override {
         extraEnv = {
-          __NV_PRIME_RENDER_OFFLOAD = "1";
-          __NV_PRIME_RENDER_OFFLOAD_PROVIDER = "NVIDIA-G0";
-          __GLX_VENDOR_LIBRARY_NAME = "nvidia";
-          __VK_LAYER_NV_optimus = "NVIDIA_only";
+          __NV_PRIME_RENDER_OFFLOAD        = "1";
+          __NV_PRIME_RENDER_OFFLOAD_RESET  = "1";
+          __GLX_VENDOR_LIBRARY_NAME        = "nvidia";
+          __VK_LAYER_NV_optimus            = "NVIDIA_only";
         };
-      });
+      };
     };
   };
 }

@@ -20,6 +20,8 @@ in
     security.pam.services.gdm-password.enableGnomeKeyring = true;
     services.gnome.localsearch.enable = true;
     services.gnome.tinysparql.enable = true;
+    # Enables "Launch using Dedicated Graphics Card" in GNOME app context menu
+    services.switcherooControl.enable = true;
     
     # Exclude some default GNOME apps if desired
     environment.gnome.excludePackages = with pkgs; [

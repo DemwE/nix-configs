@@ -43,7 +43,9 @@ in
       # Required for Steam and other 32-bit games/apps
       enable32Bit = true;
       extraPackages = with pkgs; [
-        # NVIDIA Vulkan ICD (64-bit)
+        # Intel iGPU VA-API (hardware video decode for browser etc.)
+        intel-media-driver   # Gen 8+ (Broadwell+)
+        # NVIDIA VA-API bridge (for apps running on dGPU)
         nvidia-vaapi-driver
       ];
       extraPackages32 = with pkgs.pkgsi686Linux; [

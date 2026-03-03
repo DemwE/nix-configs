@@ -34,6 +34,8 @@
       check-size = "du -sh";
       use = "nix-shell";
       nix-remove-garbage = "sudo nix-collect-garbage -d";
+      gpu-status = "cat /sys/bus/pci/devices/0000:01:00.0/power/runtime_status";
+      gpu-panel = "nvidia-smi";
     };
 
     initContent = "fastfetch";

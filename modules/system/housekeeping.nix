@@ -11,4 +11,7 @@
   };
 
   systemd.oomd.enable = true;
+
+  # Auto-tune all tunables at boot (USB autosuspend, PCIe ASPM, NIC power save, etc.)
+  powerManagement.powertop.enable = true;
 }
