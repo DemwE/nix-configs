@@ -38,10 +38,11 @@ in
       package = pkgs.unstable.howdy;
       settings.video.device_path = "/dev/video2";
     };
-    # GDM sets gdm-fingerprint.text and gdm-password.text directly as raw
-    # strings — the rules attrset is ignored when text is set explicitly.
-    # Use mkBefore to prepend howdy at the top of each auth stack so it
-    # runs first; "sufficient" means success skips all remaining auth modules.
+    # GDM sets gdm-password/gdm-fingerprint .text directly — .rules are ignored.
+    # Use mkBefore on .text to prepend howdy at the top of each auth stack.
+    # Note: enableGnomeKeyring is also lost when .text is overridden.
+    # Keyring auto-unlocks only on password login; for face/fingerprint set an
+    # empty keyring password in Seahorse (safe if LUKS encryption is enabled).
     security.pam.services.gdm-fingerprint.text = lib.mkBefore ''
       auth      sufficient  ${pkgs.unstable.howdy}/lib/security/pam_howdy.so
     '';

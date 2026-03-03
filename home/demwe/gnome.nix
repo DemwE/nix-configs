@@ -5,6 +5,7 @@
     { package = pkgs.gnomeExtensions.blur-my-shell; }
     { package = pkgs.gnomeExtensions.appindicator; }
     { package = pkgs.gnomeExtensions.clipboard-indicator; }
+    { package = pkgs.gnomeExtensions.alphabetical-app-grid; }
   ];
 
   gtk = {
