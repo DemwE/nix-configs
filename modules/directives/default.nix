@@ -3,6 +3,8 @@
 pkgs:
   pkgs.lib.mergeAttrsList (map (f: import f pkgs) [
     ./utils/compress.nix
+    ./utils/battery.nix
+    ./utils/gpu.nix
     ./toolchains
     ./ide
     ./libericaJDK

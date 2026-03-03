@@ -40,6 +40,9 @@
     winbox4
     custom.compress
     custom.decompress
+    custom.battery-watch
+    custom.battery-info
+    custom.nvidia-offload
     dust
     killall
     powertop
