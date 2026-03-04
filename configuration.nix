@@ -16,6 +16,7 @@
   # Networking configuration
   networking.hostName = "NixBook";
   networking.networkmanager.enable = true;
+  networking.networkmanager.plugins = [ pkgs.networkmanager-openvpn ];
   
   # Allow unfree packages globally (NVIDIA, etc.)
   nixpkgs.config.allowUnfree = true; 
@@ -36,7 +37,7 @@
 
   # Enable features
   my.features.nvidia.enable = true;
-  my.features.nvidia.finegrainedPowerManagement = false;
+  my.features.nvidia.runtimePowerManagement = true;
   my.features.nvidia.prime.enable = true;
   my.features.docker.enable = false;
   my.features.flatpak.enable = true;

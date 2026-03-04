@@ -12,11 +12,11 @@ in
   options.my.features.nvidia = {
     enable = mkEnableOption "Enable NVIDIA proprietary driver and related settings";
 
-    finegrainedPowerManagement = mkEnableOption ''
-      Enable fine-grained power management (D3cold).
-      Cuts idle power from ~6.5W to ~0.5W by fully cutting PCIe power when unused.
-      May cause instability on some systems (black screen on wake, kernel panic).
-      Safe to try — disable if you experience issues after waking from sleep
+    runtimePowerManagement = mkEnableOption ''
+      Enable fine-grained runtime power management for NVIDIA GPU.
+      Sets NVreg_DynamicPowerManagement=0x01 and adds udev rules to put
+      NVIDIA PCI devices into auto power/control — allows D3cold (~1W idle).
+      Requires powerManagement.enable = true (already set).
     '';
 
     prime = {
@@ -50,8 +50,8 @@ in
       modesetting.enable = true;
 
       # Power management settings
-      powerManagement.enable = cfg.finegrainedPowerManagement;
-      powerManagement.finegrained = cfg.finegrainedPowerManagement;
+      powerManagement.enable = true;
+      powerManagement.finegrained = cfg.runtimePowerManagement; # D3cold + udev rules + NVreg_DynamicPowerManagement=1
 
       # Use the NVIDIA open source kernel module? (Turing+ only)
       open = true;

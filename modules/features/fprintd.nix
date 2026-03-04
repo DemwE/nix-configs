@@ -21,7 +21,7 @@ in
     # By default pam_fprintd.so retries 3 times before falling through to
     # password. Set max_tries=1 so a single failed scan (or just lifting your
     # finger) immediately falls back to the password prompt.
-    security.pam.services.sudo.rules.auth.fprintd.args = [ "max_tries=1" ];
-    security.pam.services.polkit-1.rules.auth.fprintd.args = [ "max_tries=1" ];
+    security.pam.services.sudo.rules.auth.fprintd.args = [ "max_tries=2" ];
+    security.pam.services.polkit-1.rules.auth.fprintd.args = [ "max_tries=2" ];
   };
 }

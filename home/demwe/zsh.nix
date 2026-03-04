@@ -44,13 +44,6 @@
     initContent = "fastfetch";
 
     history.size = 10000;
-
-    profileExtra = ''
-      _use_completion() {
-        _files -W ${"~/nix-shells/"} -g '*.nix'
-      }
-      compdef _use_completion use
-    '';
   };
 
   programs.oh-my-posh = {

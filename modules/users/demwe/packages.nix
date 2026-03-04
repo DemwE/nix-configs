@@ -19,7 +19,7 @@
     custom.rider
 
     # Creativity
-    unstable.davinci-resolve
+    davinci-resolve
     unstable.obs-studio
     unstable.krita
 
@@ -55,7 +55,7 @@
     custom.toolchain-dotnet
 
     # Java
-    # custom.java25
+    custom.java25
     custom.java25.versioned
     custom.java21.versioned
     custom.java17.versioned
@@ -65,6 +65,7 @@
     # Other
     gnome-decoder
     unstable.unityhub
+    unstable.onlyoffice-desktopeditors
   ];
 
   # Flatpak packges

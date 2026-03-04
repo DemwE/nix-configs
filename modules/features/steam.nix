@@ -17,7 +17,6 @@
 */
 let
   cfg = config.my.features.steam;
-  nvidiaPrime = config.my.features.nvidia.prime.enable or false;
   inherit (lib) mkEnableOption mkIf;
 in
 {
@@ -31,18 +30,19 @@ in
       enable = true;
       remotePlay.openFirewall = true;
 
-      # When NVIDIA PRIME offload is active, inject PRIME env vars into Steam's
-      # FHS environment so all child processes (games) automatically run on the
-      # dGPU. The launcher UI (GTK) ignores these vars — stays on iGPU.
-      # Same desktop icon, no duplicate, no per-game launch options needed.
-      package = mkIf nvidiaPrime (pkgs.steam.override {
-        extraEnv = {
-          __NV_PRIME_RENDER_OFFLOAD       = "1";
-          __NV_PRIME_RENDER_OFFLOAD_RESET = "1";
-          __GLX_VENDOR_LIBRARY_NAME       = "nvidia";
-          __VK_LAYER_NV_optimus           = "NVIDIA_only";
-        };
-      });
+      # At runtime, check supergfxctl mode — inject PRIME vars only when NVIDIA is active.
+      # Works transparently in both Hybrid and Integrated modes.
+      package = pkgs.steam.override {
+        extraProfile = ''
+          MODE=$(${pkgs.supergfxctl}/bin/supergfxctl --get 2>/dev/null || echo "Hybrid")
+          if [ "$MODE" != "Integrated" ]; then
+            export __NV_PRIME_RENDER_OFFLOAD=1
+            export __NV_PRIME_RENDER_OFFLOAD_PROVIDER=NVIDIA-G0
+            export __GLX_VENDOR_LIBRARY_NAME=nvidia
+            export __VK_LAYER_NV_optimus=NVIDIA_only
+          fi
+        '';
+      };
     };
   };
 }
