@@ -17,9 +17,10 @@
     custom.pycharm
     custom.clion
     custom.rider
+    custom.idea
 
     # Creativity
-    davinci-resolve
+    # davinci-resolve
     unstable.obs-studio
     unstable.krita
 
@@ -47,15 +48,9 @@
     killall
     powertop
 
-    # Toolchains
-    custom.toolchain-rust
-    custom.toolchain-nodejs
-    custom.toolchain-python
-    custom.toolchain-cpp
-    custom.toolchain-dotnet
+    # Toolchains — available via ~/.toolchains/*/bin (home/demwe/toolchains.nix)
 
     # Java
-    custom.java25
     custom.java25.versioned
     custom.java21.versioned
     custom.java17.versioned
@@ -66,6 +61,7 @@
     gnome-decoder
     unstable.unityhub
     unstable.onlyoffice-desktopeditors
+    unstable.gamescope
   ];
 
   # Flatpak packges

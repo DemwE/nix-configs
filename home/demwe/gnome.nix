@@ -26,8 +26,11 @@
       package = pkgs.adwaita-icon-theme;
     };
     
-    # GTK3 apps: force dark mode via legacy setting
+    # GTK apps: force dark mode via legacy setting
     gtk3.extraConfig = {
+      gtk-application-prefer-dark-theme = true;
+    };
+    gtk4.extraConfig = {
       gtk-application-prefer-dark-theme = true;
     };
   };

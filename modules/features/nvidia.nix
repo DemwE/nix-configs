@@ -53,6 +53,10 @@ in
       powerManagement.enable = true;
       powerManagement.finegrained = cfg.runtimePowerManagement; # D3cold + udev rules + NVreg_DynamicPowerManagement=1
 
+      # Dynamic Boost: nvidia-powerd shifts TGP between 35W and 60W
+      # based on combined CPU/GPU workload automatically
+      dynamicBoost.enable = true;
+
       # Use the NVIDIA open source kernel module? (Turing+ only)
       open = true;
 

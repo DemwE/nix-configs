@@ -1,12 +1,12 @@
-# Node.js toolchain: nodejs, pnpm
+# Node.js toolchain: pnpm
 # pkgs: { toolchain-nodejs }
+# Node.js versions exposed via ~/.nvm/versions/node/ (home/demwe/nodejs.nix)
 
 pkgs: {
   toolchain-nodejs = pkgs.symlinkJoin {
     name = "toolchain-nodejs";
     paths = [
-      pkgs.nodejs
-      pkgs.pnpm
+      pkgs.unstable.pnpm
     ];
   };
 }

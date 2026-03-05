@@ -12,6 +12,11 @@
       ./btop.nix
       ./neovim.nix
       ./gnome.nix
+      ./java.nix
+      ./python.nix
+      ./nodejs.nix
+      ./cpp.nix
+      ./toolchains.nix
     ];
   # The home.packages option allows you to install Nix packages into your
   # environment.

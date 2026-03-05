@@ -39,6 +39,7 @@
       gpu-panel = "nvidia-smi";
       mode-hybrid = "supergfxctl --mode Hybrid";
       mode-integrated = "supergfxctl --mode Integrated";
+      run-game = "nvidia-offload gamescope -w 1920 -h 1200 -W 3840 -H 2400 -F fsr -f -- %*";
     };
 
     initContent = "fastfetch";

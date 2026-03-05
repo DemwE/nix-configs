@@ -1,15 +1,14 @@
-# WebStorm package definition with Node.js toolchain in PATH
+# WebStorm package definition
 # pkgs: { webstorm }
+# Uses ~/.toolchains/nodejs/bin — stable symlink managed by home-manager (toolchains.nix)
+# Node.js versions detected via ~/.nvm/versions/node/ symlinks (home/demwe/nodejs.nix)
 
-pkgs:
-let
-  toolchain = (import ../toolchains/nodejs.nix pkgs).toolchain-nodejs;
-in {
+pkgs: {
   webstorm = pkgs.unstable.jetbrains.webstorm.overrideAttrs (oldAttrs: {
     nativeBuildInputs = (oldAttrs.nativeBuildInputs or []) ++ [ pkgs.makeWrapper ];
     postInstall = (oldAttrs.postInstall or "") + ''
       wrapProgram $out/bin/webstorm \
-        --prefix PATH : ${pkgs.lib.makeBinPath [ toolchain ]}
+        --run 'export PATH="$HOME/.toolchains/nodejs/bin:$PATH"'
     '';
   });
 }

@@ -1,15 +1,14 @@
-# rust-rover package definition with Rust toolchain in PATH
+# rust-rover package definition
 # pkgs: { rust-rover }
+# Toolchain auto-detected via ~/.rustup/toolchains/ (managed by home/demwe/rust.nix)
+# RustRover reads ~/.rustup/settings.toml and scans ~/.rustup/toolchains/ — no PATH hack needed.
 
 pkgs:
-let
-  toolchain = (import ../toolchains/rust.nix pkgs).toolchain-rust;
-in {
+{
   rust-rover = pkgs.unstable.jetbrains.rust-rover.overrideAttrs (oldAttrs: {
     nativeBuildInputs = (oldAttrs.nativeBuildInputs or []) ++ [ pkgs.makeWrapper ];
     postInstall = (oldAttrs.postInstall or "") + ''
-      wrapProgram $out/bin/rust-rover \
-        --prefix PATH : ${pkgs.lib.makeBinPath [ toolchain ]}
+      wrapProgram $out/bin/rust-rover
     '';
   });
 }
