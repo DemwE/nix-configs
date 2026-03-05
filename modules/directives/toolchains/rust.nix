@@ -1,7 +1,7 @@
-# Rust toolchain: rustc, cargo, clippy, rustfmt, rust-analyzer, gcc, gnumake, pkg-config
+# Rust toolchain: rustup, rust-analyzer, gcc, gnumake, pkg-config
 # pkgs: { toolchain-rust }
-# Version management via ~/.rustup/toolchains/ symlinks (home/demwe/rust.nix)
-# rustup binary required by RustRover to locate stdlib from ~/.rustup/toolchains/
+# rustup manages rustc/cargo/clippy/rustfmt via shims in ~/.cargo/bin/ (in sessionPath)
+# rust-analyzer exposed for editors (neovim LSP etc.) independently of rustup
 
 pkgs: {
   toolchain-rust = pkgs.symlinkJoin {
