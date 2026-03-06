@@ -1,15 +1,15 @@
-# Rider package definition with .NET toolchain in PATH
+# Rider package definition
 # pkgs: { rider }
+# DOTNET_ROOT points at ~/.toolchains/dotnet — the standard .NET SDK discovery mechanism.
+# Rider (and all .NET tooling) reads DOTNET_ROOT to locate the SDK.
 
 pkgs:
-let
-  toolchain = (import ../toolchains/dotnet.nix pkgs).toolchain-dotnet;
-in {
+{
   rider = pkgs.unstable.jetbrains.rider.overrideAttrs (oldAttrs: {
     nativeBuildInputs = (oldAttrs.nativeBuildInputs or []) ++ [ pkgs.makeWrapper ];
     postInstall = (oldAttrs.postInstall or "") + ''
       wrapProgram $out/bin/rider \
-        --prefix PATH : ${pkgs.lib.makeBinPath [ toolchain ]}
+        --run 'export DOTNET_ROOT="$HOME/.toolchains/dotnet"'
     '';
   });
 }

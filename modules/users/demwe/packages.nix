@@ -18,6 +18,7 @@
     custom.clion
     custom.rider
     custom.idea
+    unstable.jetbrains.datagrip
 
     # Creativity
     # davinci-resolve
@@ -59,9 +60,10 @@
 
     # Other
     gnome-decoder
-    unstable.unityhub
+    unityhub
     unstable.onlyoffice-desktopeditors
     unstable.gamescope
+    unstable.bottles
   ];
 
   # Flatpak packges
