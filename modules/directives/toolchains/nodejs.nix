@@ -7,6 +7,7 @@ pkgs: {
     name = "toolchain-nodejs";
     paths = [
       pkgs.unstable.pnpm
+      pkgs.nodejs_24
     ];
   };
 }
