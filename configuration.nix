@@ -50,7 +50,7 @@
   my.features.iioSensorProxy.enable = false;
   my.features.steam.enable = true;
   my.features.supergfxd.enable = true;
-
+  my.features.ollama.enable = true;
   # Sytem channel and versioning
   system.stateVersion = "25.11"; 
 }

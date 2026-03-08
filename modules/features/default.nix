@@ -16,5 +16,6 @@
     ./iio-sensor-proxy.nix
     ./steam.nix
     ./supergfxd.nix
+    ./ollama.nix
   ];
 }
