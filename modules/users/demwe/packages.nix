@@ -18,7 +18,7 @@
     custom.clion
     custom.rider
     custom.idea
-    unstable.jetbrains.datagrip
+    custom.datagrip
 
     # Creativity
     # davinci-resolve
@@ -46,7 +46,7 @@
     custom.battery-info
     custom.nvidia-offload
     dust
-    killall
+    toybox
     powertop
 
     # Toolchains — available via ~/.toolchains/*/bin (home/demwe/toolchains.nix)

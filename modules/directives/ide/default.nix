@@ -9,4 +9,5 @@ pkgs:
     ./pycharm.nix
     ./rider.nix
     ./idea.nix
+    ./datagrip.nix
   ])

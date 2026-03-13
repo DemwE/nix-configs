@@ -6,6 +6,7 @@
   imports = [
     ./nvidia.nix
     ./docker.nix
+    ./postgres.nix
     ./flatpak.nix
     ./qemu.nix
     ./polkit.nix
