@@ -1,11 +1,9 @@
 # Exposes a nixos-unstable package set under `pkgs.unstable`
 # Usage: pkgs.unstable.<pkg>
 
-final: prev:
+{ inputs, final, prev }:
 let
-  unstablePkgs = import (builtins.fetchTarball {
-    url = "https://github.com/NixOS/nixpkgs/archive/nixos-unstable.tar.gz";
-  }) {
+  unstablePkgs = import inputs.nixpkgs {
     system = prev.stdenv.hostPlatform.system;
     config = prev.config or {};
   };

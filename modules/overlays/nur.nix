@@ -1,11 +1,9 @@
 # Expose NUR (Nix User Repository) under `pkgs.nur`
 # Usage: pkgs.nur.repos.<owner>.<pkg>
 
-final: prev:
+{ inputs, final, prev }:
 let
-  nur = import (builtins.fetchTarball {
-    url = "https://github.com/nix-community/NUR/archive/master.tar.gz";
-  }) {
+  nur = import inputs.nur {
     pkgs = prev;
   };
 in {

@@ -1,12 +1,9 @@
 # Exposes a `pkgs.stable` set pinned to the current release channel
 # Useful when mixing `stable` and `unstable` side by side.
 
-final: prev:
+{ inputs, final, prev }:
 let
-  # Use the same channel the system is on (fallback to 25.11 if unknown)
-  # For reproducibility, you may want to pin to a specific commit instead.
-  stableUrl = "https://github.com/NixOS/nixpkgs/archive/nixos-25.11.tar.gz";
-  stablePkgs = import (builtins.fetchTarball { url = stableUrl; }) {
+  stablePkgs = import inputs.stable {
     system = prev.stdenv.hostPlatform.system;
     config = prev.config or {};
   };

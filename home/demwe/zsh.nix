@@ -29,8 +29,8 @@
 
       # other
       cls = "clear";
-      update-nixos = "sudo nixos-rebuild switch --upgrade --log-format bar-with-logs";
-      update-nixos-no-upgrade = "sudo nixos-rebuild switch --log-format bar-with-logs";
+      update-nixos = "sudo nixos-rebuild switch --flake .#NixBook --upgrade --log-format bar-with-logs";
+      update-nixos-no-upgrade = "sudo nixos-rebuild switch --flake .#NixBook --log-format bar-with-logs";
       update-channels = "sudo nix-channel --update";
       check-size = "du -sh";
       use = "nix-shell";
