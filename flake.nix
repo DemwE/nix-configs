@@ -10,7 +10,7 @@
   };
 
   outputs = { self, nixpkgs, home-manager, ... }@inputs: {
-    overlays = import ./modules/overlays { inherit inputs; };
+    overlays = import ./modules/overlays;
     nixosConfigurations = {
       NixBook = nixpkgs.lib.nixosSystem {
         system = "x86_64-linux";
@@ -18,8 +18,6 @@
           ./configuration.nix
           ./modules
           ./specialisations.nix
-          # Flatpak jako NixOS module
-          inputs.nix-flatpak.nixosModules.default
           # Home Manager jako moduł NixOS
           home-manager.nixosModules.home-manager
           {

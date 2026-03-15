@@ -13,22 +13,10 @@
   to register your face.
 */
 let
-  # Both services.howdy and services.linux-enable-ir-emitter only exist in
-  # nixpkgs-unstable. builtins.fetchTarball has no dependency on pkgs/config
-  # so it's safe to use in imports. Same URL as overlays/unstable.nix —
-  # nix reuses the git cache, no second download.
-  unstable = builtins.fetchTarball {
-    url = "https://github.com/NixOS/nixpkgs/archive/nixos-unstable.tar.gz";
-  };
   cfg = config.my.features.howdy;
   inherit (lib) mkEnableOption mkIf;
 in
 {
-  imports = [
-    "${unstable}/nixos/modules/services/security/howdy"
-    "${unstable}/nixos/modules/services/misc/linux-enable-ir-emitter.nix"
-  ];
-
   options.my.features.howdy.enable =
     mkEnableOption "Enable face recognition login via Howdy (IR camera, unstable)";
 

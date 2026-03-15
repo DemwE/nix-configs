@@ -1,9 +1,9 @@
 # Exposes a nixos-unstable package set under `pkgs.unstable`
 # Usage: pkgs.unstable.<pkg>
 
-{ inputs, final, prev }:
+final: prev:
 let
-  unstablePkgs = import inputs.nixpkgs {
+  unstablePkgs = import <nixpkgs> {
     system = prev.stdenv.hostPlatform.system;
     config = prev.config or {};
   };

@@ -19,9 +19,6 @@ let
   inherit (lib) mkEnableOption mkIf;
 in
 {
-  imports = [
-    "${nix-flatpak}/modules/nixos.nix"
-  ];
 
   options.my.features.flatpak = {
     enable = mkEnableOption "Enable declarative Flatpak support via nix-flatpak";

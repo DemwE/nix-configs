@@ -1,9 +1,9 @@
 # Expose NUR (Nix User Repository) under `pkgs.nur`
 # Usage: pkgs.nur.repos.<owner>.<pkg>
 
-{ inputs, final, prev }:
+final: prev:
 let
-  nur = import inputs.nur {
+  nur = import <nur> {
     pkgs = prev;
   };
 in {
