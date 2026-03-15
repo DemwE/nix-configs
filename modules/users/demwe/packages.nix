@@ -24,6 +24,8 @@
     # davinci-resolve
     unstable.obs-studio
     unstable.krita
+    unstable.aseprite
+    unstable.gimp
 
     # Games
     unstable.prismlauncher

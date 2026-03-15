@@ -16,6 +16,7 @@ let
     stdenv.cc.cc.lib
     zlib
     mesa
+    pkg-config
   ];
 
   composeLibPath = pkgs.lib.makeLibraryPath composeDeps;
