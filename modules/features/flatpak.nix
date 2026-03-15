@@ -15,7 +15,6 @@
   home-manager.users.<name>.services.flatpak.packages.
 */
 let
-  nix-flatpak = inputs.nix-flatpak;
   cfg = config.my.features.flatpak;
   inherit (lib) mkEnableOption mkIf;
 in
@@ -29,8 +28,6 @@ in
   };
 
   config = mkIf cfg.enable {
-    # Inject the nix-flatpak HM module so services.flatpak is available per-user
-    home-manager.sharedModules = [ "${nix-flatpak}/modules/home-manager.nix" ];
 
     services.flatpak = {
       enable = true;

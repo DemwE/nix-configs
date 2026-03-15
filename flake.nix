@@ -18,6 +18,8 @@
           ./configuration.nix
           ./modules
           ./specialisations.nix
+          # Flatpak jako NixOS module
+          inputs.nix-flatpak.nixosModules.default
           # Home Manager jako moduł NixOS
           home-manager.nixosModules.home-manager
           {
