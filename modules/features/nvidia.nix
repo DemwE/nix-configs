@@ -55,7 +55,9 @@ in
 
       # Dynamic Boost: nvidia-powerd shifts TGP between 35W and 60W
       # based on combined CPU/GPU workload automatically
-      dynamicBoost.enable = true;
+      dynamicBoost = lib.mkIf cfg.runtimePowerManagement {
+        enable = true;
+      };
 
       # Use the NVIDIA open source kernel module? (Turing+ only)
       open = true;
