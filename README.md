@@ -5,8 +5,8 @@ Modular NixOS configuration with flakes.
 ## Quick Start
 
 ```bash
-# Update system (NixBook)
-update
+# Update system (Host)
+switch <Host>
 
 # Update package versions
 update-lock
