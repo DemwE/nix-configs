@@ -1,9 +1,9 @@
 { pkgs, ... }:
 {
-  users.users.demwe.packages = with pkgs.unstable; [
-    wordbook
-    dialect
-    hunspellDicts.en_US-large
-    hunspellDicts.pl_PL
+  users.users.demwe.packages = with pkgs; [
+    unstable.wordbook
+    unstable.dialect
+    unstable.hunspellDicts.en_US-large
+    unstable.hunspellDicts.pl_PL
   ];
 }
