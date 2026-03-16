@@ -18,10 +18,6 @@
     ./toolchains.nix
   ];
 
-  # Flatpak packages - add more here
-  services.flatpak.packages = [
-    "com.discordapp.Discord"
-  ];
   # The home.packages option allows you to install Nix packages into your
   # environment.
   home.packages = [
@@ -55,7 +51,7 @@
     # ".gradle/gradle.properties".text = ''
     #   org.gradle.console=verbose
     #   org.gradle.daemon.idletimeout=3600000
-    # '';
+    #   '';
   };
 
   # Home Manager can also manage your environment variables through

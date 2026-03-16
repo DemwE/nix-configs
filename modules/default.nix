@@ -7,7 +7,6 @@
     ./groups.nix
     ./theme/core.nix
     ./overlays
-    ./channels
     # Aggregated collections
     ./users
     ./system

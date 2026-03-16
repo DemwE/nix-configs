@@ -11,5 +11,6 @@
     ./typst.nix
     ./language.nix
     ./office.nix
+    ./flatpak.nix
   ];
 }
