@@ -13,7 +13,7 @@ pkgs: {
       fi
       HOST="$1"
       echo "Building host: $HOST"
-      exec sudo nixos-rebuild switch --flake ".$HOST" --log-format bar-with-logs
+      exec sudo nixos-rebuild switch --flake ".#$HOST" --log-format bar-with-logs
     '';
   };
 }

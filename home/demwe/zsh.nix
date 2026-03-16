@@ -30,9 +30,6 @@
       # other
       cls = "clear";
 
-      # Update (default host: NixBook)
-      update = "sudo nixos-rebuild switch --flake .#NixBook --log-format bar-with-logs";
-
       # Check & update lock
       update-check = "nix --extra-experimental-features flakes flake check";
       update-lock = "nix --extra-experimental-features flakes flake update";
