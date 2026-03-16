@@ -1,5 +1,12 @@
 { ... }:
 {
+  my.services = {
+    ssh = true;
+    printing = true;
+    storage = true;
+    firewall = true;
+  };
+
   my.features = {
     nvidia.enable = true;
     nvidia.runtimePowerManagement = true;
