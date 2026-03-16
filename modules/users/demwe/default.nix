@@ -2,13 +2,20 @@
 {
   imports = [
     ./home.nix
-    ./packages.nix
+    ./packages/default.nix
     ./avatar.nix
   ];
 
   users.users.demwe = {
     isNormalUser = true;
     description = "DemwE";
-    extraGroups = [ "networkmanager" "wheel" "storage" "plugdev" "libvirtd" "docker" ];
+    extraGroups = [
+      "networkmanager"
+      "wheel"
+      "storage"
+      "plugdev"
+      "libvirtd"
+      "docker"
+    ];
   };
 }

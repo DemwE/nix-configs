@@ -6,8 +6,8 @@
     ./services.nix
     ./groups.nix
     ./theme/core.nix
-    ./overlays # Central overlays (e.g., nixos-unstable)
-    ./channels # External channels (home-manager import)
+    ./overlays
+    ./channels
     # Aggregated collections
     ./users
     ./system

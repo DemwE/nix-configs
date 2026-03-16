@@ -6,53 +6,23 @@
     ./specialisations.nix
   ];
 
-  # Bootloader configuration for UEFI systems
-  boot.loader.systemd-boot.enable = true;
-  boot.loader.efi.canTouchEfiVariables = true;
-  boot.loader.systemd-boot.configurationLimit = 8;
-  # Use latest stable kernel for better hardware support
-  boot.kernelPackages = pkgs-unstable.linuxPackages;
-
-  # Networking configuration
-  networking.hostName = "NixBook";
-  networking.networkmanager.enable = true;
-  networking.networkmanager.plugins = [ pkgs-unstable.networkmanager-openvpn ];
-
   # Allow unfree packages globally (NVIDIA, etc.)
   nixpkgs.config.allowUnfree = true;
 
-  # Common packages for all systems
-  environment.systemPackages = with pkgs; [
-    neovim
-    zsh
-    fastfetch
-    btop
-    duf
-    tree
-    wget
-    git
-    yazi
-    bat
-  ];
+  # Enable boot and networking via common modules
+  my.boot.enable = true;
+  my.boot.kernel = "unstable";
 
-  # Enable features
-  my.features.nvidia.enable = true;
-  my.features.nvidia.runtimePowerManagement = true;
-  my.features.nvidia.prime.enable = true;
-  my.features.docker.enable = false;
-  my.features.flatpak.enable = true;
-  my.features.qemu.enable = false;
-  my.features.polkit.enable = true;
-  my.features.gdm.enable = true;
-  my.features.gnome.enable = true;
-  my.features.fprintd.enable = true;
-  # my.features.howdy.enable = false;  # TODO: needs fix - fetchTarball causes impure error
-  my.features.iioSensorProxy.enable = false;
-  my.features.steam.enable = true;
-  my.features.supergfxd.enable = true;
-  my.features.ollama.enable = true;
-  my.features.postgres.enable = true;
+  my.networking.enable = true;
+  my.networking.hostname = "NixBook";
+  my.networking.openvpn = true;
 
-  # Sytem channel and versioning
+  # Enable services
+  my.services.ssh = true;
+  my.services.printing = true;
+  my.services.storage = true;
+  my.services.firewall = true;
+
+  # System channel and versioning
   system.stateVersion = "25.11";
 }
