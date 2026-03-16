@@ -30,14 +30,14 @@
       # other
       cls = "clear";
 
-      # Update alias - specify host: update NixBook (default: NixBook)
+      # Update (default host: NixBook)
       update = "sudo nixos-rebuild switch --flake .#NixBook --log-format bar-with-logs";
+
+      # Check & update lock
       update-check = "nix --extra-experimental-features flakes flake check";
       update-lock = "nix --extra-experimental-features flakes flake update";
 
-      # Build specific host: switch-nixbook, switch-server, etc.
-      switch-nixbook = "sudo nixos-rebuild switch --flake .#NixBook --log-format bar-with-logs";
-
+      # GPU
       gpu-status = "cat /sys/bus/pci/devices/0000:01:00.0/power/runtime_status";
       gpu-panel = "nvidia-smi";
       mode-hybrid = "supergfxctl --mode Hybrid";

@@ -1,7 +1,9 @@
 # Registry of all custom/patched package definitions
 
 pkgs:
-  pkgs.lib.mergeAttrsList (map (f: import f pkgs) [
+pkgs.lib.mergeAttrsList (
+  map (f: import f pkgs) [
+    ./utils/switch.nix
     ./utils/compress.nix
     ./utils/battery.nix
     ./utils/gpu.nix
@@ -10,4 +12,5 @@ pkgs:
     ./libericaJDK
     # ./cli
     # ./fonts
-  ])
+  ]
+)
