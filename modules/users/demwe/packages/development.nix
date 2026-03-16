@@ -1,4 +1,4 @@
-{ pkgs, pkgs-unstable, ... }:
+{ pkgs, ... }:
 {
   users.users.demwe.packages =
     with pkgs;
@@ -13,7 +13,7 @@
       custom.idea
       custom.datagrip
     ]
-    ++ (with pkgs-unstable; [
+    ++ (with pkgs.unstable; [
       vscode
       opencode
     ]);

@@ -1,4 +1,3 @@
-{ pkgs, pkgs-unstable, ... }:
 {
   imports = [
     ./hardware-configuration.nix
@@ -9,6 +8,6 @@
   # Allow unfree packages globally (NVIDIA, etc.)
   nixpkgs.config.allowUnfree = true;
 
-  # System channel and versioning
+  # System version - same as in flake.nix systemVersion
   system.stateVersion = "25.11";
 }

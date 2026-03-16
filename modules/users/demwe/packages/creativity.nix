@@ -1,12 +1,11 @@
-{ pkgs, pkgs-unstable, ... }:
+{ pkgs, ... }:
 {
   users.users.demwe.packages =
-    with pkgs;
-    [
+    (with pkgs; [
       gimp
       blender
-    ]
-    ++ (with pkgs-unstable; [
+    ])
+    ++ (with pkgs.unstable; [
       obs-studio
       krita
       aseprite
