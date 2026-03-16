@@ -20,6 +20,6 @@
 
     # Host-specific modules
     ./hosts/NixBook
-    ./hosts/Desktop
+    ./hosts/DemwEPC
   ];
 }

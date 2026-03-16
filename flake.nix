@@ -55,6 +55,19 @@
         ];
       };
 
+      nixosConfigurations.DemwEPC = nixpkgs.lib.nixosSystem {
+        system = "x86_64-linux";
+        specialArgs = {
+          inherit pkgs-unstable;
+          systemVersion = systemVersion;
+        };
+        modules = [
+          home-manager.nixosModules.home-manager
+          nixosModule
+          ./configuration.nix
+        ];
+      };
+
       # Add more hosts here:
       # nixosConfigurations.ServerName = nixpkgs.lib.nixosSystem { ... };
 
