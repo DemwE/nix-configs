@@ -1,8 +1,6 @@
 {
   imports = [
-    ./hardware-configuration.nix
     ./modules
-    ./specialisations.nix
   ];
 
   # Allow unfree packages globally (NVIDIA, etc.)

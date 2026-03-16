@@ -4,6 +4,7 @@
 }:
 {
   imports = [
+    ./hardware-configuration.nix
     ../../common/boot/default.nix
     ../../common/networking/default.nix
     ../../common/services/default.nix
