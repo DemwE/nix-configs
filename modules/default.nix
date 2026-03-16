@@ -20,5 +20,6 @@
 
     # Host-specific modules
     ./hosts/NixBook
+    ./hosts/Desktop
   ];
 }

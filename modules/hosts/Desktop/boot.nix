@@ -1,0 +1,4 @@
+{ ... }:
+{
+  my.boot.kernel = "unstable";
+}
