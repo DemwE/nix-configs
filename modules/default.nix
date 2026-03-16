@@ -12,5 +12,7 @@
     ./users
     ./system
     ./features
+    # Host-specific modules
+    ./hosts/NixBook/default.nix
   ];
 }

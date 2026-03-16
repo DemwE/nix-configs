@@ -1,4 +1,4 @@
-{ lib, ... }:
+{ lib, config, ... }:
 {
   options.my.services = {
     ssh = lib.mkEnableOption "Enable SSH server";

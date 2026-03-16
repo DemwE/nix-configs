@@ -1,18 +1,14 @@
-{ lib, pkgs, ... }:
 {
-  options.my.systemPackages = {
-    enable = lib.mkEnableOption "Enable system packages configuration";
-    packages = lib.mkOption {
-      type = lib.types.listOf lib.types.package;
-      default = [ ];
-      description = "List of system packages to install";
-    };
-  };
-
-  config = lib.mkIf config.my.systemPackages.enable {
-    environment.systemPackages =
-      config.my.systemPackages.packages
-      ++ (with pkgs; [
+  lib,
+  pkgs,
+  config,
+  ...
+}:
+{
+  config = {
+    environment.systemPackages = (
+      with pkgs;
+      [
         neovim
         zsh
         fastfetch
@@ -23,6 +19,7 @@
         git
         yazi
         bat
-      ]);
+      ]
+    );
   };
 }

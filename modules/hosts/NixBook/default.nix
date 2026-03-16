@@ -12,9 +12,4 @@
     ./networking.nix
     ./features.nix
   ];
-
-  my.host = {
-    name = "NixBook";
-    stateVersion = "25.11";
-  };
 }

@@ -2,11 +2,11 @@
   lib,
   pkgs,
   pkgs-unstable ? null,
+  config,
   ...
 }:
 {
   options.my.networking = {
-    enable = lib.mkEnableOption "Enable networking configuration";
     hostname = lib.mkOption {
       type = lib.types.str;
       default = "NixOS";
@@ -15,7 +15,7 @@
     openvpn = lib.mkEnableOption "Enable OpenVPN plugin for NetworkManager";
   };
 
-  config = lib.mkIf config.my.networking.enable {
+  config = {
     networking.hostName = config.my.networking.hostname;
     networking.networkmanager.enable = true;
 

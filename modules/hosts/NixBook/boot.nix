@@ -3,8 +3,5 @@
   ...
 }:
 {
-  my.boot = {
-    enable = true;
-    kernel = "unstable";
-  };
+  my.boot.kernel = "unstable";
 }
