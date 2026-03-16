@@ -29,9 +29,12 @@
 
       # other
       cls = "clear";
-      update = "cd ~/nix-configs && git pull && sudo nixos-rebuild switch --flake . --log-format bar-with-logs";
-      update-check = "cd ~/nix-configs && git pull && nix flake check";
-      update-home = "cd ~/nix-configs && git pull && home-manager switch --flake .";
+
+      # Update aliases (works with ~/nix-configs -> /etc/nixos symlink)
+      update = "cd /etc/nixos && git pull && sudo nixos-rebuild switch --flake . --log-format bar-with-logs";
+      update-check = "cd /etc/nixos && git pull && nix flake check";
+      switch = "cd /etc/nixos && git pull && sudo nixos-rebuild switch --flake . --log-format bar-with-logs";
+
       gpu-status = "cat /sys/bus/pci/devices/0000:01:00.0/power/runtime_status";
       gpu-panel = "nvidia-smi";
       mode-hybrid = "supergfxctl --mode Hybrid";
