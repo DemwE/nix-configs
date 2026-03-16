@@ -27,7 +27,7 @@ nix-configs/
 ├── configuration.nix      # Main entry point (imports modules/)
 │
 ├── modules/               # All NixOS modules
-│   ├── default.nix        # Global imports (common, users, system, features, hosts)
+│   ├── default.nix        # Global imports (common, users, system, features)
 │   │
 │   ├── common/            # Shared modules for all hosts
 │   │   ├── boot/          # Boot config (kernel selection)
@@ -51,14 +51,10 @@ nix-configs/
 │   │       │   └── ...
 │   │       └── default.nix
 │   │
-│   ├── hosts/            # Host-specific configs
-│   │   └── NixBook/
-│   │       ├── boot.nix         # Kernel: unstable
-│   │       ├── networking.nix   # Hostname: NixBook
-│   │       ├── features.nix      # Services & features
-│   │       └── hardware-configuration.nix
-│   │
 │   └── system/           # System modules (fonts, audio, etc.)
+│
+├── hosts/                # Host-specific configs
+│   └── <hosts>
 │
 └── home/demwe/          # Home Manager config
     ├── zsh.nix           # Shell aliases & config
@@ -114,13 +110,12 @@ Add package definition in `modules/directives/`, then use as `custom.<name>`.
 
 ## Adding a New Host
 
-1. Create `modules/hosts/<hostname>/`
+1. Create `hosts/<hostname>/` (in project root)
 2. Add files: `boot.nix`, `networking.nix`, `features.nix`, `hardware-configuration.nix`
-3. Add host to `modules/default.nix`: `./hosts/<hostname>`
-4. Add host to `flake.nix`:
-   ```nix
-   nixosConfigurations.Hostname = nixpkgs.lib.nixosSystem { ... };
-   ```
+3. Add host to `flake.nix`:
+  ```nix
+  nixosConfigurations.Hostname = nixpkgs.lib.nixosSystem { ... };
+  ```
 
 ## Building Different Hosts
 
