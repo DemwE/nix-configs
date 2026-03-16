@@ -1,23 +1,27 @@
 { config, pkgs, ... }:
 
 {
-  imports = 
-    [
-      ./home-configuration.nix
-      ./dconf.nix
-      ./git.nix
-      ./zsh.nix
-      ./fastfetch.nix
-      ./yazi.nix
-      ./btop.nix
-      ./neovim.nix
-      ./gnome.nix
-      ./java.nix
-      ./python.nix
-      ./nodejs.nix
-      ./cpp.nix
-      ./toolchains.nix
-    ];
+  imports = [
+    ./home-configuration.nix
+    ./dconf.nix
+    ./git.nix
+    ./zsh.nix
+    ./fastfetch.nix
+    ./yazi.nix
+    ./btop.nix
+    ./neovim.nix
+    ./gnome.nix
+    ./java.nix
+    ./python.nix
+    ./nodejs.nix
+    ./cpp.nix
+    ./toolchains.nix
+  ];
+
+  # Flatpak packages - add more here
+  services.flatpak.packages = [
+    "com.discordapp.Discord"
+  ];
   # The home.packages option allows you to install Nix packages into your
   # environment.
   home.packages = [

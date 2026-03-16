@@ -11,6 +11,7 @@
     custom.idea
     custom.datagrip
     unstable.vscode
+    unstable.unityhub
     unstable.opencode
   ];
 }

@@ -13,5 +13,7 @@
     dust
     toybox
     powertop
+    unstable.gamescope
+    unstable.bottles
   ];
 }
