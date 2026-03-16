@@ -46,7 +46,7 @@
   my.features.gdm.enable = true;
   my.features.gnome.enable = true;
   my.features.fprintd.enable = true;
-  my.features.howdy.enable = false;
+  # my.features.howdy.enable = false;  # TODO: needs fix - fetchTarball causes impure error
   my.features.iioSensorProxy.enable = false;
   my.features.steam.enable = true;
   my.features.supergfxd.enable = true;

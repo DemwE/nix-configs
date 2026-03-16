@@ -25,6 +25,9 @@
     # davinci-resolve
     pkgs-unstable.obs-studio
     pkgs-unstable.krita
+    pkgs-unstable.gimp
+    pkgs-unstable.blender
+    pkgs-unstable.aseprite
 
     # Games
     pkgs-unstable.prismlauncher
