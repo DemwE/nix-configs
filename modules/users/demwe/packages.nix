@@ -1,4 +1,4 @@
-{ pkgs, ... }:
+{ pkgs, pkgs-unstable, ... }:
 {
   # Nix packages
   users.users.demwe.packages = with pkgs; [
@@ -6,11 +6,11 @@
     brave
 
     # Communication
-    # unstable.discord
+    # pkgs-unstable.discord
 
     # Development
     gh
-    unstable.vscode
+    pkgs-unstable.vscode
     nixfmt-rfc-style
     custom.rust-rover
     custom.webstorm
@@ -19,15 +19,16 @@
     custom.rider
     custom.idea
     custom.datagrip
+    pkgs-unstable.opencode
 
     # Creativity
     # davinci-resolve
-    unstable.obs-studio
-    unstable.krita
+    pkgs-unstable.obs-studio
+    pkgs-unstable.krita
 
     # Games
-    unstable.prismlauncher
-    unstable.vintagestory
+    pkgs-unstable.prismlauncher
+    pkgs-unstable.vintagestory
 
     # Media
     mpv
@@ -61,21 +62,21 @@
     # Other
     gnome-decoder
     unityhub
-    unstable.onlyoffice-desktopeditors
-    unstable.gamescope
-    unstable.bottles
-    unstable.eloquent
+    pkgs-unstable.onlyoffice-desktopeditors
+    pkgs-unstable.gamescope
+    pkgs-unstable.bottles
+    pkgs-unstable.eloquent
 
     # Typst
-    unstable.typesetter
-    unstable.typst
-    unstable.tinymist
+    pkgs-unstable.typesetter
+    pkgs-unstable.typst
+    pkgs-unstable.tinymist
 
     # Grammar
-    unstable.wordbook
-    unstable.dialect
-    unstable.hunspellDicts.en_US-large
-    unstable.hunspellDicts.pl_PL
+    pkgs-unstable.wordbook
+    pkgs-unstable.dialect
+    pkgs-unstable.hunspellDicts.en_US-large
+    pkgs-unstable.hunspellDicts.pl_PL
   ];
 
   # Flatpak packges

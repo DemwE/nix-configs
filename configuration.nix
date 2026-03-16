@@ -1,4 +1,4 @@
-{ pkgs, ... }:
+{ pkgs, pkgs-unstable, ... }:
 {
   imports = [
     ./hardware-configuration.nix
@@ -11,15 +11,15 @@
   boot.loader.efi.canTouchEfiVariables = true;
   boot.loader.systemd-boot.configurationLimit = 8;
   # Use latest stable kernel for better hardware support
-  boot.kernelPackages = pkgs.unstable.linuxPackages;
+  boot.kernelPackages = pkgs-unstable.linuxPackages;
 
   # Networking configuration
   networking.hostName = "NixBook";
   networking.networkmanager.enable = true;
-  networking.networkmanager.plugins = [ pkgs.networkmanager-openvpn ];
-  
+  networking.networkmanager.plugins = [ pkgs-unstable.networkmanager-openvpn ];
+
   # Allow unfree packages globally (NVIDIA, etc.)
-  nixpkgs.config.allowUnfree = true; 
+  nixpkgs.config.allowUnfree = true;
 
   # Common packages for all systems
   environment.systemPackages = with pkgs; [
@@ -54,5 +54,5 @@
   my.features.postgres.enable = true;
 
   # Sytem channel and versioning
-  system.stateVersion = "25.11"; 
+  system.stateVersion = "25.11";
 }

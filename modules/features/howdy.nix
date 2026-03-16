@@ -19,6 +19,7 @@ let
   # nix reuses the git cache, no second download.
   unstable = builtins.fetchTarball {
     url = "https://github.com/NixOS/nixpkgs/archive/nixos-unstable.tar.gz";
+    sha256 = "0fgmdh1j6qrx64wq8wk2hry2rjh3rkvz9pch29l8zn49nlndvxy2";
   };
   cfg = config.my.features.howdy;
   inherit (lib) mkEnableOption mkIf;

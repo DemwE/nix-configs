@@ -1,10 +1,11 @@
 { config, pkgs, ... }:
 {
-  programs.neovim = {
-    enable = true;
-    viAlias = true;
-    vimAlias = true;
-  };
+  # Disable home-manager neovim management - using system package instead
+  # programs.neovim = {
+  #   enable = true;
+  #   viAlias = true;
+  #   vimAlias = true;
+  # };
 
   # Manually manage neovim config
   home.file.".config/nvim" = {

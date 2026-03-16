@@ -5,6 +5,7 @@ final: prev:
 let
   nur = import (builtins.fetchTarball {
     url = "https://github.com/nix-community/NUR/archive/master.tar.gz";
+    sha256 = "05c7c422xnphmdk1d2s5wa6fmvg1v42nz3ggffc2d0irjfrgsfxc";
   }) {
     pkgs = prev;
   };

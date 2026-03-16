@@ -10,5 +10,5 @@
     auto-optimise-store = true;
     experimental-features = [ "nix-command" ];
   };
-  system.copySystemConfiguration = true;
+  # system.copySystemConfiguration = true; # Not supported with flakes
 }

@@ -6,9 +6,8 @@
     nixpkgs-unstable.url = "github:NixOS/nixpkgs/master";
     home-manager = {
       url = "github:nix-community/home-manager";
-      inputs.nixpkgs-lib = "nixpkgs-lib";
+      inputs.nixpkgs.follows = "nixpkgs";
     };
-    flake-utils.url = "github:numtide/flake-utils";
   };
 
   outputs =
@@ -17,43 +16,20 @@
       nixpkgs,
       nixpkgs-unstable,
       home-manager,
-      flake-utils,
     }:
-    flake-utils.lib.eachDefaultSystem (
-      system:
-      let
-        pkgs = import nixpkgs {
-          inherit system;
-          config.allowUnfree = true;
-          overlays = [ self.overlays.default ];
-        };
-        pkgs-unstable = import nixpkgs-unstable {
-          inherit system;
-          config.allowUnfree = true;
-        };
-      in
-      {
-        overlays.default = final: prev: {
-          unstable = pkgs-unstable;
-        };
-      }
-    )
-    // {
+    let
+      pkgs-unstable = import nixpkgs-unstable {
+        system = "x86_64-linux";
+        config.allowUnfree = true;
+      };
+    in
+    {
       nixosConfigurations.NixBook = nixpkgs.lib.nixosSystem {
         system = "x86_64-linux";
-        specialArgs = {
-          pkgs-unstable = import nixpkgs-unstable {
-            system = "x86_64-linux";
-            config.allowUnfree = true;
-          };
-        };
+        specialArgs = { inherit pkgs-unstable; };
         modules = [
           home-manager.nixosModules.home-manager
           ./configuration.nix
-          {
-            home-manager.useGlobalPkgs = true;
-            home-manager.users.demwe = import ./home/demwe/home.nix;
-          }
         ];
       };
     };
