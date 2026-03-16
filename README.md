@@ -5,18 +5,16 @@ Modular NixOS configuration with flakes.
 ## Quick Start
 
 ```bash
-# Update system (Host)
-switch <Host>
-
-# Update package versions
+# Update flake lock
 update-lock
 
-# Check config
-update-check
+# Check host configuration (requires hostname argument)
+switch-check NixBook
+switch-check DemwEPC
 
 # Switch to specific host (requires hostname argument)
 switch NixBook
-switch ServerName
+switch DemwEPC
 ```
 
 ## Structure
@@ -122,11 +120,11 @@ Add package definition in `modules/directives/`, then use as `custom.<name>`.
 ```bash
 # Using custom switch command (requires argument)
 switch NixBook
-switch ServerName
+switch DemwEPC
 
 # Using nixos-rebuild directly
 sudo nixos-rebuild switch --flake .#NixBook --log-format bar-with-logs
-sudo nixos-rebuild switch --flake .#ServerName --log-format bar-with-logs
+sudo nixos-rebuild switch --flake .#DemwEPC --log-format bar-with-logs
 ```
 
 ## Files

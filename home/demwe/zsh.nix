@@ -30,10 +30,6 @@
       # other
       cls = "clear";
 
-      # Check & update lock
-      update-check = "sudo nix --extra-experimental-features flakes flake check";
-      update-lock = "sudo nix --extra-experimental-features flakes flake update";
-
       # GPU
       gpu-status = "cat /sys/bus/pci/devices/0000:01:00.0/power/runtime_status";
       gpu-panel = "nvidia-smi";

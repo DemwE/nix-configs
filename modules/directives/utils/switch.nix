@@ -1,5 +1,5 @@
 # Switch to a specific NixOS host
-# Usage: switch <hostname> (e.g., switch NixBook, switch ServerName)
+# Usage: switch <hostname>
 
 pkgs: {
   switch = pkgs.writeShellApplication {
@@ -8,7 +8,7 @@ pkgs: {
     text = ''
       if [ -z "$1" ]; then
         echo "Usage: switch <hostname>"
-        echo "Available hosts: NixBook"
+        echo "Available hosts: NixBook, DemwEPC"
         exit 1
       fi
       HOST="$1"
