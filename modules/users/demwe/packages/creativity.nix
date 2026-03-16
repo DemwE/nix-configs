@@ -6,5 +6,6 @@
     unstable.obs-studio
     unstable.krita
     unstable.aseprite
+    unstable.freecad
   ];
 }
