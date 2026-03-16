@@ -30,7 +30,7 @@
 
       # Common NixOS system configuration
       nixosModule =
-        { ... }:
+        { lib, ... }:
         {
           nixpkgs.overlays = [
             (final: prev: {
@@ -44,7 +44,10 @@
       # Host: NixBook (laptop)
       nixosConfigurations.NixBook = nixpkgs.lib.nixosSystem {
         system = "x86_64-linux";
-        specialArgs = { inherit pkgs-unstable; };
+        specialArgs = {
+          inherit pkgs-unstable;
+          systemVersion = systemVersion;
+        };
         modules = [
           home-manager.nixosModules.home-manager
           nixosModule

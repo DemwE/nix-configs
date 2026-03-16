@@ -1,3 +1,4 @@
+{ systemVersion, ... }:
 {
   imports = [
     ./modules
@@ -6,6 +7,6 @@
   # Allow unfree packages globally (NVIDIA, etc.)
   nixpkgs.config.allowUnfree = true;
 
-  # System version - same as in flake.nix systemVersion
-  system.stateVersion = "25.11";
+  # System version - inherited from flake.nix
+  system.stateVersion = systemVersion;
 }
