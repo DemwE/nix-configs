@@ -30,10 +30,13 @@
       # other
       cls = "clear";
 
-      # Update alias - run from ~/nix-configs (symlinked to /etc/nixos)
-      update = "sudo nixos-rebuild switch --flake . --log-format bar-with-logs";
+      # Update alias - specify host: update NixBook (default: NixBook)
+      update = "sudo nixos-rebuild switch --flake .#NixBook --log-format bar-with-logs";
       update-check = "nix --extra-experimental-features flakes flake check";
       update-lock = "nix --extra-experimental-features flakes flake update";
+
+      # Build specific host: switch-nixbook, switch-server, etc.
+      switch-nixbook = "sudo nixos-rebuild switch --flake .#NixBook --log-format bar-with-logs";
 
       gpu-status = "cat /sys/bus/pci/devices/0000:01:00.0/power/runtime_status";
       gpu-panel = "nvidia-smi";

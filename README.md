@@ -109,7 +109,22 @@ Add package definition in `modules/directives/`, then use as `custom.<name>`.
 
 1. Create `modules/hosts/<hostname>/`
 2. Add files: `boot.nix`, `networking.nix`, `features.nix`, `hardware-configuration.nix`
-3. Import in `modules/default.nix`: `./hosts/<hostname>`
+3. Add host to `modules/default.nix`: `./hosts/<hostname>`
+4. Add host to `flake.nix`:
+   ```nix
+   nixosConfigurations.Hostname = nixpkgs.lib.nixosSystem { ... };
+   ```
+
+## Building Different Hosts
+
+```bash
+# Default (NixBook)
+update
+switch-nixbook
+
+# Other hosts (after adding to flake.nix)
+sudo nixos-rebuild switch --flake .#ServerName
+```
 
 ## Files
 

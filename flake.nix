@@ -27,29 +27,33 @@
         system = "x86_64-linux";
         config.allowUnfree = true;
       };
+
+      # Common NixOS system configuration
+      nixosModule =
+        { ... }:
+        {
+          nixpkgs.overlays = [
+            (final: prev: {
+              unstable = pkgs-unstable;
+              stable = pkgs;
+            })
+          ];
+        };
     in
     {
+      # Host: NixBook (laptop)
       nixosConfigurations.NixBook = nixpkgs.lib.nixosSystem {
         system = "x86_64-linux";
-        specialArgs = {
-          inherit pkgs-unstable;
-        };
+        specialArgs = { inherit pkgs-unstable; };
         modules = [
           home-manager.nixosModules.home-manager
-          (
-            { ... }:
-            {
-              nixpkgs.overlays = [
-                (final: prev: {
-                  unstable = pkgs-unstable;
-                  stable = pkgs;
-                })
-              ];
-            }
-          )
+          nixosModule
           ./configuration.nix
         ];
       };
+
+      # Add more hosts here:
+      # nixosConfigurations.ServerName = nixpkgs.lib.nixosSystem { ... };
 
       devShells.x86_64-linux.default = pkgs.mkShell {
         buildInputs = [ pkgs.nixfmt-rfc-style ];
