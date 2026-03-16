@@ -51,6 +51,7 @@
         modules = [
           home-manager.nixosModules.home-manager
           nixosModule
+          ./hosts/NixBook
           ./configuration.nix
         ];
       };
@@ -64,6 +65,7 @@
         modules = [
           home-manager.nixosModules.home-manager
           nixosModule
+          ./hosts/DemwEPC
           ./configuration.nix
         ];
       };

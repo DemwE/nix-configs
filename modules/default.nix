@@ -17,9 +17,5 @@
     ./users
     ./system
     ./features
-
-    # Host-specific modules
-    ./hosts/NixBook
-    ./hosts/DemwEPC
   ];
 }
