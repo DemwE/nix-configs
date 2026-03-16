@@ -5,7 +5,7 @@ Modular NixOS configuration with flakes.
 ## Quick Start
 
 ```bash
-# Update system
+# Update system (NixBook)
 update
 
 # Update package versions
@@ -13,6 +13,10 @@ update-lock
 
 # Check config
 update-check
+
+# Switch to specific host (requires hostname argument)
+switch NixBook
+switch ServerName
 ```
 
 ## Structure
@@ -34,6 +38,9 @@ nix-configs/
 │   ├── features/         # Feature modules (nvidia, steam, docker, etc.)
 │   │
 │   ├── overlays/         # Package overlays (custom, stable)
+│   │
+│   ├── directives/       # Custom packages & tools
+│   │   └── utils/        # Custom utilities (switch, compress, battery, gpu)
 │   │
 │   ├── users/            # User configuration
 │   │   └── demwe/
@@ -118,12 +125,13 @@ Add package definition in `modules/directives/`, then use as `custom.<name>`.
 ## Building Different Hosts
 
 ```bash
-# Default (NixBook)
-update
-switch-nixbook
+# Using custom switch command (requires argument)
+switch NixBook
+switch ServerName
 
-# Other hosts (after adding to flake.nix)
-sudo nixos-rebuild switch --flake .#ServerName
+# Using nixos-rebuild directly
+sudo nixos-rebuild switch --flake .#NixBook --log-format bar-with-logs
+sudo nixos-rebuild switch --flake .#ServerName --log-format bar-with-logs
 ```
 
 ## Files
