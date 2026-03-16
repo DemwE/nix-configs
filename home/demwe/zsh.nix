@@ -31,9 +31,9 @@
       cls = "clear";
 
       # Update aliases (works with ~/nix-configs -> /etc/nixos symlink)
-      update = "cd /etc/nixos && sudo nixos-rebuild switch --flake . --log-format bar-with-logs";
-      update-check = "cd /etc/nixos && nix flake check";
-      switch = "cd /etc/nixos && sudo nixos-rebuild switch --flake . --log-format bar-with-logs";
+      update = "sudo nixos-rebuild switch --flake /etc/nixos --log-format bar-with-logs";
+      update-check = "nix flake check /etc/nixos";
+      switch = "sudo nixos-rebuild switch --flake /etc/nixos --log-format bar-with-logs";
 
       gpu-status = "cat /sys/bus/pci/devices/0000:01:00.0/power/runtime_status";
       gpu-panel = "nvidia-smi";
