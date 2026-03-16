@@ -4,7 +4,7 @@
     gparted
     collision
     apostrophe
-    winbox4
+    unstable.winbox4
     custom.compress
     custom.decompress
     custom.battery-watch
