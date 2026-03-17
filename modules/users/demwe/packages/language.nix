@@ -6,5 +6,6 @@
     unstable.eloquent
     unstable.hunspellDicts.en_US-large
     unstable.hunspellDicts.pl_PL
+    wike
   ];
 }
