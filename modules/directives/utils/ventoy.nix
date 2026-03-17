@@ -2,7 +2,7 @@
 # Use: pkgs.custom.ventoy
 
 pkgs: {
-  ventoy = pkgs.ventoy.overrideAttrs (old: {
+  ventoy = pkgs.ventoy-full-gtk.overrideAttrs (old: {
     meta = old.meta // {
       knownVulnerabilities = [ ];
     };
