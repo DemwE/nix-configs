@@ -12,7 +12,5 @@ pkgs.lib.mergeAttrsList (
     ./toolchains
     ./ide
     ./libericaJDK
-    # ./cli
-    # ./fonts
   ]
 )

@@ -19,6 +19,9 @@
         git
         yazi
         bat
+        custom.switch
+        custom.update-lock
+        custom.switch-check
       ]
     );
   };

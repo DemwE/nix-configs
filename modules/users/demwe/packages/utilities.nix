@@ -10,7 +10,6 @@
     custom.battery-watch
     custom.battery-info
     custom.nvidia-offload
-    custom.switch
     dust
     toybox
     powertop
