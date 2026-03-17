@@ -7,5 +7,6 @@
     unstable.krita
     unstable.aseprite
     unstable.freecad
+    unstable.audacity
   ];
 }
