@@ -15,5 +15,6 @@
     ./steam.nix
     ./supergfxd.nix
     ./ollama.nix
+    ./wireshark.nix
   ];
 }

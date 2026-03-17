@@ -18,7 +18,6 @@
     custom.ventoy
     foliate
     varia
-    wireshark
     blackbox-terminal
   ];
 }

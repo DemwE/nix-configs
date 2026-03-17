@@ -24,5 +24,6 @@
     supergfxd.enable = false;
     ollama.enable = true;
     postgres.enable = true;
+    wireshark.enable = true;
   };
 }
