@@ -4,10 +4,5 @@
     gnome-graphs
     nucleus
     qbittorrent
-    ventoy-full-gtk
-    foliate
-    varia
-    wireshark
-    blackbox-terminal
   ];
 }

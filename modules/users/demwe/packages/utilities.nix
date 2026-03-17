@@ -15,5 +15,10 @@
     powertop
     unstable.gamescope
     unstable.bottles
+    custom.ventoy
+    foliate
+    varia
+    wireshark
+    blackbox-terminal
   ];
 }

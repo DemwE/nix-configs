@@ -9,6 +9,7 @@ pkgs.lib.mergeAttrsList (
     ./utils/compress.nix
     ./utils/battery.nix
     ./utils/gpu.nix
+    ./utils/ventoy.nix
     ./toolchains
     ./ide
     ./libericaJDK

@@ -7,5 +7,5 @@ let
   packages = import ../directives/default.nix final;
 in
 {
-  custom = (prev.custom or {}) // packages;
+  custom = (prev.custom or { }) // packages;
 }

@@ -18,7 +18,10 @@
       home-manager,
     }:
     let
+      # Define the system version for use in configurations
       systemVersion = "25.11";
+
+      # Import Nixpkgs with the appropriate system and unfree settings
       pkgs = import nixpkgs {
         system = "x86_64-linux";
         config.allowUnfree = true;
@@ -35,7 +38,6 @@
           nixpkgs.overlays = [
             (final: prev: {
               unstable = pkgs-unstable;
-              stable = pkgs;
             })
           ];
         };
