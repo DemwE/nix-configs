@@ -1,4 +1,4 @@
-{ config, ... }:
+{ config, pkgs, ... }:
 let
   wallpaper = "file://${config.my.paths.resources}/wallpaper.jpg";
   lockBackground = "file://${config.my.paths.resources}/lock-background.jpg";
@@ -17,6 +17,10 @@ in
       "org/gnome/desktop/screensaver" = {
         picture-uri = lockBackground;
         picture-uri-dark = lockBackground;
+      };
+      "org/gnome/desktop/applications/terminal" = {
+        exec = "blackbox";
+        exec-arg = "";
       };
     };
   };

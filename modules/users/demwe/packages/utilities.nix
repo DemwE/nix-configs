@@ -18,6 +18,5 @@
     custom.ventoy
     foliate
     varia
-    blackbox-terminal
   ];
 }

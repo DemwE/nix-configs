@@ -22,7 +22,7 @@ in
     services.gnome.tinysparql.enable = true;
     # Enables "Launch using Dedicated Graphics Card" in GNOME app context menu
     services.switcherooControl.enable = true;
-    
+
     # Exclude some default GNOME apps if desired
     environment.gnome.excludePackages = with pkgs; [
       gnome-tour
@@ -32,6 +32,22 @@ in
       gnome-maps
       gnome-contacts
       gnome-software
+      gnome-terminal
+      gnome-console
     ];
+
+    environment.systemPackages = with pkgs; [
+      blackbox-terminal
+    ];
+
+    xdg.terminal-exec = {
+      enable = true;
+      package = pkgs.blackbox-terminal;
+      settings = {
+        default = [
+          "com.raggesilver.BlackBox.desktop"
+        ];
+      };
+    };
   };
 }
