@@ -16,6 +16,7 @@
       "plugdev"
       "libvirtd"
       "docker"
+      "wireshark"
     ];
   };
 }
