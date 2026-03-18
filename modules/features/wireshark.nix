@@ -23,7 +23,6 @@ in
     programs.wireshark = {
       enable = true;
       package = pkgs.wireshark;
-      gui = true;
       dumpcap.enable = true;
       usbmon.enable = true;
     };
