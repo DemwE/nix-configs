@@ -32,8 +32,6 @@ in
       gnome-maps
       gnome-contacts
       gnome-software
-      gnome-terminal
-      gnome-console
     ];
 
     environment.systemPackages = with pkgs; [

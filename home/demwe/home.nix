@@ -73,11 +73,4 @@
   home.sessionVariables = {
     # EDITOR = "emacs";
   };
-
-  xdg.mimeApps = {
-    enable = true;
-    defaultApplications = {
-      "x-scheme-handler/terminal" = "com.raggesilver.BlackBox.desktop";
-    };
-  };
 }
