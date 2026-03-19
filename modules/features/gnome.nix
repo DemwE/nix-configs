@@ -32,10 +32,12 @@ in
       gnome-maps
       gnome-contacts
       gnome-software
+      gnome-system-monitor
     ];
 
     environment.systemPackages = with pkgs; [
       blackbox-terminal
+      mission-center
     ];
 
     xdg.terminal-exec = {

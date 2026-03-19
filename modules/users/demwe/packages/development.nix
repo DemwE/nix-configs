@@ -13,5 +13,6 @@
     unstable.vscode
     unstable.unityhub
     unstable.opencode
+    unstable.zed-editor
   ];
 }
