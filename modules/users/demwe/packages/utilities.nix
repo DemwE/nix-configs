@@ -18,5 +18,6 @@
     custom.ventoy
     foliate
     varia
+    unstable.crosspipe
   ];
 }
