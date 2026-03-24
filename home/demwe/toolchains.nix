@@ -10,6 +10,7 @@
     ".toolchains/dotnet".source = pkgs.custom.toolchain-dotnet;
     ".toolchains/nodejs".source = pkgs.custom.toolchain-nodejs;
     ".toolchains/rider".source = pkgs.custom.rider;
+    ".toolchains/arms".source = pkgs.custom.toolchain-arm;
   };
 
   # Added to the systemd user session environment — inherited by ALL processes:

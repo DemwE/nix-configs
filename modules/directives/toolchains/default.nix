@@ -8,4 +8,5 @@ pkgs:
     ./nodejs.nix
     ./python.nix
     ./dotnet.nix
+    ./arm.nix
   ])
