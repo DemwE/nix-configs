@@ -15,5 +15,7 @@
     unstable.opencode
     unstable.zed-editor
     custom.toolchain-arm
+    unstable.arduino-ide
+    unstable.stm32cubemx
   ];
 }

@@ -7,7 +7,7 @@ in
   options.my.features.ollama.enable = mkEnableOption "Ollama with local NVIDIA offload";
 
   config = mkIf cfg.enable {
-    environment.systemPackages = [ pkgs.unstable.alpaca ];
+    # environment.systemPackages = [ pkgs.unstable.alpaca ];
 
     # Use the official `services.ollama` module instead of creating a custom unit.
     services.ollama = {
