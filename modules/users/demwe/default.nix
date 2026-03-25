@@ -17,6 +17,12 @@
       "libvirtd"
       "docker"
       "wireshark"
+      "dialout"
+      "video"
+      "audio"
+      "input"
+      "uucp"
+      "adbusers"
     ];
   };
 }
