@@ -19,5 +19,6 @@
     foliate
     varia
     unstable.crosspipe
+    unstable.eartag
   ];
 }
