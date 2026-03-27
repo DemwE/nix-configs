@@ -21,5 +21,6 @@
     unstable.crosspipe
     custom.eartag
     unstable.cavalier
+    file-roller
   ];
 }

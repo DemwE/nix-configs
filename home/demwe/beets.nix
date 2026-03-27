@@ -18,6 +18,8 @@
         resume = "ask";
         ignore_data = [
           "comments"
+          "comment"
+          "publisher"
           "encoder"
           "tool"
           "encodedby"
@@ -31,7 +33,10 @@
           "isrc"
           "barcode"
         ];
-        languages = [ "en" "jp" ];
+        languages = [
+          "en"
+          "jp"
+        ];
       };
 
       # List all plugins you want to use here
@@ -72,8 +77,8 @@
         maxwidth = 2400;
         minwidth = 1600;
         sources = [
-          "itunes"
           "filesystem"
+          "itunes"
           "amazon"
           "discogs"
         ];
