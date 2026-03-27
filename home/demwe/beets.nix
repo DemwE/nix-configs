@@ -26,7 +26,7 @@
         "mbsync"
         "scrub"
         "embedart"
-        "spootify"
+        "spotify"
       ];
 
       # --- TAG MANAGEMENT ---
@@ -41,6 +41,16 @@
         asin = "";
         barcode = "";
         isrc = "$isrc";
+      };
+
+      spotify = {
+        mode = "list";
+        tiebreak = "popularity";
+        data_source_mismatch_penalty = 0.0;
+      };
+
+      musicbrainz = {
+        data_source_mismatch_penalty = 0.5;
       };
 
       # --- ARTWORK ---

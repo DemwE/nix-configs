@@ -2,6 +2,7 @@ pkgs: {
   beets = pkgs.unstable.beets.overridePythonAttrs (old: {
     propagatedBuildInputs = (old.propagatedBuildInputs or [ ]) ++ [
       pkgs.unstable.python3Packages.pillow
+      pkgs.unstable.python3Packages.spotipy
     ];
 
     postPatch = (old.postPatch or "") + ''
