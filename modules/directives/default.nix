@@ -11,6 +11,7 @@ pkgs.lib.mergeAttrsList (
     ./utils/gpu.nix
     ./utils/ventoy.nix
     ./utils/eartag.nix
+    ./utils/beets.nix
     ./toolchains
     ./ide
     ./libericaJDK

@@ -5,7 +5,7 @@
     enable = true;
     
     # Simple package definition - most plugins are included by default
-    package = pkgs.beets;
+    package = pkgs.custom.beets;
 
     settings = {
       directory = "~/Music";
@@ -46,9 +46,11 @@
       # --- ARTWORK ---
       fetchart = {
         auto = true;
-        fname = "cover";
         store_source = true;
         maxwidth = 2400;
+        minwidth = 1000;
+        high_resolution = true;
+        enforce_ratio = true;
         sources = [ "filesystem" "itunes" "amazon" "discogs"];
       };
 
@@ -60,7 +62,7 @@
 
       # --- DIRECTORY STRUCTURE ---
       paths = {
-        default = "$albumartist - $album ($year)/%if{disctotal,Disc $disc/}$track - $title";
+        default = "$albumartist - $album ($year)/Disc $disc/$track - $title";
       };
 
       # --- DATA HANDLING ---
