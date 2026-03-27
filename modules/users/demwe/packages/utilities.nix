@@ -20,5 +20,6 @@
     varia
     unstable.crosspipe
     unstable.eartag
+    unstable.cavalier
   ];
 }
