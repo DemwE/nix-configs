@@ -19,7 +19,7 @@
     foliate
     varia
     unstable.crosspipe
-    unstable.eartag
+    custom.eartag
     unstable.cavalier
   ];
 }

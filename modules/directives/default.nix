@@ -10,6 +10,7 @@ pkgs.lib.mergeAttrsList (
     ./utils/battery.nix
     ./utils/gpu.nix
     ./utils/ventoy.nix
+    ./utils/eartag.nix
     ./toolchains
     ./ide
     ./libericaJDK
