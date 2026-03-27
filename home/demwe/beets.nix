@@ -10,6 +10,7 @@
     settings = {
       directory = "~/Music";
       library = "~/Music/library.db";
+      art_filename = "cover";
 
       import = {
         move = true;
@@ -47,13 +48,13 @@
         auto = true;
         fname = "cover";
         store_source = true;
-        maxwidth = 1200;
-        sources = [ "filesystem" "discogs" "itunes" "amazon" ];
+        maxwidth = 2400;
+        sources = [ "filesystem" "itunes" "amazon" "discogs"];
       };
 
       embedart = {
         auto = true;
-        ifempty = false; # Wymusza osadzenie nawet jeśli plik ma już jakąś okładkę
+        ifempty = false;
         remove_art = false;
       };
 
