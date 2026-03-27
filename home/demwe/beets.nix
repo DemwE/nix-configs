@@ -31,6 +31,7 @@
           "isrc"
           "barcode"
         ];
+        languages = [ "en" "jp" ];
       };
 
       # List all plugins you want to use here
@@ -52,6 +53,10 @@
       spotify = {
         mode = "list";
         tiebreak = "popularity";
+        data_source_mismatch_penalty = 0.1;
+      };
+
+      discogs = {
         data_source_mismatch_penalty = 0.0;
       };
 
