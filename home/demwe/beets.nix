@@ -16,6 +16,21 @@
         write = true;
         autotag = true;
         resume = "ask";
+        ignore_data = [
+          "comments"
+          "encoder"
+          "tool"
+          "encodedby"
+          "media"
+          "label"
+          "catalognum"
+          "script"
+          "language"
+          "country"
+          "asin"
+          "isrc"
+          "barcode"
+        ];
       };
 
       # List all plugins you want to use here
@@ -32,15 +47,6 @@
       # --- TAG MANAGEMENT ---
       scrub = {
         auto = true;
-      };
-
-      item_fields = {
-        comment = "";
-        copyright = "";
-        publisher = "";
-        asin = "";
-        barcode = "";
-        isrc = "$isrc";
       };
 
       spotify = {
