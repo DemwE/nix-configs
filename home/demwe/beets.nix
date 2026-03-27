@@ -3,8 +3,7 @@
 {
   programs.beets = {
     enable = true;
-    
-    # Simple package definition - most plugins are included by default
+
     package = pkgs.custom.beets;
 
     settings = {
@@ -27,6 +26,7 @@
         "mbsync"
         "scrub"
         "embedart"
+        "spootify"
       ];
 
       # --- TAG MANAGEMENT ---
@@ -47,17 +47,21 @@
       fetchart = {
         auto = true;
         store_source = true;
+        highest_resolution = true;
         maxwidth = 2400;
-        minwidth = 1000;
-        high_resolution = true;
-        enforce_ratio = true;
-        sources = [ "filesystem" "itunes" "amazon" "discogs"];
+        minwidth = 1600;
+        sources = [
+          "itunes"
+          "filesystem"
+          "amazon"
+          "discogs"
+        ];
       };
 
       embedart = {
         auto = true;
         ifempty = false;
-        remove_art = false;
+        remove_art = true;
       };
 
       # --- DIRECTORY STRUCTURE ---
@@ -67,7 +71,7 @@
 
       # --- DATA HANDLING ---
       original_date = false;
-      
+
       ui = {
         color = true;
       };
