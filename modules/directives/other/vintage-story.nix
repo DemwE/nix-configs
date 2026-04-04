@@ -3,23 +3,26 @@
 
 pkgs:
 let
+  vintagestory = pkgs.unstable.vintagestory;
   gamescope = pkgs.unstable.gamescope;
-  wrapper = pkgs.writeScriptBin "vintage-story-wrapper" ''
-    #!${pkgs.stdenv.shell}
-    exec ${gamescope}/bin/gamescope \
-      -w 1920 -h 1200 \
-      -W 3840 -H 2400 \
-      -F fsr -f -- \
-      "${pkgs.unstable.vintagestory}/bin/vintage-story" "$@"
-  '';
 in
 {
-  vintage-story = pkgs.unstable.vintagestory.overrideAttrs (oldAttrs: {
-    nativeBuildInputs = (oldAttrs.nativeBuildInputs or [ ]) ++ [ pkgs.makeWrapper ];
+  vintage-story = pkgs.symlinkJoin {
+    name = "vintagestory-wrapped-${vintagestory.version}";
+    paths = [ vintagestory ];
 
-    postInstall = (oldAttrs.postInstall or "") + ''
-      rm -f $out/bin/vintage-story
-      makeWrapper ${wrapper}/bin/vintage-story-wrapper $out/bin/vintage-story
+    nativeBuildInputs = [ pkgs.makeWrapper ];
+
+    postBuild = ''
+      rm $out/bin/vintagestory
+
+      makeWrapper ${gamescope}/bin/gamescope $out/bin/vintagestory \
+        --add-flags "-w 1920 -h 1200 -W 3840 -H 2400 -F fsr -f -- ${vintagestory}/bin/vintagestory"
+
+      rm $out/share/applications/vintagestory.desktop
+      sed -e 's|Name=Vintage Story|Name=Vintage Story (Gamescope)|' \
+          -e 's|Exec=vintagestory|Exec=vintagestory|' \
+          ${vintagestory}/share/applications/vintagestory.desktop > $out/share/applications/vintagestory.desktop
     '';
-  });
+  };
 }
