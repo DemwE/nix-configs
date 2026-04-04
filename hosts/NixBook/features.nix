@@ -5,6 +5,7 @@
     printing = true;
     storage = true;
     firewall = true;
+    syncthing = true;
   };
 
   my.features = {

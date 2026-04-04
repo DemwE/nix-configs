@@ -6,6 +6,7 @@
     { package = pkgs.gnomeExtensions.appindicator; }
     { package = pkgs.gnomeExtensions.clipboard-indicator; }
     { package = pkgs.gnomeExtensions.alphabetical-app-grid; }
+    { package = pkgs.gnomeExtensions.syncthing-indicator; }
   ];
 
   gtk = {
