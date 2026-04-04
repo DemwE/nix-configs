@@ -2,7 +2,7 @@
 {
   users.users.demwe.packages = with pkgs; [
     unstable.prismlauncher
-    unstable.vintagestory
+    custom.vintage-story
     unstable.openrct2
   ];
 }

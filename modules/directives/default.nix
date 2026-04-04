@@ -10,6 +10,7 @@ pkgs.lib.mergeAttrsList (
     ./utils/battery.nix
     ./utils/gpu.nix
     ./utils/ventoy.nix
+    ./other/vintage-story.nix
     ./utils/eartag.nix
     ./utils/beets.nix
     ./toolchains
