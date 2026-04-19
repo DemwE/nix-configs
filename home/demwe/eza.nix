@@ -7,6 +7,7 @@
     enableZshIntegration = true;
     git = true;
     icons = "auto";
-    theme = builtins.fromYAML (builtins.readFile "${config.my.paths.resources}/eza-theme.yml");
   };
+
+  home.file.".config/eza/theme.yml".source = "${config.my.paths.resources}/eza-theme.yml";
 }

@@ -12,6 +12,7 @@
       plugins = [
         "git"
         "sudo"
+        "zsh-eza"
       ];
     };
 
@@ -34,10 +35,5 @@
     initContent = "fastfetch";
 
     history.size = 10000;
-  };
-
-  programs.oh-my-posh = {
-    enable = true;
-    useTheme = "catppuccin";
   };
 }
