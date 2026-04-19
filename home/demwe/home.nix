@@ -18,6 +18,7 @@
     ./toolchains.nix
     ./beets.nix
     ./eza.nix
+    ./oh-my-posh.nix
   ];
 
   # The home.packages option allows you to install Nix packages into your

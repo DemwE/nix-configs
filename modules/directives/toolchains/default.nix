@@ -1,5 +1,5 @@
 # Aggregator for all toolchain packages
-# pkgs: { toolchain-rust, toolchain-cpp, toolchain-nodejs, toolchain-python, toolchain-dotnet }
+# pkgs: { toolchain-rust, toolchain-cpp, toolchain-nodejs, toolchain-python, toolchain-dotnet, toolchain-bun }
 
 pkgs:
   pkgs.lib.mergeAttrsList (map (f: import f pkgs) [
@@ -8,5 +8,5 @@ pkgs:
     ./nodejs.nix
     ./python.nix
     ./dotnet.nix
-    ./arm.nix
+    ./bun.nix
   ])
