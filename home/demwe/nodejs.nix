@@ -1,5 +1,5 @@
-# Expose Node.js versions to WebStorm via ~/.nvm/versions/node/
-# WebStorm automatically scans ~/.nvm/versions/node/ for Node.js installations.
+# Expose Node.js and Bun versions to WebStorm via ~/.nvm/versions/
+# WebStorm automatically scans ~/.nvm/versions/ for Node.js installations.
 { pkgs, ... }:
 let
   nodes = {
@@ -7,12 +7,19 @@ let
     "v${pkgs.nodejs_22.version}" = pkgs.nodejs_22;
     "v${pkgs.nodejs_24.version}" = pkgs.nodejs_24;
   };
+
+  buns = {
+    "v${pkgs.unstable.bun.version}" = pkgs.unstable.bun;
+  };
+
+  mkNvmFiles = prefix: versionSet: builtins.listToAttrs (
+    map (ver: {
+      name  = "${prefix}/${ver}";
+      value = { source = versionSet.${ver}; };
+    }) (builtins.attrNames versionSet)
+  );
 in
 {
-  home.file = builtins.listToAttrs (
-    map (ver: {
-      name  = ".nvm/versions/node/${ver}";
-      value = { source = nodes.${ver}; };
-    }) (builtins.attrNames nodes)
-  );
+  home.file = (mkNvmFiles ".nvm/versions/node" nodes) 
+           // (mkNvmFiles ".nvm/versions/bun" buns);
 }

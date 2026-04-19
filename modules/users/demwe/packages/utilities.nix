@@ -11,7 +11,6 @@
     custom.battery-info
     custom.nvidia-offload
     dust
-    toybox
     powertop
     unstable.gamescope
     unstable.bottles

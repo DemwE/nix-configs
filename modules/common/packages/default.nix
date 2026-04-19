@@ -19,6 +19,9 @@
         git
         yazi
         bat
+        usbutils
+        pciutils
+        eza
         custom.switch
         custom.update-lock
         custom.switch-check

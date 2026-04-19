@@ -1,5 +1,8 @@
 { config, pkgs, ... }:
 
+let
+  lsMode = "legacy";
+in
 {
   programs.zsh = {
     enable = true;
@@ -15,14 +18,7 @@
       ];
     };
 
-    shellAliases = {
-      # ls
-      l = "ls -lFh";
-      la = "ls -lAFh";
-      lr = "ls -tRFh";
-      lt = "ls -ltFh";
-      ll = "ls -l";
-
+    shellAliases = pkgs.custom.shell-aliases lsMode {
       # nfs mounts
       mount-nfs-public = "sudo mount /mnt/public";
       unmount-nfs-public = "sudo umount /mnt/public";
