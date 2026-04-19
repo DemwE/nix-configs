@@ -1,7 +1,7 @@
 { config, pkgs, ... }:
 
 let
-  lsMode = "legacy";
+  lsMode = "new";
 in
 {
   programs.zsh = {

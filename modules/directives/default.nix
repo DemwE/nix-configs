@@ -9,7 +9,7 @@ pkgs.lib.mergeAttrsList (
     ./utils/compress.nix
     ./utils/battery.nix
     ./utils/gpu.nix
-    ./utils/ls-mode.nix
+    ./utils/shell-aliases.nix
     ./utils/ventoy.nix
     ./other/vintage-story.nix
     ./utils/eartag.nix
