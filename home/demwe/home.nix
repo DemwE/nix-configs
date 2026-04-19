@@ -17,6 +17,7 @@
     ./cpp.nix
     ./toolchains.nix
     ./beets.nix
+    ./eza.nix
   ];
 
   # The home.packages option allows you to install Nix packages into your
