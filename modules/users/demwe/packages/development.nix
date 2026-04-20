@@ -14,7 +14,6 @@
     unstable.unityhub
     unstable.opencode
     unstable.zed-editor
-    custom.toolchain-arm
     unstable.arduino-ide
   ];
 }

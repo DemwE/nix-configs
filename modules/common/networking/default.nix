@@ -24,5 +24,12 @@
         if pkgs-unstable != null then pkgs-unstable.networkmanager-openvpn else pkgs.networkmanager-openvpn
       )
     ];
+
+    # Custom hosts entries:
+    networking.hosts = {
+      "127.0.0.1" = [
+        "lh.me"
+      ];
+    };
   };
 }
