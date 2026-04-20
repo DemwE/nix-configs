@@ -21,7 +21,9 @@
         bat
         usbutils
         pciutils
+        net-tools
         eza
+        nix-index
         custom.switch
         custom.update-lock
         custom.switch-check
