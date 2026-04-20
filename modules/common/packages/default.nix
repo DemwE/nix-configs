@@ -23,6 +23,7 @@
         pciutils
         net-tools
         eza
+        fzf
         nix-index
         custom.switch
         custom.update-lock

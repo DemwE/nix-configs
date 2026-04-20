@@ -4,6 +4,7 @@
     ./nvidia.nix
     ./docker.nix
     ./postgres.nix
+    ./atuin.nix
     ./flatpak.nix
     ./qemu.nix
     ./polkit.nix

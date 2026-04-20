@@ -13,6 +13,7 @@
     nvidia.runtimePowerManagement = true;
     nvidia.prime.enable = true;
 
+    atuin.enable = true;
     docker.enable = false;
     flatpak.enable = true;
     qemu.enable = false;

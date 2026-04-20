@@ -6,6 +6,7 @@
     ./dconf.nix
     ./git.nix
     ./zsh.nix
+    ./atuin.nix
     ./fastfetch.nix
     ./yazi.nix
     ./btop.nix
