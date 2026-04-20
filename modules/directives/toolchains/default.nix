@@ -9,4 +9,5 @@ pkgs:
     ./python.nix
     ./dotnet.nix
     ./bun.nix
+    ./haskell.nix
   ])

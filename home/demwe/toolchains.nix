@@ -10,6 +10,7 @@
     ".toolchains/dotnet".source = pkgs.custom.toolchain-dotnet;
     ".toolchains/nodejs".source = pkgs.custom.toolchain-nodejs;
     ".toolchains/bun".source = pkgs.custom.toolchain-bun;
+    ".toolchains/haskell".source = pkgs.custom.toolchain-haskell;
     ".toolchains/rider".source = pkgs.custom.rider;
   };
 
@@ -29,5 +30,7 @@
     "$HOME/.toolchains/nodejs/bin"
     # Bun
     "$HOME/.toolchains/bun/bin"
+    # Haskell
+    "$HOME/.toolchains/haskell/bin"
   ];
 }
