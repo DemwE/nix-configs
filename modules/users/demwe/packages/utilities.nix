@@ -11,6 +11,7 @@
     custom.battery-info
     custom.nvidia-offload
     dust
+    croc
     powertop
     unstable.gamescope
     unstable.bottles

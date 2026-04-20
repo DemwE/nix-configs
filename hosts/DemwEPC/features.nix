@@ -13,6 +13,7 @@
     nvidia.prime.enable = false;
 
     atuin.enable = true;
+    syncthing.enable = true;
     docker.enable = true;
     flatpak.enable = true;
     qemu.enable = false;

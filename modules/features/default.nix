@@ -5,6 +5,7 @@
     ./docker.nix
     ./postgres.nix
     ./atuin.nix
+    ./syncthing.nix
     ./flatpak.nix
     ./qemu.nix
     ./polkit.nix

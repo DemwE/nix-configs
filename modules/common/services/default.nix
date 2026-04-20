@@ -1,11 +1,10 @@
-{ lib, config, pkgs,... }:
+{ lib, config, ... }:
 {
   options.my.services = {
     ssh = lib.mkEnableOption "Enable SSH server";
     printing = lib.mkEnableOption "Enable printing support (CUPS)";
     storage = lib.mkEnableOption "Enable storage services (udisks2, gvfs)";
     firewall = lib.mkEnableOption "Enable firewall";
-    syncthing = lib.mkEnableOption "Enable Syncthing";
   };
 
   config = lib.mkMerge [
@@ -34,14 +33,5 @@
       networking.firewall.enable = true;
     })
 
-    (lib.mkIf config.my.services.syncthing {
-      services.syncthing = {
-        enable = true;
-        package = pkgs.unstable.syncthing;
-        user = "demwe";
-        group = "users";
-        configDir = "/home/demwe/.local/state/syncthing";
-      };
-    })
   ];
 }
