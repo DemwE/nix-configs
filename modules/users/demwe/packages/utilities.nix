@@ -13,8 +13,10 @@
     dust
     croc
     powertop
+    unstable.atlas
     unstable.gamescope
     unstable.bottles
+    speedtest-cli
     custom.ventoy
     foliate
     varia

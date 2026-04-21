@@ -5,8 +5,8 @@ pkgs: {
   toolchain-dotnet = pkgs.symlinkJoin {
     name = "toolchain-dotnet";
     paths = [
-      pkgs.unstable.dotnetCorePackages.sdk_10_0-bin
-      pkgs.unstable.mono
+      pkgs.dotnetCorePackages.sdk_10_0-bin
+      pkgs.mono
     ];
   };
 }

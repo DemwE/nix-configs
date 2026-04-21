@@ -2,22 +2,29 @@
 # pkgs: { compress, decompress }
 
 pkgs: {
-
   compress = pkgs.writeShellApplication {
     name = "compress";
     runtimeInputs = [ pkgs.gnutar pkgs.zstd ];
     text = ''
-      if [ "$#" -ne 2 ]; then
-        echo "Usage: compress <source> <output>"
+      if [ "$#" -lt 2 ]; then
+        echo "Usage: compress <source...> <output>"
         exit 1
       fi
-      SOURCE=$1
-      OUTPUT=$2
+
+      OUTPUT="''${!#}"
+      SOURCES=( "''${@:1:$(( $# - 1 ))}" )
+
       if [[ ! "$OUTPUT" =~ \.tar\.zst$ ]]; then
         OUTPUT="$OUTPUT.tar.zst"
       fi
-      echo "Executing: tar -I zstd -cvf \"$OUTPUT\" \"$SOURCE\""
-      tar -I zstd -cvf "$OUTPUT" "$SOURCE"
+
+      printf 'Executing: tar -I zstd -cvf %q' "$OUTPUT"
+      for source in "''${SOURCES[@]}"; do
+        printf ' %q' "$source"
+      done
+      printf '\n'
+
+      tar -I zstd -cvf "$OUTPUT" "''${SOURCES[@]}"
     '';
   };
 
