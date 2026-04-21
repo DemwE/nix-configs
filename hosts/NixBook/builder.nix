@@ -7,7 +7,7 @@
       user = "demwe";
       sshKey = "/root/.ssh/builder_key";
       system = "x86_64-linux";
-      maxJobs = 0;
+      maxJobs = 16;
       speedFactor = 2;
       supportedFeatures = [ "kvm" "big-parallel" ];
       mandatoryFeatures = [ ];
