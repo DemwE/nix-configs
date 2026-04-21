@@ -36,7 +36,7 @@ in
             hostName = lib.mkOption {
               type = lib.types.str;
               description = "Remote host name or IP.";
-              example = "DemwEPC";
+              example = "192.168.0.100";
             };
 
             user = lib.mkOption {
@@ -90,10 +90,6 @@ in
   };
 
   config = lib.mkMerge [
-    {
-      nix.useDaemon = true;
-    }
-
     (lib.mkIf cfg.config.enableExternalBuilding {
       services.openssh = {
         enable = true;
