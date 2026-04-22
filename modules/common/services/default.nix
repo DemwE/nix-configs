@@ -11,10 +11,6 @@
     (lib.mkIf config.my.services.ssh {
       services.openssh = {
         enable = true;
-        settings = {
-          PermitRootLogin = "no";
-          PasswordAuthentication = true;
-        };
       };
     })
 
