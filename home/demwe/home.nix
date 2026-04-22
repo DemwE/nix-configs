@@ -3,6 +3,7 @@
 {
   imports = [
     ./home-configuration.nix
+    ./session-vars.nix
     ./dconf.nix
     ./git.nix
     ./zsh.nix
