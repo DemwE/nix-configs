@@ -9,7 +9,10 @@ in
       enableExternalBuilding = lib.mkEnableOption "accept external/distributed builds on this host";
 
       maxJobs = lib.mkOption {
-        type = lib.types.oneOf [ lib.types.int lib.types.str ];
+        type = lib.types.oneOf [
+          lib.types.int
+          lib.types.str
+        ];
         default = "auto";
         description = ''
           Maximum parallel jobs accepted by this host when acting as builder.
@@ -91,12 +94,12 @@ in
 
   config = lib.mkMerge [
     {
-      nix.settings = {
-        fallback = true;
-        connect-timeout = 5;
-      };
+      nix.extraOptions = ''
+        fallback = true
+        connect-timeout = 5
+      '';
     }
-
+    
     (lib.mkIf cfg.config.enableExternalBuilding {
       services.openssh = {
         enable = true;
@@ -113,20 +116,18 @@ in
     })
 
     (lib.mkIf hasBuildHosts {
-      nix.buildMachines = map
-        (h: {
-          inherit (h)
-            hostName
-            system
-            maxJobs
-            speedFactor
-            supportedFeatures
-            mandatoryFeatures
-            ;
-          sshUser = h.user;
-          sshKey = h.sshKey;
-        })
-        cfg.buildHosts;
+      nix.buildMachines = map (h: {
+        inherit (h)
+          hostName
+          system
+          maxJobs
+          speedFactor
+          supportedFeatures
+          mandatoryFeatures
+          ;
+        sshUser = h.user;
+        sshKey = h.sshKey;
+      }) cfg.buildHosts;
 
       nix.distributedBuilds = true;
       nix.settings.builders-use-substitutes = true;
