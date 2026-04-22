@@ -90,6 +90,13 @@ in
   };
 
   config = lib.mkMerge [
+    {
+      nix.settings = {
+        fallback = true;
+        connect-timeout = 5;
+      };
+    }
+
     (lib.mkIf cfg.config.enableExternalBuilding {
       services.openssh = {
         enable = true;
@@ -123,6 +130,7 @@ in
 
       nix.distributedBuilds = true;
       nix.settings.builders-use-substitutes = true;
+      nix.settings.max-jobs = lib.mkDefault "auto";
     })
   ];
 }
