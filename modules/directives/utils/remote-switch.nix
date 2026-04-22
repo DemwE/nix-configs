@@ -1,11 +1,12 @@
 # custom.remote-switch
+
 pkgs: {
   remote-switch = pkgs.writeShellApplication {
     name = "remote-switch";
     runtimeInputs = [ pkgs.custom.switch ]; 
     text = ''
       if [ "$#" -lt 2 ]; then
-        echo "Usage: remote-switch <hostname> <build-host>"
+        echo "Usage: remote-switch <hostname> <user@build-host>"
         exit 1
       fi
 
