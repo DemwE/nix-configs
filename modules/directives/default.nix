@@ -4,6 +4,7 @@ pkgs:
 pkgs.lib.mergeAttrsList (
   map (f: import f pkgs) [
     ./utils/switch.nix
+    ./utils/remote-switch.nix
     ./utils/switch-check.nix
     ./utils/update-lock.nix
     ./utils/compress.nix

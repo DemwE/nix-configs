@@ -1,8 +1,9 @@
-{ config, pkgs, ... }:
+{ config, lib, pkgs, ... }:
 
 {
   programs.zsh = {
     enable = true;
+    dotDir = "${config.xdg.configHome}/zsh";
     enableCompletion = false;
     autosuggestion.enable = false;
     syntaxHighlighting.enable = true;
@@ -33,6 +34,12 @@
 
     initContent = "fastfetch";
 
+    history.path = "${config.xdg.stateHome}/zsh/history";
     history.size = 10000;
   };
+
+  home.activation.createShellXdgDirs = lib.hm.dag.entryAfter [ "writeBoundary" ] ''
+    mkdir -p "${config.xdg.cacheHome}/zsh"
+    mkdir -p "${config.xdg.stateHome}/zsh"
+  '';
 }

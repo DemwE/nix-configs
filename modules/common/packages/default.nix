@@ -26,6 +26,7 @@
         fzf
         nix-index
         custom.switch
+        custom.remote-switch
         custom.update-lock
         custom.switch-check
         custom.cls

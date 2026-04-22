@@ -1,26 +1,16 @@
 { config, pkgs, ... }:
-{
-  # Disable home-manager neovim management - using system package instead
-  # programs.neovim = {
-  #   enable = true;
-  #   viAlias = true;
-  #   vimAlias = true;
-  # };
-
-  # Manually manage neovim config
-  home.file.".config/nvim" = {
-    source = pkgs.fetchFromGitHub {
-      owner = "NvChad";
-      repo = "NvChad";
-      tag = "v2.5";
-      sha256 = "sha256-U81M3RFMP7jKirxj3ROCsyqTRXGCrtN6VsPrewlPSLI=";
-    };
-    recursive = true;
+let
+  nvchadSource = pkgs.fetchFromGitHub {
+    owner = "NvChad";
+    repo = "NvChad";
+    tag = "v2.5";
+    sha256 = "sha256-U81M3RFMP7jKirxj3ROCsyqTRXGCrtN6VsPrewlPSLI=";
   };
 
-  # Override the init.lua file with custom configuration
-  home.file.".config/nvim/init.lua" = {
-    text = ''
+  nvchadConfigured = pkgs.runCommand "nvchad-configured" { } ''
+    cp -r ${nvchadSource} "$out"
+    chmod -R u+w "$out"
+    cat > "$out/init.lua" <<'EOF'
       vim.g.base46_cache = vim.fn.stdpath "data" .. "/base46/"
       vim.g.mapleader = " "
 
@@ -58,6 +48,20 @@
       vim.schedule(function()
         require "mappings"
       end)
-    '';
+    EOF
+  '';
+in
+{
+  # Disable home-manager neovim management - using system package instead
+  # programs.neovim = {
+  #   enable = true;
+  #   viAlias = true;
+  #   vimAlias = true;
+  # };
+
+  # Manually manage neovim config
+  home.file.".config/nvim" = {
+    source = nvchadConfigured;
+    recursive = true;
   };
 }

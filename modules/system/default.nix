@@ -10,6 +10,5 @@
     ./graphics.nix
     ./housekeeping.nix
     ./power-profiles.nix
-    ./remote-builder.nix
   ];
 }
