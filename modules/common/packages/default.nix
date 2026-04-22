@@ -28,6 +28,9 @@
         custom.switch
         custom.update-lock
         custom.switch-check
+        custom.cls
+        custom.compress
+        custom.decompress
       ]
     );
   };
