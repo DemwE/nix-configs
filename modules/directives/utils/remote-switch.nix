@@ -16,9 +16,7 @@ pkgs: {
       echo "Redirecting build of $HOST to $BUILD_HOST"
 
       switch "$HOST" \
-        --build-host "$BUILD_HOST" \
-        --option max-jobs 0 \
-        --option builders "ssh://$BUILD_HOST?max-jobs=auto"
+        --build-host "$BUILD_HOST"
     '';
   };
 }

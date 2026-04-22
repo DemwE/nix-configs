@@ -32,14 +32,7 @@
       run-game = "nvidia-offload gamescope -w 1920 -h 1200 -W 3840 -H 2400 -F fsr -f -- %*";
     };
 
-    initContent = "fastfetch";
-
     history.path = "${config.xdg.stateHome}/zsh/history";
-    history.size = 10000;
+    initContent = "fastfetch";
   };
-
-  home.activation.createShellXdgDirs = lib.hm.dag.entryAfter [ "writeBoundary" ] ''
-    mkdir -p "${config.xdg.cacheHome}/zsh"
-    mkdir -p "${config.xdg.stateHome}/zsh"
-  '';
 }
