@@ -19,5 +19,6 @@
     GRADLE_USER_HOME = "${config.xdg.dataHome}/gradle";
     # CUDA
     CUDA_CACHE_PATH = "${config.xdg.cacheHome}/nv";
+    KONAN_DATA_DIR = "${config.xdg.dataHome}/konan";
   };
 }
