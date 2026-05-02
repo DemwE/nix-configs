@@ -15,6 +15,7 @@
     atuin.enable = true;
     syncthing.enable = true;
     docker.enable = false;
+    podman.enable = true;
     flatpak.enable = true;
     qemu.enable = false;
     polkit.enable = true;

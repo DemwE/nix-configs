@@ -3,6 +3,7 @@
   imports = [
     ./nvidia.nix
     ./docker.nix
+    ./podman.nix
     ./postgres.nix
     ./atuin.nix
     ./syncthing.nix

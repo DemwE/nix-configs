@@ -16,6 +16,7 @@
       "plugdev"
       "libvirtd"
       "docker"
+      "podman"
       "wireshark"
       "dialout"
       "video"
