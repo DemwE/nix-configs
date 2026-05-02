@@ -3,6 +3,7 @@
   users.users.demwe.packages = with pkgs; [
     gh
     nixfmt-rfc-style
+    unstable.git-fork
     custom.rust-rover
     custom.webstorm
     custom.pycharm

@@ -17,7 +17,9 @@
         tree
         wget
         git
+        git-lfs
         yazi
+        fd
         bat
         usbutils
         pciutils
