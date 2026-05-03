@@ -26,7 +26,7 @@
     steam.enable = true;
     supergfxd.enable = false;
     ollama.enable = true;
-    postgres.enable = true;
+    postgres.enable = false;
     wireshark.enable = true;
   };
 }

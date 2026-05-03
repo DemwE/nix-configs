@@ -16,5 +16,6 @@
     unstable.opencode
     unstable.zed-editor
     unstable.arduino-ide
+    podman-desktop
   ];
 }
