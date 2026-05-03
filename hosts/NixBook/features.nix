@@ -12,7 +12,6 @@
     nvidia.runtimePowerManagement = true;
     nvidia.prime.enable = true;
 
-    atuin.enable = true;
     syncthing.enable = true;
     docker.enable = false;
     podman.enable = true;

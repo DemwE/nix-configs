@@ -5,7 +5,6 @@
     ./containers/docker.nix
     ./containers/podman.nix
     ./database/postgres.nix
-    ./tools/atuin.nix
     ./tools/syncthing.nix
     ./desktop/flatpak.nix
     ./virtualization/qemu.nix

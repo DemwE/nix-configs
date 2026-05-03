@@ -21,7 +21,6 @@
     ./beets.nix
     ./eza.nix
     ./oh-my-posh.nix
-    ./nix-index.nix
     ./direnv.nix
   ];
 
