@@ -7,7 +7,6 @@
     brave
 
     # Development
-    gh
     nixfmt-rfc-style
     unstable.gitkraken
     custom.rust-rover
