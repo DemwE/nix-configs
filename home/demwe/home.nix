@@ -22,6 +22,7 @@
     ./eza.nix
     ./oh-my-posh.nix
     ./direnv.nix
+    ./packages.nix
   ];
 
   # Home Manager is pretty good at managing dotfiles. The primary way to manage
