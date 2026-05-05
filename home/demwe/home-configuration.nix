@@ -18,5 +18,4 @@
   # Let Home Manager install and manage itself.
   programs.home-manager.enable = true;
 
-  # HM uses global nixpkgs (with allowUnfree set at system level)
-}
+  # HM uses global nixpkgs (with allowUnfree set at system level)}

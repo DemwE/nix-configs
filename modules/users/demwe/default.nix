@@ -2,7 +2,6 @@
 {
   imports = [
     ./home.nix
-    ./packages/default.nix
     ./avatar.nix
   ];
 
