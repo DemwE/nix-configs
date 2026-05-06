@@ -14,6 +14,7 @@
 
     syncthing.enable = true;
     docker.enable = false;
+    nix-helper.enable = true;
     podman.enable = true;
     flatpak.enable = true;
     qemu.enable = false;
