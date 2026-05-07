@@ -25,4 +25,5 @@
       "adbusers"
     ];
   };
+  nix.settings.trusted-users = [ "demwe" ];
 }

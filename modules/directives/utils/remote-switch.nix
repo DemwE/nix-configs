@@ -3,7 +3,7 @@
 pkgs: {
   remote-switch = pkgs.writeShellApplication {
     name = "remote-switch";
-    runtimeInputs = [ pkgs.custom.switch ]; 
+    runtimeInputs = [ pkgs.nh]; 
     text = ''
       if [ "$#" -lt 2 ]; then
         echo "Usage: remote-switch <hostname> <user@build-host>"
@@ -15,8 +15,7 @@ pkgs: {
 
       echo "Redirecting build of $HOST to $BUILD_HOST"
 
-      switch "$HOST" \
-        --build-host "$BUILD_HOST"
+      nh os switch /etc/nixos --hostname "$HOST" --build-host "$BUILD_HOST" "$@"
     '';
   };
 }

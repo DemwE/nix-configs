@@ -4,7 +4,7 @@
 pkgs: {
   switch = pkgs.writeShellApplication {
     name = "switch";
-    runtimeInputs = [ pkgs.systemd ];
+    runtimeInputs = [ pkgs.nh ];
     text = ''
       if [ -z "$1" ]; then
         echo "Usage: switch <hostname>"
