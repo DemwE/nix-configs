@@ -13,7 +13,7 @@ pkgs: {
       HOST="$1"
       shift
       echo "Building host: $HOST"
-      exec nh os switch /etc/nixos --hostname "#$HOST"  "$@"
+      exec nh os switch /etc/nixos --hostname "$HOST" "$@"
     '';
   };
 }

@@ -19,6 +19,11 @@ in
       Requires powerManagement.enable = true (already set).
     '';
 
+    dynamicBoost = mkEnableOption ''
+      Enable NVIDIA Dynamic Boost (nvidia-powerd).
+      Keep this disabled unless your hardware/firmware supports it.
+    '';
+
     prime = {
       enable = mkEnableOption "Enable NVIDIA PRIME for hybrid Intel/NVIDIA graphics";
 
@@ -53,11 +58,9 @@ in
       powerManagement.enable = true;
       powerManagement.finegrained = cfg.runtimePowerManagement; # D3cold + udev rules + NVreg_DynamicPowerManagement=1
 
-      # Dynamic Boost: nvidia-powerd shifts TGP between 35W and 60W
-      # based on combined CPU/GPU workload automatically
-      dynamicBoost = lib.mkIf cfg.runtimePowerManagement {
-        enable = true;
-      };
+      # Dynamic Boost: nvidia-powerd shifts TGP based on combined workload.
+      # This is opt-in because it fails on some laptops/firmware.
+      dynamicBoost.enable = cfg.dynamicBoost;
 
       # Use the NVIDIA open source kernel module? (Turing+ only)
       open = true;
