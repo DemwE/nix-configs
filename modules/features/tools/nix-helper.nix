@@ -9,4 +9,4 @@ in
   config = mkIf cfg.enable {
     programs.nh.enable = true;
   };
-};
+}

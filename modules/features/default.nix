@@ -6,6 +6,7 @@
     ./containers/podman.nix
     ./database/postgres.nix
     ./tools/syncthing.nix
+    ./tools/nix-helper.nix
     ./desktop/flatpak.nix
     ./virtualization/qemu.nix
     ./security/polkit.nix
