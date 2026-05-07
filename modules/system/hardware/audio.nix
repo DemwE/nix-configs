@@ -36,6 +36,4 @@
       };
     };
   };
-
-  hardware.alsa.enable = true;
 }
