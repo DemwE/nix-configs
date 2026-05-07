@@ -1,14 +1,17 @@
 { ... }:
 {
   # Enable weekly TRIM for SSDs
-  services.fstrim.enable = false;
+  services.fstrim.enable = true;
 
   # Memory pressure helpers
   zramSwap = {
-    enable = false;
+    enable = true;
     algorithm = "zstd";
-    memoryPercent = 25; # 25% RAM as zram
+    memoryPercent = 35; # 35% RAM as zram
   };
 
-  systemd.oomd.enable = true;
+  systemd.oomd = {
+    enable = true;
+    enableUserSlices = true;
+  };
 }

@@ -34,7 +34,7 @@
 
     # Games
     unstable.prismlauncher
-    custom.vintage-story
+    # custom.vintage-story
     unstable.openrct2
 
     # Media

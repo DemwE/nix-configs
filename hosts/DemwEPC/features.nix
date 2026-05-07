@@ -25,7 +25,7 @@
     iioSensorProxy.enable = false;
     steam.enable = true;
     supergfxd.enable = false;
-    ollama.enable = true;
+    ollama.enable = false;
     postgres.enable = false;
     wireshark.enable = true;
   };
