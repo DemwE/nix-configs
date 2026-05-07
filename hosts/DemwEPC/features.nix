@@ -13,7 +13,7 @@
     nvidia.prime.enable = false;
 
     syncthing.enable = true;
-    docker.enable = true;
+    docker.enable = false;
     podman.enable = true;
     nix-helper.enable = true;
     flatpak.enable = true;

@@ -30,6 +30,7 @@
     unstable.aseprite
     unstable.freecad
     unstable.audacity
+    unstable.reaper
 
     # Games
     unstable.prismlauncher

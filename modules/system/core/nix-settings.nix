@@ -9,6 +9,7 @@
   nix.settings = {
     auto-optimise-store = true;
     experimental-features = [ "nix-command" "flakes" ];
+    cores = 0; # Use all available CPU cores for building
   };
   # system.copySystemConfiguration = true; # Not supported with flakes
 }
