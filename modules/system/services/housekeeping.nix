@@ -7,7 +7,7 @@
   zramSwap = {
     enable = true;
     algorithm = "zstd";
-    memoryPercent = 35; # 35% RAM as zram
+    memoryPercent = 50; # 50% RAM as zram
   };
 
   systemd.oomd = {
