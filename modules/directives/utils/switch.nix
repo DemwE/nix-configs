@@ -13,7 +13,7 @@ pkgs: {
       HOST="$1"
       shift
       echo "Building host: $HOST"
-      exec sudo nixos-rebuild switch --flake "/etc/nixos#$HOST" --log-format bar-with-logs "$@"
+      exec nh os switch /etc/nixos --hostname "#$HOST"  "$@"
     '';
   };
 }
