@@ -5,6 +5,7 @@
     printing = lib.mkEnableOption "Enable printing support (CUPS)";
     storage = lib.mkEnableOption "Enable storage services (udisks2, gvfs)";
     firewall = lib.mkEnableOption "Enable firewall";
+    openrgb = lib.mkEnableOption "Enable OpenRGB daemon";
   };
 
   config = lib.mkMerge [
@@ -29,5 +30,8 @@
       networking.firewall.enable = true;
     })
 
+    (lib.mkIf config.my.services.openrgb {
+      services.hardware.openrgb.enable = true;
+    })
   ];
 }

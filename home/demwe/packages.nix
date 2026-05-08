@@ -63,6 +63,7 @@
     custom.eartag
     unstable.cavalier
     file-roller
+    alsa-utils
 
     # Java
     custom.java25.versioned
