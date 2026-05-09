@@ -1,134 +1,105 @@
 # NixOS Configuration
 
-Modular NixOS configuration with flakes.
+Modular NixOS and Home Manager configuration managed with flakes.
 
 ## Quick Start
 
 ```bash
-# Update flake lock
+# Update the flake lock
 update-lock
 
-# Check host configuration (requires hostname argument)
+# Check a host before switching
 switch-check NixBook
 switch-check DemwEPC
 
-# Switch to specific host (requires hostname argument)
+# Switch to a host
 switch NixBook
 switch DemwEPC
+
+# Switch a host through a remote build machine
+remote-switch NixBook user@build-host
 ```
 
-## Structure
+## Repository Layout
 
-```
+```text
 nix-configs/
-├── flake.nix              # Flake inputs & outputs (version, channels)
-├── configuration.nix      # Main entry point (imports modules/)
-│
-├── modules/               # All NixOS modules
-│   ├── default.nix        # Global imports (common, users, system, features)
-│   │
-│   ├── common/            # Shared modules for all hosts
-│   │   ├── boot/          # Boot config (kernel selection)
-│   │   ├── networking/    # Network config (hostname, VPN)
-│   │   ├── services/      # System services (ssh, printing, firewall)
-│   │   └── packages/      # System packages
-│   │
-│   ├── features/         # Feature modules (nvidia, steam, docker, etc.)
-│   │
-│   ├── overlays/         # Package overlays (custom, stable)
-│   │
-│   ├── directives/       # Custom packages & tools
-│   │   └── utils/        # Custom utilities (switch, compress, battery, gpu)
-│   │
-│   ├── users/            # User configuration
-│   │   └── demwe/
-│   │       ├── packages/  # User packages by category
-│   │       │   ├── browsers.nix
-│   │       │   ├── development.nix
-│   │       │   ├── games.nix
-│   │       │   └── ...
-│   │       └── default.nix
-│   │
-│   └── system/           # System modules (fonts, audio, etc.)
-│
-├── hosts/                # Host-specific configs
-│   └── <hosts>
-│
-└── home/demwe/          # Home Manager config
-    ├── zsh.nix           # Shell aliases & config
-    ├── neovim.nix
-    └── ...
+├── flake.nix
+├── configuration.nix
+├── hosts/
+│   ├── NixBook/
+│   └── DemwEPC/
+├── modules/
+│   ├── default.nix
+│   ├── common/
+│   ├── directives/
+│   ├── features/
+│   ├── overlays/
+│   ├── system/
+│   ├── users/
+│   └── paths.nix
+├── home/
+│   └── demwe/
+└── resources/
 ```
 
-## Version
+`modules/default.nix` wires together the shared system layers. The actual user account glue lives in `modules/users/demwe/`, while the Home Manager module set is under `home/demwe/` and gets imported from there.
 
-System version is defined in `flake.nix` (line 21: `systemVersion = "25.11"`).
+## Host Setup
 
-To upgrade: change version in flake.nix, then run `update-lock`.
+The repository currently defines two NixOS hosts in `flake.nix`:
+
+1. `NixBook`
+2. `DemwEPC`
+
+Each host has its own directory under `hosts/<hostname>/` with the local boot, networking, features, and hardware configuration split out there.
+
+## Home Manager Layout
+
+The `home/demwe/` directory contains the per-user Home Manager modules, split by concern:
+
+`home/demwe/home.nix` imports the rest of the user modules such as `zsh.nix`, `neovim.nix`, `git.nix`, `packages.nix`, and the various toolchain files.
+
+## Custom Commands And Packages
+
+Helper commands are packaged under `modules/directives/utils/` and exposed as system packages. The most visible ones are `switch`, `switch-check`, `update-lock`, `remote-switch`, `cls`, `compress`, and `decompress`.
+
+Custom package definitions and overlays live in `modules/directives/`, `modules/overlays/`, and `modules/features/`. Use the `custom.<name>` namespace when a package is defined there.
+
+## Versioning
+
+This repo is pinned to NixOS 25.11 in `flake.nix`.
+
+To upgrade, change the pinned channel in `flake.nix` and run `update-lock`.
 
 ## Package Channels
 
-Packages can be mixed from different channels in a single list:
+Packages can be mixed from different channels in one list:
 
 ```nix
 with pkgs; [
-  firefox              # stable (nixos-25.11)
-  blender              # stable
-  unstable.obs-studio  # nixos-unstable
-  custom.rust-rover   # custom packages (modules/directives/)
+  firefox
+  blender
+  unstable.obs-studio
+  custom.rust-rover
 ]
 ```
 
-- No prefix → stable (nixos-25.11)
-- `unstable.xxx` → nixos-unstable
-- `custom.xxx` → custom packages (in modules/directives/)
-- `stable.xxx` → explicit stable (same as default)
+Rules of thumb:
 
-## Adding New Packages
+- No prefix means the pinned stable channel.
+- `unstable.<name>` comes from `nixpkgs-unstable`.
+- `custom.<name>` comes from `modules/directives/`.
+- `stable.<name>` is the explicit stable channel alias.
 
-### Nix packages (system)
-Add to appropriate file in `modules/users/demwe/packages/`:
-- `browsers.nix`
-- `development.nix`
-- `games.nix`
-- `creativity.nix` (graphics, video)
-- `office.nix`
-- etc.
+## Adding Something New
 
-### Flatpak packages
-Edit `modules/users/demwe/packages/flatpak.nix`:
-```nix
-services.flatpak.packages = [
-  "com.discordapp.Discord"
-];
-```
+To add a new package for the system or the user, put it in the relevant module file under `modules/common/packages/` or `home/demwe/`.
 
-### Custom packages (from modules/directives)
-Add package definition in `modules/directives/`, then use as `custom.<name>`.
+To add a new host, create a directory under `hosts/`, add it to `flake.nix`, and keep the host-specific boot, networking, and feature settings there.
 
-## Adding a New Host
+## Useful Files
 
-1. Create `hosts/<hostname>/` (in project root)
-2. Add files: `boot.nix`, `networking.nix`, `features.nix`, `hardware-configuration.nix`
-3. Add host to `flake.nix`:
-  ```nix
-  nixosConfigurations.Hostname = nixpkgs.lib.nixosSystem { ... };
-  ```
-
-## Building Different Hosts
-
-```bash
-# Using custom switch command (requires argument)
-switch NixBook
-switch DemwEPC
-
-# Using nixos-rebuild directly
-sudo nixos-rebuild switch --flake .#NixBook --log-format bar-with-logs
-sudo nixos-rebuild switch --flake .#DemwEPC --log-format bar-with-logs
-```
-
-## Files
-
-- `configuration.nix` - Main entry point
-- `flake.nix` - Flake configuration (inputs, outputs)
-- `flake.lock` - Locked versions (don't edit manually)
+- `configuration.nix` - Main NixOS entry point
+- `flake.nix` - Flake inputs and outputs
+- `flake.lock` - Locked dependency versions
