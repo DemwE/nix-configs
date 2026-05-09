@@ -9,5 +9,5 @@
     icons = "auto";
   };
 
-  home.file.".config/eza/theme.yml".source = "${config.my.paths.resources}/eza-theme.yml";
+  home.file.".config/eza/theme.yml".source = "${config.my.paths.resources}/demwe/eza-theme.yml";
 }

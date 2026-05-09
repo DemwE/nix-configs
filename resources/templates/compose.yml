@@ -1,0 +1,20 @@
+services:
+  app:
+    image: # <image_name:tag>
+    container_name: # <custom_container_name>
+    restart: # Options: no, always, on-failure, unless-stopped
+    ports:
+      - "8080:80" # [Host_Port]:[Container_Port]
+    volumes:
+      - ./data:/path/in/container:rw # Path mapping [Host]:[Container]:[Mode]
+      - ./config/settings.conf:/etc/app/settings.conf:ro # Mount specific file as Read-Only
+    environment:
+      - NODE_ENV=production
+      - DEBUG=false
+      - API_KEY=${API_KEY} # Loads value from a local .env file
+    networks:
+      - backend
+
+networks:
+  backend:
+    driver: bridge # Standard network driver for single-host communication

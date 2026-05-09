@@ -6,7 +6,7 @@
     settings = {
       logo = {
         type = "auto";
-        source = "${config.my.paths.resources}/fastfetch-image";
+        source = "${config.my.paths.resources}/demwe/fastfetch-image";
         color = {
           "1" = "bright_magenta";
         };
