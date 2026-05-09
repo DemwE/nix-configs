@@ -22,6 +22,7 @@
     ./eza.nix
     ./oh-my-posh.nix
     ./direnv.nix
+    ./tamplates.nix
     ./packages.nix
   ];
 

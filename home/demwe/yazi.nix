@@ -8,6 +8,6 @@
       git = pkgs.yaziPlugins.git;
       nvim = pkgs.vimPlugins.yazi-nvim;
     };
-  theme = builtins.fromTOML (builtins.readFile "${config.my.paths.resources}/yazi-theme.toml");
+  theme = builtins.fromTOML (builtins.readFile "${config.my.paths.resources}/demwe/yazi-theme.toml");
   };
 }

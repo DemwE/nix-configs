@@ -1,7 +1,7 @@
 { config, pkgs, ... }:
 let
-  wallpaper = "file://${config.my.paths.resources}/wallpaper.jpg";
-  lockBackground = "file://${config.my.paths.resources}/lock-background.jpg";
+  wallpaper = "file://${config.my.paths.resources}/demwe/wallpaper.jpg";
+  lockBackground = "file://${config.my.paths.resources}/demwe/lock-background.jpg";
 in
 {
   dconf = {

@@ -12,7 +12,7 @@ in
   # Set user avatar for AccountsService (GDM, GNOME settings)
   # Use C+ to copy instead of L+ to symlink - AccountsService needs direct file access
   systemd.tmpfiles.rules = [
-    "C+ /var/lib/AccountsService/icons/demwe - - - - ${config.my.paths.resources}/avatar.jpg"
+    "C+ /var/lib/AccountsService/icons/demwe - - - - ${config.my.paths.resources}/demwe/avatar.jpg"
     "C+ /var/lib/AccountsService/users/demwe  - - - - ${accountConfig}"
   ];
 }
