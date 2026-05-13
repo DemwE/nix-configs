@@ -4,7 +4,6 @@
     ssh = true;
     printing = true;
     storage = true;
-    firewall = true;
     openrgb = true;
   };
 
