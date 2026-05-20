@@ -24,7 +24,19 @@
       "uucp"
       "adbusers"
     ];
-    initialPassword = "init";
+    hashedPassword = "$6$wGYsg/EcdEhsP1AG$KzawdbGJRW.pKvqZFU0IzE38v9Aulb.tAq3cTwX5YO95qD5hFd28mq1Yp2flfFeKTKInVg/JQfJUBmBsOqlnz.";
+    subUidRanges = [
+      {
+        startUid = 100000;
+        count = 65536;
+      }
+    ];
+    subGidRanges = [
+      {
+        startGid = 100000;
+        count = 65536;
+      }
+    ];
   };
   nix.settings.trusted-users = [ "demwe" ];
 }

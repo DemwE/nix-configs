@@ -70,12 +70,6 @@
           file = "/etc/machine-id";
           inInitrd = true;
         }
-        "/etc/shadow"
-        "/etc/gshadow"
-        "/etc/passwd"
-        "/etc/group"
-        "/etc/subuid"
-        "/etc/subgid"
       ];
       directories = [
         "/var/lib/nixos"
