@@ -20,7 +20,7 @@
             path = "/persist/ssh/ssh_host_rsa_key";
             type = "rsa";
           }
-        ]
+        ];
       };
     })
 
