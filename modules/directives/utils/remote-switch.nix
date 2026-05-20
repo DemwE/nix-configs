@@ -15,7 +15,7 @@ pkgs: {
 
       echo "Redirecting build of $HOST to $BUILD_HOST"
 
-      nh os switch /etc/nixos --hostname "$HOST" --build-host "$BUILD_HOST" "''${@:3}"
+      nh os switch /home/nixos-configs --hostname "$HOST" --build-host "$BUILD_HOST" "''${@:3}"
     '';
   };
 }
