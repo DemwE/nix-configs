@@ -6,7 +6,7 @@ pkgs: {
     name = "update-lock";
     text = ''
       echo "Updating flake lock..."
-      exec sudo nix --extra-experimental-features 'nix-command flakes' flake update --flake /etc/nixos
+      exec sudo nix --extra-experimental-features 'nix-command flakes' flake update --flake /home/nixos-configs
     '';
   };
 }
