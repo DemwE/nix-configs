@@ -8,6 +8,7 @@
       url = "github:nix-community/home-manager/release-25.11";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    impermanence.url = "github:nix-community/impermanence";
   };
 
   outputs =
@@ -51,6 +52,7 @@
           systemVersion = systemVersion;
         };
         modules = [
+          impermanence.nixosModules.impermanence
           home-manager.nixosModules.home-manager
           nixosModule
           ./hosts/NixBook
@@ -58,6 +60,7 @@
         ];
       };
 
+      # Host: DemwEPC (desktop)
       nixosConfigurations.DemwEPC = nixpkgs.lib.nixosSystem {
         system = "x86_64-linux";
         specialArgs = {

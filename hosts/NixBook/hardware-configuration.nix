@@ -58,6 +58,13 @@ in
     options = [ "subvol=@log" ] ++ btrfsOpts;
   };
 
+  fileSystems."/persist" = {
+    device = "/dev/disk/by-uuid/4749bcc1-1605-4812-9ae3-b3e733bb6dfa";
+    fsType = "btrfs";
+    options = [ "subvol=@persist" ] ++ btrfsOpts;
+    neededForBoot = true;
+  };
+
   fileSystems."/boot" = {
     device = "/dev/disk/by-uuid/9447-9073";
     fsType = "vfat";
@@ -66,13 +73,6 @@ in
       "dmask=0022"
     ];
   };
-
-  swapDevices = [
-    {
-      device = "/var/lib/swapfile";
-      size = 8192;
-    }
-  ];
 
   nixpkgs.hostPlatform = lib.mkDefault "x86_64-linux";
   hardware.cpu.intel.updateMicrocode = lib.mkDefault config.hardware.enableRedistributableFirmware;
