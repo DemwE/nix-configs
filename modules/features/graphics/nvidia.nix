@@ -63,7 +63,7 @@ in
       dynamicBoost.enable = cfg.dynamicBoost;
 
       # Use the NVIDIA open source kernel module? (Turing+ only)
-      open = true;
+      open = false;
 
       # Enable the NVIDIA settings tool (`nvidia-settings`)
       nvidiaSettings = true;

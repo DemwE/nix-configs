@@ -4,6 +4,7 @@
     ssh = true;
     printing = true;
     storage = true;
+    thermald = true;
   };
 
   my.features = {
