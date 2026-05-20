@@ -1,15 +1,13 @@
 { lib, pkgs, ... }:
 {
-  # 1. Włączamy nowoczesne initrd oparte na systemd
+  # Enable systemd-based initrd and include required tools for BTRFS and filesystem setup
   boot.initrd.systemd.enable = true;
+  boot.initrd.systemd.initrdBin = [ pkgs.btrfs-progs pkgs.e2fsprogs pkgs.coreutils ];
+  # Disable machine-id commit in initrd; preserve machine-id separately under /persist
+  systemd.services.systemd-machine-id-commit.enable = false;
+  systemd.maskedServices = [ "systemd-machine-id-commit.service" ];
 
-  # Dorzucamy niezbędne narzędzia do obrazu initrd, żeby systemd miał je pod ręką
-  boot.initrd.systemd.initrdBin = [
-    pkgs.btrfs-progs
-    pkgs.e2fsprogs
-  ];
-
-  # 2. Poprawna definicja usługi dla systemd w initrd
+  # Rollback service for BTRFS root subvolume setup in initrd
   boot.initrd.systemd.services.rollback = {
     description = "Rollback BTRFS root subvolume";
     wantedBy = [ "initrd.target" ];
@@ -21,35 +19,39 @@
     serviceConfig = {
       Type = "oneshot";
       RemainAfterExit = true;
-      # W systemd initrd komendy basha podaje się bezpośrednio w ExecStart
-      ExecStart = pkgs.writeScript "btrfs-rollback" ''
-        #!${pkgs.pkgsStatic.bash}/bin/bash
-        mkdir -p /btrfs
-        mount -t btrfs /dev/disk/by-uuid/4749bcc1-1605-4812-9ae3-b3e733bb6dfa /btrfs
-
-        if [ -e /btrfs/@root ]; then
-            if [ -e /btrfs/@root/var/empty ]; then
-                chattr -i /btrfs/@root/var/empty
-            fi
-
-            timestamp=$(date +%Y-%m-%d_%H-%M-%S)
-            echo "--> moving existing @root to /btrfs/old_roots/@root_$timestamp..."
-            mkdir -p /btrfs/old_roots
-            mv /btrfs/@root "/btrfs/old_roots/@root_$timestamp"
-        fi
-
-        echo "--> creating new @root subvolume..."
-        btrfs subvolume create /btrfs/@root
-
-        umount /btrfs
-      '';
     };
+
+    script = ''
+      mkdir -p /btrfs
+      mount -t btrfs /dev/disk/by-uuid/4749bcc1-1605-4812-9ae3-b3e733bb6dfa /btrfs
+
+      if [ -e /btrfs/@root ]; then
+          if [ -e /btrfs/@root/var/empty ]; then
+              chattr -i /btrfs/@root/var/empty
+          fi
+
+          timestamp=$(date +%Y-%m-%d_%H-%M-%S)
+          echo "--> moving existing @root to /btrfs/old_roots/@root_$timestamp..."
+          mkdir -p /btrfs/old_roots
+          mv /btrfs/@root "/btrfs/old_roots/@root_$timestamp"
+      fi
+
+      echo "--> creating new @root subvolume..."
+      btrfs subvolume create /btrfs/@root
+
+      umount /btrfs
+    '';
   };
 
   preservation = {
     enable = true;
 
     preserveAt."/persist" = {
+      commonMountOptions = [
+        { name = "x-gvfs-hide"; }
+        { name = "x-gdu.hide"; }
+      ];
+
       files = [
         {
           file = "/etc/machine-id";
