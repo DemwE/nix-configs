@@ -28,6 +28,10 @@ in
       enable = true;
       dockerCompat = true;
       dockerSocket.enable = true;
+      autoPrune = {
+        enable = true;
+        dates = "daily";
+      }
     };
     # Create group so user can be added (handled in user module)
     users.groups.podman = { };

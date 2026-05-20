@@ -110,9 +110,11 @@ in
 
   systemd.services.ppd-hook = {
     description = "Custom power profile hooks (NVIDIA, turbo) on top of PPD";
+    
     after = [ "power-profiles-daemon.service" "dbus.service" ];
-    wants = [ "power-profiles-daemon.service" ];
-    wantedBy = [ "multi-user.target" ];
+    requires = [ "power-profiles-daemon.service" ];
+    bindsTo = [ "power-profiles-daemon.service" ];
+    wantedBy = [ "power-profiles-daemon.service" ]; 
     serviceConfig = {
       Type = "simple";
       Restart = "on-failure";

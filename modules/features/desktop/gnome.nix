@@ -40,6 +40,8 @@ in
       mission-center
     ];
 
+    programs.gnome-terminal.enable = false; # Use xdg.terminal-exec instead
+
     xdg.terminal-exec = {
       enable = true;
       package = pkgs.blackbox-terminal;
