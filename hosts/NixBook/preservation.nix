@@ -2,10 +2,13 @@
 {
   # Enable systemd-based initrd and include required tools for BTRFS and filesystem setup
   boot.initrd.systemd.enable = true;
-  boot.initrd.systemd.initrdBin = [ pkgs.btrfs-progs pkgs.e2fsprogs pkgs.coreutils ];
+  boot.initrd.systemd.initrdBin = [
+    pkgs.btrfs-progs
+    pkgs.e2fsprogs
+    pkgs.coreutils
+  ];
   # Disable machine-id commit in initrd; preserve machine-id separately under /persist
-  systemd.services.systemd-machine-id-commit.enable = false;
-  systemd.maskedServices = [ "systemd-machine-id-commit.service" ];
+  systemd.services.systemd-machine-id-commit.wantedBy = lib.mkForce [ ];
 
   # Rollback service for BTRFS root subvolume setup in initrd
   boot.initrd.systemd.services.rollback = {
@@ -66,6 +69,7 @@
           inInitrd = true;
         }
         "/etc/shadow"
+        "/etc/gshadow"
         "/etc/passwd"
         "/etc/group"
         "/etc/subuid"
@@ -80,6 +84,7 @@
         "/var/lib/AccountsService"
         "/var/lib/containers/storage"
         "/etc/NetworkManager/system-connections"
+        "/etc/nixos"
         "/etc/ssh"
       ];
     };
