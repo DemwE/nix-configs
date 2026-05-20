@@ -8,7 +8,9 @@
     pkgs.coreutils
   ];
   # Disable machine-id commit in initrd; preserve machine-id separately under /persist
-  systemd.services.systemd-machine-id-commit.wantedBy = lib.mkForce [ ];
+  systemd.services.systemd-machine-id-commit = {
+    unitConfig.ConditionPathExists = "/never/path";
+  };
 
   # Rollback service for BTRFS root subvolume setup in initrd
   boot.initrd.systemd.services.rollback = {
@@ -84,8 +86,6 @@
         "/var/lib/AccountsService"
         "/var/lib/containers/storage"
         "/etc/NetworkManager/system-connections"
-        "/etc/nixos"
-        "/etc/ssh"
       ];
     };
   };

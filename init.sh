@@ -1,6 +1,6 @@
 # Define the target and backup paths
-TARGET="/etc/nixos"
-BACKUP="/etc/nixos.bak"
+TARGET="/home/nixos-configs"
+BACKUP="/home/nixos-configs.bak"
 CURRENT_DIR=$(pwd)
 
 echo "Current path is: $CURRENT_DIR"
