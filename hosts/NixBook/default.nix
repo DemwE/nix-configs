@@ -4,6 +4,6 @@
     ./networking.nix
     ./features.nix
     ./hardware-configuration.nix
-    ./impermanence.nix
+    ./preservation.nix
   ];
 }
