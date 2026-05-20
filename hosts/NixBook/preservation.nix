@@ -39,6 +39,14 @@
       echo "--> creating new @root subvolume..."
       btrfs subvolume create /btrfs/@root
 
+      echo "--> checking for old @root subvolumes to clean up..."
+      cd /btrfs/old_roots
+      btrfs subvolume list -o /btrfs | grep "old_roots/@root_" | awk '{print $NF}' | sort | head -n -10 | while read -r old_root; do
+          echo "--> removing old root subvolume: /btrfs/$old_root"
+          btrfs subvolume delete "/btrfs/$old_root"
+      done
+      cd /
+
       umount /btrfs
     '';
   };
@@ -57,18 +65,22 @@
           file = "/etc/machine-id";
           inInitrd = true;
         }
+        "/etc/shadow"
+        "/etc/passwd"
+        "/etc/group"
+        "/etc/subuid"
+        "/etc/subgid"
       ];
       directories = [
-        "/var/lib/systemd/timers"
         "/var/lib/nixos"
         "/var/lib/bluetooth"
         "/var/lib/cups"
         "/var/lib/fprint"
-        "/var/lib/AccountsService"
         "/var/lib/flatpak"
+        "/var/lib/AccountsService"
         "/var/lib/containers/storage"
-        "/var/db/sudo"
         "/etc/NetworkManager/system-connections"
+        "/etc/ssh"
       ];
     };
   };
