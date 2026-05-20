@@ -31,7 +31,7 @@ in
       autoPrune = {
         enable = true;
         dates = "daily";
-      }
+      };
     };
     # Create group so user can be added (handled in user module)
     users.groups.podman = { };
