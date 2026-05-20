@@ -50,6 +50,7 @@ in
     device = "/dev/disk/by-uuid/4749bcc1-1605-4812-9ae3-b3e733bb6dfa";
     fsType = "btrfs";
     options = [ "subvol=@nix" ] ++ btrfsOpts;
+    neededForBoot = true;
   };
 
   fileSystems."/var/log" = {

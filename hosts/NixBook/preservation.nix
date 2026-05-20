@@ -1,4 +1,3 @@
-{ lib, ... }:
 {
   boot.initrd.postDeviceCommands = lib.mkAfter ''
     mkdir /btrfs
@@ -40,7 +39,7 @@
         "/var/lib/containers/storage"
         "/var/db/sudo"
         "/etc/NetworkManager/system-connections"
-      ];
+      ]
     };
-  };
+  }
 }

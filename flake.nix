@@ -8,7 +8,7 @@
       url = "github:nix-community/home-manager/release-25.11";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    impermanence.url = "github:nix-community/impermanence";
+    preservation.url = "github:nix-community/preservation";
   };
 
   outputs =
@@ -17,7 +17,7 @@
       nixpkgs,
       nixpkgs-unstable,
       home-manager,
-      impermanence,
+      preservation,
     }:
     let
       # Define the system version for use in configurations
@@ -53,7 +53,7 @@
           systemVersion = systemVersion;
         };
         modules = [
-          impermanence.nixosModules.impermanence
+          preservation.nixosModules.default
           home-manager.nixosModules.home-manager
           nixosModule
           ./hosts/NixBook

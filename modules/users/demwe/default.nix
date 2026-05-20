@@ -24,6 +24,7 @@
       "uucp"
       "adbusers"
     ];
+    initialPassword = "init";
   };
   nix.settings.trusted-users = [ "demwe" ];
 }
