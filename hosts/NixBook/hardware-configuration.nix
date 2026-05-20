@@ -9,6 +9,14 @@
   ...
 }:
 
+let
+  btrfsOpts = [
+    "noatime"
+    "compress=zstd:1"
+    "discard=async"
+    "space_cache=v2"
+  ];
+in
 {
   imports = [
     (modulesPath + "/installer/scan/not-detected.nix")
@@ -27,16 +35,35 @@
   boot.extraModulePackages = [ ];
 
   fileSystems."/" = {
-    device = "/dev/disk/by-uuid/49304971-f675-4a32-a790-a80addd1b2cd";
-    fsType = "ext4";
+    device = "/dev/disk/by-uuid/4749bcc1-1605-4812-9ae3-b3e733bb6dfa";
+    fsType = "btrfs";
+    options = [ "subvol=@root" ] ++ btrfsOpts;
+  };
+
+  fileSystems."/home" = {
+    device = "/dev/disk/by-uuid/4749bcc1-1605-4812-9ae3-b3e733bb6dfa";
+    fsType = "btrfs";
+    options = [ "subvol=@home" ] ++ btrfsOpts;
+  };
+
+  fileSystems."/nix" = {
+    device = "/dev/disk/by-uuid/4749bcc1-1605-4812-9ae3-b3e733bb6dfa";
+    fsType = "btrfs";
+    options = [ "subvol=@nix" ] ++ btrfsOpts;
+  };
+
+  fileSystems."/var/log" = {
+    device = "/dev/disk/by-uuid/4749bcc1-1605-4812-9ae3-b3e733bb6dfa";
+    fsType = "btrfs";
+    options = [ "subvol=@log" ] ++ btrfsOpts;
   };
 
   fileSystems."/boot" = {
-    device = "/dev/disk/by-uuid/0955-9383";
+    device = "/dev/disk/by-uuid/9447-9073";
     fsType = "vfat";
     options = [
-      "fmask=0077"
-      "dmask=0077"
+      "fmask=0022"
+      "dmask=0022"
     ];
   };
 
