@@ -5,9 +5,9 @@
     mount -t btrfs /dev/disk/by-uuid/4749bcc1-1605-4812-9ae3-b3e733bb6dfa /btrfs
 
     if [ -e /btrfs/@root ]; then
-        echo "--> moving existing @root to /btrfs/old_roots/@root_TIMESTAMP ..."
-        mkdir -p /btrfs/old_roots
         timestamp=$(date +%Y-%m-%d_%H-%M-%S)
+        echo "--> moving existing @root to /btrfs/old_roots/@root_$timestamp..."
+        mkdir -p /btrfs/old_roots
         mv /btrfs/@root "/btrfs/old_roots/@root_$timestamp"
     fi
 
@@ -17,10 +17,10 @@
     umount /btrfs
   '';
 
-  #
   environment.persistence."/persist" = {
     hideMounts = true;
     directories = [
+      # /var
       "/var/lib/bluetooth"
       "/var/lib/NetworkManager"
       "/var/lib/nixos"
@@ -29,9 +29,18 @@
       "/var/lib/AccountsService"
       "/var/lib/flatpak"
       "/var/lib/containers/storage"
+      "/var/db/sudo"
+      # /etc
+      "/etc/ssh"
+      "/etc/nixos"
+      "/etc/NetworkManager"
     ];
     files = [
       "/etc/machine-id"
+      "/etc/passwd"
+      "/etc/shadow"
+      "/etc/group"
+      "/etc/gshadow"
     ];
   };
 }
