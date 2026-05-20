@@ -28,17 +28,17 @@ in
       enable = true;
       dockerCompat = true;
       dockerSocket.enable = true;
-      extraPackages = [ pkgs.slirp4netns ]; # Required for rootless podman to work without additional setup
+      extraPackages = [ pkgs.slirp4netns ];
       autoPrune = {
         enable = true;
         dates = "daily";
       };
-      containersConf.settings = {
-        storage = {
-          driver = "overlay";
-          graphroot = "/persist/var/lib/containers/storage";
-          runroot = "/run/containers/storage";
-        };
+    };
+    virtualisation.containers.containersConf.settings = {
+      storage = {
+        driver = "overlay";
+        graphroot = "/persist/var/lib/containers/storage";
+        runroot = "/run/containers/storage";
       };
     };
     # Create group so user can be added (handled in user module)

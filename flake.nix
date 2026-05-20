@@ -17,6 +17,7 @@
       nixpkgs,
       nixpkgs-unstable,
       home-manager,
+      impermanence,
     }:
     let
       # Define the system version for use in configurations

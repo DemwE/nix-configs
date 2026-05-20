@@ -1,7 +1,5 @@
-{ inputs, lib, ... }:
+{ lib, ... }:
 {
-  imports = [ inputs.impermanence.nixosModules.impermanence ];
-
   boot.initrd.postDeviceCommands = lib.mkAfter ''
     mkdir /btrfs
     mount -t btrfs /dev/disk/by-uuid/4749bcc1-1605-4812-9ae3-b3e733bb6dfa /btrfs
