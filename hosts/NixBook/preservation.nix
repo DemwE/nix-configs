@@ -46,7 +46,7 @@
 
       echo "--> checking for old @root subvolumes to clean up..."
       cd /btrfs/old_roots
-      ls -d @root_* | sort | head -n -8 | while read -r old_root; do
+      ls -d @root_* | sort | head -n -4 | while read -r old_root; do
           echo "--> removing old root subvolume: /btrfs/old_roots/$old_root"
           btrfs subvolume delete -R "/btrfs/old_roots/$old_root"
       done

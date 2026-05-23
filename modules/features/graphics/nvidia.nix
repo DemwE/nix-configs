@@ -66,7 +66,7 @@ in
       open = false;
 
       # Enable the NVIDIA settings tool (`nvidia-settings`)
-      nvidiaSettings = true;
+      nvidiaSettings = false;
 
       # Select the driver package (adjust if you need a specific version)
       package = config.boot.kernelPackages.nvidiaPackages.stable;
