@@ -24,19 +24,21 @@
       };
 
       allowedTCPPortRanges = lib.mkOption {
-        type = lib.types.listOf (lib.types.submodule {
-          options = {
-            from = lib.mkOption {
-              type = lib.types.port;
-              description = "Start of the TCP port range.";
-            };
+        type = lib.types.listOf (
+          lib.types.submodule {
+            options = {
+              from = lib.mkOption {
+                type = lib.types.port;
+                description = "Start of the TCP port range.";
+              };
 
-            to = lib.mkOption {
-              type = lib.types.port;
-              description = "End of the TCP port range.";
+              to = lib.mkOption {
+                type = lib.types.port;
+                description = "End of the TCP port range.";
+              };
             };
-          };
-        });
+          }
+        );
         default = [ ];
         description = "TCP port ranges to open in the firewall.";
       };
@@ -48,19 +50,21 @@
       };
 
       allowedUDPPortRanges = lib.mkOption {
-        type = lib.types.listOf (lib.types.submodule {
-          options = {
-            from = lib.mkOption {
-              type = lib.types.port;
-              description = "Start of the UDP port range.";
-            };
+        type = lib.types.listOf (
+          lib.types.submodule {
+            options = {
+              from = lib.mkOption {
+                type = lib.types.port;
+                description = "Start of the UDP port range.";
+              };
 
-            to = lib.mkOption {
-              type = lib.types.port;
-              description = "End of the UDP port range.";
+              to = lib.mkOption {
+                type = lib.types.port;
+                description = "End of the UDP port range.";
+              };
             };
-          };
-        });
+          }
+        );
         default = [ ];
         description = "UDP port ranges to open in the firewall.";
       };
@@ -91,5 +95,15 @@
         "lh.me"
       ];
     };
+
+    networking.nameservers = [
+      # ipv4
+      "1.1.1.1"
+      "8.8.8.8"
+      # ipv6
+      "2606:4700:4700::1111"
+      "2001:4860:4860::8888"
+    ];
+    networking.networkmanager.dhcp = "dhcpcd";
   };
 }
