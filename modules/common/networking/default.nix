@@ -89,21 +89,37 @@
       allowedUDPPortRanges = config.my.networking.firewall.allowedUDPPortRanges;
     };
 
-    # Custom hosts entries:
     networking.hosts = {
-      "127.0.0.1" = [
-        "lh.me"
-      ];
+      "127.0.0.1" = [ "lh.me" ];
     };
 
-    networking.nameservers = [
-      # ipv4
-      "1.1.1.1"
-      "8.8.8.8"
-      # ipv6
-      "2606:4700:4700::1111"
-      "2001:4860:4860::8888"
-    ];
-    networking.networkmanager.dhcp = "dhcpcd";
+    networking.networkmanager.dhcp = "internal";
+    networking.networkmanager.dns = lib.mkForce "none";
+    networking.networkmanager.wifi.backend = "iwd";
+
+    services.resolved = {
+      enable = true;
+      fallbackDns = [
+        # ipv4 main
+        "1.1.1.1#cloudflare-dns.com"
+        "8.8.8.8#dns.google"
+        # ivp4 fallback
+        "1.0.0.1#cloudflare-dns.com"
+        "8.8.4.4#dns.google"
+        # ipv6 main
+        "2606:4700:4700::1111#cloudflare-dns.com"
+        "2001:4860:4860::8888#dns.google"
+        # ipv6 fallback
+        "2606:4700:4700::1001#cloudflare-dns.com"
+        "2001:4860:4860::8844#dns.google"
+      ];
+      dnssec = "true";
+      domains = [ "~." ];
+      extraConfig = ''
+        DNSOverTLS=opportunistic
+      '';
+    };
+
+    boot.kernel.sysctl."net.ipv6.conf.all.use_tempaddr" = 2;
   };
 }

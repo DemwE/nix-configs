@@ -79,7 +79,7 @@
         "/var/lib/flatpak"
         "/var/lib/AccountsService"
         "/var/lib/containers/storage"
-        "/etc/NetworkManager/system-connections"
+        "/var/lib/iwd"
       ];
     };
   };
