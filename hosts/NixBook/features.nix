@@ -5,6 +5,7 @@
     printing = true;
     storage = true;
     thermald = true;
+    tailscale = true;
   };
 
   my.features = {

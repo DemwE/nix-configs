@@ -6,6 +6,7 @@
     storage = lib.mkEnableOption "Enable storage services (udisks2, gvfs)";
     openrgb = lib.mkEnableOption "Enable OpenRGB daemon";
     thermald = lib.mkEnableOption "Enable Intel Themal Daemon (thermald)";
+    tailscale = lib.mkEnableOption "Enable Tailscale VPN client";
   };
 
   config = lib.mkMerge [
@@ -42,6 +43,10 @@
 
     (lib.mkIf config.my.services.thermald {
       services.thermald.enable = true;
+    })
+
+    (lib.mkIf config.my.services.tailscale {
+      services.tailscale.enable = true;
     })
   ];
 }
