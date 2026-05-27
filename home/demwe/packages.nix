@@ -6,7 +6,7 @@
     brave
 
     # Development
-    nixfmt-rfc-style
+    nixfmt
     unstable.gitkraken
     custom.rust-rover
     custom.webstorm

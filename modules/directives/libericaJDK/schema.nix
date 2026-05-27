@@ -14,11 +14,11 @@ let
       pkgs.stdenv.cc.cc.lib
       pkgs.zlib
       pkgs.alsa-lib
-      pkgs.xorg.libX11
-      pkgs.xorg.libXext
-      pkgs.xorg.libXrender
-      pkgs.xorg.libXtst
-      pkgs.xorg.libXi
+      pkgs.libX11
+      pkgs.libXext
+      pkgs.libXrender
+      pkgs.libXtst
+      pkgs.libXi
     ];
 
     installPhase = ''

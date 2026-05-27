@@ -11,9 +11,6 @@ in
     # Prevent the fallback XTerm desktop session from being enabled/installed
     services.xserver.excludePackages = [ pkgs.xterm ];
     
-    services.displayManager.gdm = {
-      enable = true;
-      wayland = true; # Enable Wayland by default
-    };
+    services.displayManager.gdm.enable = true;
   };
 }
