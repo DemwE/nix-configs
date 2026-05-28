@@ -80,6 +80,7 @@
         "/var/lib/AccountsService"
         "/var/lib/containers/storage"
         "/var/lib/iwd"
+        "/var/lib/tailscale"
       ];
     };
   };
