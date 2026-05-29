@@ -24,7 +24,7 @@ in
       };
       "org/gnome/shell" = {
         always-show-log-out = true;
-      }
+      };
     };
   };
 }
