@@ -22,6 +22,9 @@ in
         exec = "blackbox";
         exec-arg = "";
       };
+      "org/gnome/shell" = {
+        always-show-log-out = true;
+      }
     };
   };
 }
