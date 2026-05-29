@@ -13,7 +13,7 @@ pkgs: {
       fi
       HOST="$1"
       echo "Checking host: $HOST"
-      exec sudo nix --extra-experimental-features flakes flake check "/etc/nixos#$HOST"
+      exec sudo nix --extra-experimental-features flakes flake check "/home/nixos-configs#$HOST"
     '';
   };
 }

@@ -1,4 +1,4 @@
-{ config, pkgs, ... }:
+{ lib, config, pkgs, options, nixosConfig, ... }:
 {
   programs.gnome-shell.enable = true;
   programs.gnome-shell.extensions = [
@@ -6,27 +6,29 @@
     { package = pkgs.gnomeExtensions.appindicator; }
     { package = pkgs.gnomeExtensions.clipboard-indicator; }
     { package = pkgs.gnomeExtensions.alphabetical-app-grid; }
+  ]
+  ++ lib.optionals (nixosConfig.my.features.syncthing.enable or false) [
     { package = pkgs.gnomeExtensions.syncthing-indicator; }
   ];
 
   gtk = {
     enable = true;
-    
+
     theme = {
       name = "Adwaita";
       package = pkgs.gnome-themes-extra;
     };
-    
+
     iconTheme = {
       name = "Adwaita";
       package = pkgs.adwaita-icon-theme;
     };
-    
+
     cursorTheme = {
       name = "Adwaita";
       package = pkgs.adwaita-icon-theme;
     };
-    
+
     # GTK apps: force dark mode via legacy setting
     gtk3.extraConfig = {
       gtk-application-prefer-dark-theme = true;
