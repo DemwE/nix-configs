@@ -1,4 +1,4 @@
-{ lib, pkgs, ... }:
+{ lib, pkgs, config, ... }:
 {
   # Enable systemd-based initrd and include required tools for BTRFS and filesystem setup
   boot.initrd.systemd.enable = true;
@@ -80,6 +80,8 @@
         "/var/lib/AccountsService"
         "/var/lib/containers/storage"
         "/var/lib/iwd"
+      ]
+      ++ lib.optionals config.my.services.tailscale [
         "/var/lib/tailscale"
       ];
     };
