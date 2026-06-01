@@ -6,6 +6,8 @@ pkgs: {
     paths = [
       pkgs.espflash
       pkgs.probe-rs-tools
+      pkgs.esp-generate
+      pkgs.espup
     ];
   };
 }
