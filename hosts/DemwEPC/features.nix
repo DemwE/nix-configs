@@ -28,5 +28,6 @@
     ollama.enable = false;
     postgres.enable = false;
     wireshark.enable = true;
+    ld.enable = true;
   };
 }

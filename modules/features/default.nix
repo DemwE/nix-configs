@@ -19,5 +19,6 @@
     ./graphics/supergfxd.nix
     ./tools/ollama.nix
     ./tools/wireshark.nix
+    ./tools/ld.nix
   ];
 }
