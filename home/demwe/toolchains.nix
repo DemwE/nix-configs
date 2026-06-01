@@ -9,6 +9,7 @@ let
     bun     = pkgs.custom.toolchain-bun;
     haskell = pkgs.custom.toolchain-haskell;
     rider   = pkgs.custom.rider;
+    esp     = pkgs.custom.toolchain-esp;
   };
 in
 {
