@@ -7,7 +7,7 @@ pkgs: {
     name = "battery-watch";
     runtimeInputs = [ pkgs.procps ];
     text = ''
-      watch -n 1 "cat /sys/class/power_supply/BAT0/power_now | awk '{print \$1/1000000 \" W\"}'"
+      watch -n 1 "cat /sys/class/power_supply/BAT0/{energy_now,power_now} | awk 'NR==1{e=\$1} NR==2{p=\$1; if(p>0) printf \"Usage: %.2f W | Remaining: %02d:%02d\", p/1000000, (e/p), (e/p*60)%60; else print \"No data\"}'"
     '';
   };
 
