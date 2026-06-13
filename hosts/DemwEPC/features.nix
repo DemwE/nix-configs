@@ -2,9 +2,9 @@
 {
   my.services = {
     ssh.enable = true;
-    printing = true;
-    storage = true;
-    openrgb = true;
+    printing.enable = true;
+    storage.enable = true;
+    openrgb.enable = true;
   };
 
   my.features = {

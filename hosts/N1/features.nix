@@ -2,9 +2,9 @@
 {
   my.services = {
     ssh.enable = true;
-    storage = true;
-    thermald = true;
-    tailscale = true;
+    storage.enable = true;
+    thermald.enable = true;
+    tailscale.enable = true;
   };
 
   my.features = {

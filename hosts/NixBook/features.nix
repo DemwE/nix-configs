@@ -5,10 +5,10 @@
       enable = true;
       preservation.enable = true;
     };
-    printing = true;
-    storage = true;
-    thermald = true;
-    tailscale = true;
+    printing.enable = true;
+    storage.enable = true;
+    thermald.enable = true;
+    tailscale.enable = true;
   };
 
   my.features = {
