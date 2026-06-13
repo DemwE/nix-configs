@@ -4,8 +4,10 @@
     ssh = {
       enable = lib.mkEnableOption "Enable SSH server";
       preservation.enable = lib.mkEnableOption "Preserve SSH host keys across system rebuilds";
-    }
-    printing = lib.mkEnableOption "Enable printing support (CUPS)";
+    };
+    printing = {
+      enable = lib.mkEnableOption "Enable printing support (CUPS)";
+    };
     storage = lib.mkEnableOption "Enable storage services (udisks2, gvfs)";
     openrgb = lib.mkEnableOption "Enable OpenRGB daemon";
     thermald = lib.mkEnableOption "Enable Intel Themal Daemon (thermald)";
@@ -13,7 +15,7 @@
   };
 
   config = lib.mkMerge [
-    (lib.mkIf config.my.services.ssh {
+    (lib.mkIf config.my.services.ssh.enable {
       services.openssh = {
         enable = true;
         hostKeys = lib.mkIf config.my.services.ssh.preservation.enable [
