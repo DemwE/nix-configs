@@ -1,7 +1,10 @@
 { ... }:
 {
   my.services = {
-    ssh = true;
+    ssh = {
+      enable = true;
+      preservation.enable = true;
+    };
     printing = true;
     storage = true;
     thermald = true;

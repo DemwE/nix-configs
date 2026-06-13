@@ -1,7 +1,10 @@
 { lib, config, ... }:
 {
   options.my.services = {
-    ssh = lib.mkEnableOption "Enable SSH server";
+    ssh = {
+      enable = lib.mkEnableOption "Enable SSH server";
+      preservation.enable = lib.mkEnableOption "Preserve SSH host keys across system rebuilds";
+    }
     printing = lib.mkEnableOption "Enable printing support (CUPS)";
     storage = lib.mkEnableOption "Enable storage services (udisks2, gvfs)";
     openrgb = lib.mkEnableOption "Enable OpenRGB daemon";
@@ -13,7 +16,7 @@
     (lib.mkIf config.my.services.ssh {
       services.openssh = {
         enable = true;
-        hostKeys = [
+        hostKeys = lib.mkIf config.my.services.ssh.preservation.enable [
           {
             path = "/persist/ssh/ssh_host_ed25519_key";
             type = "ed25519";

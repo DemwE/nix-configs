@@ -1,7 +1,7 @@
 { ... }:
 {
   my.services = {
-    ssh = true;
+    ssh.enable = true;
     printing = true;
     storage = true;
     openrgb = true;

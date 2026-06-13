@@ -11,20 +11,19 @@
       type = lib.types.enum [
         "stable"
         "unstable"
+        "lts"
       ];
-      default = "unstable";
+      default = "stable";
       description = "Kernel version to use";
     };
   };
 
   config = {
-    boot.loader.systemd-boot.enable = true;
-    boot.loader.efi.canTouchEfiVariables = true;
-    boot.loader.systemd-boot.configurationLimit = 8;
-
     boot.kernelPackages =
       if config.my.boot.kernel == "unstable" && pkgs-unstable != null then
         pkgs-unstable.linuxPackages
+      else if config.my.boot.kernel == "lts" then
+        pkgs.linuxPackages.lts
       else
         pkgs.linuxPackages;
   };

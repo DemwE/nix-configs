@@ -7,5 +7,6 @@
 {
   imports = [
     ./demwe
+    ./admin
   ];
 }
