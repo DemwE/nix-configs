@@ -1,13 +1,13 @@
 { lib, config, ... }:
 {
+  imports = [
+    ./home.nix
+    ./avatar.nix
+  ];
+
   options.my.users.demwe.enable = lib.mkEnableOption "demwe user";
 
   config = lib.mkIf config.my.users.demwe.enable {
-    imports = [
-      ./home.nix
-      ./avatar.nix
-    ];
-
     users.users.demwe = {
       isNormalUser = true;
       description = "DemwE";

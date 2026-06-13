@@ -3,8 +3,11 @@
   pkgs,
   config,
   ...
-}:
-{
+}: {
+  imports = [
+    ./server.nix
+  ];
+
   config = {
     environment.systemPackages = (
       with pkgs;

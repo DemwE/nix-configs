@@ -7,6 +7,8 @@
     tailscale.enable = true;
   };
 
+  my.packages.server.enable = true;
+
   my.features = {
     nix-helper.enable = true;
     podman.enable = true;
