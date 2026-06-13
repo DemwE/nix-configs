@@ -5,6 +5,6 @@
     ./features.nix
     ./hardware-configuration.nix
     ./nfs.nix
-    ./others.nix
+    ./other.nix
   ];
 }

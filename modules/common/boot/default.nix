@@ -23,7 +23,7 @@
       if config.my.boot.kernel == "unstable" && pkgs-unstable != null then
         pkgs-unstable.linuxPackages
       else if config.my.boot.kernel == "lts" then
-        pkgs.linuxPackages.lts
+        pkgs.linuxPackages_6_6
       else
         pkgs.linuxPackages;
   };

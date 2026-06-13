@@ -7,7 +7,7 @@
       mdadm
       lm_sensors
       nfs-utils
-      io-top
+      iotop
     ];
   };
 }

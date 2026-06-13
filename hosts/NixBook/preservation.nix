@@ -81,7 +81,7 @@
         "/var/lib/containers/storage"
         "/var/lib/iwd"
       ]
-      ++ lib.optionals config.my.services.tailscale [
+      ++ lib.optionals config.my.services.tailscale.enable [
         "/var/lib/tailscale"
       ];
     };

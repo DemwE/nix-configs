@@ -84,6 +84,7 @@
           systemVersion = systemVersion;
         };
         modules = [
+          home-manager.nixosModules.home-manager
           nixosModule
           ./hosts/N1
           ./configuration.nix

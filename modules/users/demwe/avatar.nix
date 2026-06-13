@@ -6,13 +6,11 @@ let
    SystemAccount=false
   '';
 in
-{
-  config = lib.mkIf config.my.users.demwe.enable {
-    services.accounts-daemon.enable = true;
+lib.mkIf config.my.users.demwe.enable {
+  services.accounts-daemon.enable = true;
 
-    systemd.tmpfiles.rules = [
-      "C+ /var/lib/AccountsService/icons/demwe - - - - ${config.my.paths.resources}/demwe/avatar.jpg"
-      "C+ /var/lib/AccountsService/users/demwe  - - - - ${accountConfig}"
-    ];
-  };
+  systemd.tmpfiles.rules = [
+    "C+ /var/lib/AccountsService/icons/demwe - - - - ${config.my.paths.resources}/demwe/avatar.jpg"
+    "C+ /var/lib/AccountsService/users/demwe  - - - - ${accountConfig}"
+  ];
 }
