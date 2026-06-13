@@ -107,5 +107,6 @@
   # Flatpak packages
   services.flatpak.packages = [
     "com.discordapp.Discord"
+    "org.vinegarhq.Sober"
   ];
 }

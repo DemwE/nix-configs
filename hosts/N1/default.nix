@@ -6,5 +6,6 @@
     ./hardware-configuration.nix
     ./nfs.nix
     ./other.nix
+    ./users.nix
   ];
 }
