@@ -76,6 +76,20 @@
         ];
       };
 
+      # Host: N1 (server)
+      nixosConfigurations.N1 = nixpkgs.lib.nixosSystem {
+        system = "x86_64-linux";
+        specialArgs = {
+          inherit pkgs-unstable;
+          systemVersion = systemVersion;
+        };
+        modules = [
+          nixosModule
+          ./hosts/N1
+          ./configuration.nix
+        ];
+      };
+
       # Add more hosts here:
       # nixosConfigurations.ServerName = nixpkgs.lib.nixosSystem { ... };
 

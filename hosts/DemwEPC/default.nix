@@ -4,5 +4,6 @@
     ./networking.nix
     ./features.nix
     ./hardware-configuration.nix
+    ./users.nix
   ];
 }
