@@ -1,3 +1,3 @@
 [submodule "modules"]
-    path = modules
-    url = git@github.com:demwe/nix-modules.git
+	path = modules
+	url = https://github.com/DemwE/nix-modules.git
