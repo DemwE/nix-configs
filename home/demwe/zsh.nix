@@ -1,4 +1,9 @@
-{ config, lib, pkgs, ... }:
+{
+  config,
+  lib,
+  pkgs,
+  ...
+}:
 
 {
   programs.zsh = {
@@ -33,6 +38,9 @@
     };
 
     history.path = "${config.xdg.stateHome}/zsh/history";
-    initContent = "fastfetch";
+    initContent = ''
+      if [[ $- == *i* ]]; then
+          fastfetch
+      fi'';
   };
 }

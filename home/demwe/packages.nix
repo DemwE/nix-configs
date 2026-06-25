@@ -12,6 +12,7 @@
     [
       # Browsers
       brave
+      librewolf
 
       # Development
       nixfmt
@@ -48,6 +49,7 @@
       mpv
       gapless
       ffmpeg-full
+      yt-dlp
 
       # Utilities
       gparted
