@@ -3,11 +3,11 @@
 { pkgs, ... }:
 let
   jdks = {
-    "liberica-8"  = pkgs.custom.java8.passthru.jdk;
-    "liberica-11" = pkgs.custom.java11.passthru.jdk;
-    "liberica-17" = pkgs.custom.java17.passthru.jdk;
-    "liberica-21" = pkgs.custom.java21.passthru.jdk;
-    "liberica-25" = pkgs.custom.java25.passthru.jdk;
+    "liberica-8"  = pkgs.custom.java8-full.passthru.jdk;
+    "liberica-11" = pkgs.custom.java11-full.passthru.jdk;
+    "liberica-17" = pkgs.custom.java17-full.passthru.jdk;
+    "liberica-21" = pkgs.custom.java21-full.passthru.jdk;
+    "liberica-25" = pkgs.custom.java25-full.passthru.jdk;
   };
 in
 {

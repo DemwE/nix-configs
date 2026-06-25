@@ -75,11 +75,11 @@
       alsa-utils
 
       # Java
-      custom.java25.versioned
-      custom.java21.versioned
-      custom.java17.versioned
-      custom.java11.versioned
-      custom.java8.versioned
+      custom.java25-full.versioned
+      custom.java21-full.versioned
+      custom.java17-full.versioned
+      custom.java11-full.versioned
+      custom.java8-full.versioned
 
       # Typst
       unstable.typesetter
