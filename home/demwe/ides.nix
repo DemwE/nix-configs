@@ -26,5 +26,5 @@ in
     "$HOME/.cargo/bin"
     "$HOME/.cabal/bin"
   ]
-  ++ (builtins.map (name: "$HOME/.toolchains/${name}/bin") (builtins.attrNames toolchains));
+  ++ (builtins.map (name: "$HOME/.ides/${name}/bin") (builtins.attrNames ides));
 }

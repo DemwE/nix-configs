@@ -1,9 +1,7 @@
 { lib, ... }:
-# Centralized absolute paths used across both system and Home Manager configs.
 let
-  # NOTE: The repo root is .. (one level up from modules/) so resources live at ../resources
-  resourcesDir = ../resources;
-  homeManagerDir = ../home;
+  resourcesDir = ./resources;
+  homeManagerDir = ./home;
 in {
   options.my.paths.resources = lib.mkOption {
     type = lib.types.path;
