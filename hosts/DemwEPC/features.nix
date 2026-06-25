@@ -1,5 +1,7 @@
 { ... }:
 {
+  my.audio.quality = "high";
+
   my.services = {
     ssh.enable = true;
     printing.enable = true;
