@@ -18,6 +18,7 @@
     ./nodejs.nix
     ./cpp.nix
     ./toolchains.nix
+    ./ides.nix
     ./beets.nix
     ./eza.nix
     ./oh-my-posh.nix

@@ -1,6 +1,7 @@
 { pkgs, ... }:
 let
   toolchains = {
+    # Toolchains
     cpp     = pkgs.custom.toolchain-cpp;
     rust    = pkgs.custom.toolchain-rust;
     python  = pkgs.custom.toolchain-python;
@@ -8,7 +9,6 @@ let
     nodejs  = pkgs.custom.toolchain-nodejs;
     bun     = pkgs.custom.toolchain-bun;
     haskell = pkgs.custom.toolchain-haskell;
-    rider   = pkgs.custom.rider;
     esp     = pkgs.custom.toolchain-esp;
   };
 in

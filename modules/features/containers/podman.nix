@@ -21,13 +21,16 @@ in
   options.my.features.podman = {
     enable = mkEnableOption "Enable Podman engine and user tooling";
   };
+  options.my.features.podman.dockerSocket = {
+    enable = mkEnableOption "Enable Docker socket compatibility";
+  };
 
   config = mkIf cfg.enable {
     # Enable daemon and start at boot
     virtualisation.podman = {
       enable = true;
       dockerCompat = true;
-      dockerSocket.enable = true;
+      dockerSocket.enable = cfg.dockerSocket.enable or true;
       extraPackages = [ pkgs.slirp4netns ];
       autoPrune = {
         enable = true;
