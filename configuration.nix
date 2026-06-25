@@ -2,6 +2,9 @@
 {
   imports = [
     ./modules
+    ./users
+    ./groups.nix
+    ./paths.nix
   ];
 
   # Allow unfree packages globally (NVIDIA, etc.)

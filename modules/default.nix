@@ -2,8 +2,6 @@
 {
   imports = [
     # Base independent modules
-    ./paths.nix
-    ./groups.nix
     ./theme/core.nix
     ./overlays
 
@@ -14,7 +12,6 @@
     ./common/packages/default.nix
 
     # Aggregated collections
-    ./users
     ./system
     ./features
   ];
