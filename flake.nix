@@ -2,6 +2,8 @@
   description = "NixOS configuration";
 
   inputs = {
+    self.submodules = true;
+
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-26.05";
     nixpkgs-unstable.url = "github:NixOS/nixpkgs/nixos-unstable";
     home-manager = {
@@ -9,6 +11,10 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
     preservation.url = "github:nix-community/preservation";
+    nix-flatpak = {
+      url = "github:gmodena/nix-flatpak/v0.7.0";
+      flake = false;
+    };
   };
 
   outputs =
@@ -18,39 +24,40 @@
       nixpkgs-unstable,
       home-manager,
       preservation,
+      nix-flatpak,
     }:
     let
-      # Define the system version for use in configurations
       systemVersion = "26.05";
 
-      # Import Nixpkgs with the appropriate system and unfree settings
-      pkgs = import nixpkgs {
-        system = "x86_64-linux";
-        config.allowUnfree = true;
-      };
-      pkgs-unstable = import nixpkgs-unstable {
-        system = "x86_64-linux";
-        config.allowUnfree = true;
-      };
-
-      # Common NixOS system configuration
+      # Dynamic overlay: exposes nixpkgs-unstable as pkgs.unstable
       nixosModule =
-        { lib, ... }:
+        { ... }:
         {
           nixpkgs.overlays = [
             (final: prev: {
-              unstable = pkgs-unstable;
+              unstable = import nixpkgs-unstable {
+                system = prev.stdenv.hostPlatform.system;
+                config.allowUnfree = true;
+              };
             })
           ];
         };
+
+      mkPkgsUnstable = system: import nixpkgs-unstable {
+        inherit system;
+        config.allowUnfree = true;
+      };
+
+      baseSpecialArgs = {
+        inherit systemVersion nix-flatpak;
+      };
     in
     {
       # Host: NixBook (laptop)
       nixosConfigurations.NixBook = nixpkgs.lib.nixosSystem {
         system = "x86_64-linux";
-        specialArgs = {
-          inherit pkgs-unstable;
-          systemVersion = systemVersion;
+        specialArgs = baseSpecialArgs // {
+          pkgs-unstable = mkPkgsUnstable "x86_64-linux";
         };
         modules = [
           preservation.nixosModules.default
@@ -64,9 +71,8 @@
       # Host: DemwEPC (desktop)
       nixosConfigurations.DemwEPC = nixpkgs.lib.nixosSystem {
         system = "x86_64-linux";
-        specialArgs = {
-          inherit pkgs-unstable;
-          systemVersion = systemVersion;
+        specialArgs = baseSpecialArgs // {
+          pkgs-unstable = mkPkgsUnstable "x86_64-linux";
         };
         modules = [
           home-manager.nixosModules.home-manager
@@ -79,9 +85,8 @@
       # Host: N1 (server)
       nixosConfigurations.N1 = nixpkgs.lib.nixosSystem {
         system = "x86_64-linux";
-        specialArgs = {
-          inherit pkgs-unstable;
-          systemVersion = systemVersion;
+        specialArgs = baseSpecialArgs // {
+          pkgs-unstable = mkPkgsUnstable "x86_64-linux";
         };
         modules = [
           home-manager.nixosModules.home-manager
@@ -91,11 +96,12 @@
         ];
       };
 
-      # Add more hosts here:
-      # nixosConfigurations.ServerName = nixpkgs.lib.nixosSystem { ... };
-
-      devShells.x86_64-linux.default = pkgs.mkShell {
-        buildInputs = [ pkgs.nixfmt ];
-      };
+      devShells.x86_64-linux.default =
+        let
+          pkgs' = nixpkgs.legacyPackages.x86_64-linux;
+        in
+        pkgs'.mkShell {
+          buildInputs = [ pkgs'.nixfmt ];
+        };
     };
 }

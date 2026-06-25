@@ -23,7 +23,7 @@
     ./eza.nix
     ./oh-my-posh.nix
     ./direnv.nix
-    ./tamplates.nix
+    ./templates.nix
     ./packages.nix
   ];
 
