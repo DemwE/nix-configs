@@ -80,6 +80,7 @@
         "/var/lib/AccountsService"
         "/var/lib/containers/storage"
         "/var/lib/iwd"
+        "/etc/NetworkManager/system-connections"
       ]
       ++ lib.optionals config.my.services.tailscale.enable [
         "/var/lib/tailscale"
