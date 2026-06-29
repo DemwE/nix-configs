@@ -73,6 +73,7 @@
       unstable.cavalier
       file-roller
       alsa-utils
+      unstable.graphify
 
       # Java
       custom.java25-full.versioned
