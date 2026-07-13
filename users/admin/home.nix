@@ -10,5 +10,5 @@ lib.mkIf config.my.users.admin.enable {
     (import ../../modules/theme/core.nix)
   ];
   home-manager.backupFileExtension = "backup";
-  home-manager.users.demwe = import hmRoot;
+  home-manager.users.admin = import hmRoot;
 }
