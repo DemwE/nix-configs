@@ -9,6 +9,7 @@ let
     nodejs  = pkgs.custom.toolchain-nodejs;
     bun     = pkgs.custom.toolchain-bun;
     # haskell = pkgs.custom.toolchain-haskell;
+    odin    = pkgs.custom.toolchain-odin;
     esp     = pkgs.custom.toolchain-esp;
   };
 in
