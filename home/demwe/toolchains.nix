@@ -8,7 +8,7 @@ let
     dotnet  = pkgs.custom.toolchain-dotnet;
     nodejs  = pkgs.custom.toolchain-nodejs;
     bun     = pkgs.custom.toolchain-bun;
-    haskell = pkgs.custom.toolchain-haskell;
+    # haskell = pkgs.custom.toolchain-haskell;
     esp     = pkgs.custom.toolchain-esp;
   };
 in

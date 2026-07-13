@@ -22,7 +22,7 @@
 
 ## Workflow
 - `switch <host>` — `nh os switch` przez skrypt
-- `switch-check <host>` — such-run
+- `boot <host>` - `nh os boot`
 - `update-lock` — `nix flake lock`
 - `remote-switch` — build przez SSH
 

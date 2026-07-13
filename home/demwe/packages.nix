@@ -28,7 +28,7 @@
       unstable.unityhub
       unstable.opencode
       unstable.zed-editor
-      unstable.arduino-ide
+      # unstable.arduino-ide
 
       # Creativity
       unstable.gimp
@@ -36,7 +36,7 @@
       unstable.obs-studio
       unstable.krita
       unstable.aseprite
-      unstable.freecad
+      # unstable.freecad
       unstable.audacity
       unstable.reaper
 
@@ -44,6 +44,7 @@
       unstable.prismlauncher
       # custom.vintage-story
       unstable.openrct2
+      lutris
 
       # Media
       mpv
