@@ -26,6 +26,7 @@
     fprintd.enable = false;
     iioSensorProxy.enable = false;
     steam.enable = true;
+    obs.enable = true;
     supergfxd.enable = false;
     ollama.enable = false;
     postgres.enable = false;
