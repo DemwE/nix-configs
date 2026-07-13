@@ -2,7 +2,7 @@
 {
   programs.oh-my-posh = {
     enable = true;
-    useTheme = "catppuccin";
+    useTheme = "amro";
     enableZshIntegration = true;
     enableBashIntegration = true;
   };

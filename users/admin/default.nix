@@ -1,5 +1,9 @@
 { lib, config, ... }:
 {
+  imports = [
+    ./home.nix
+  ];
+
   options.my.users.admin.enable = lib.mkEnableOption "admin user";
 
   config = lib.mkIf config.my.users.admin.enable {
