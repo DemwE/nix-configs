@@ -5,6 +5,6 @@
     lfs.enable = true;
     extraConfig =  {
       submodule.recurse = true;
-    }
+    };
   };
 }

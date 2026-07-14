@@ -9,7 +9,7 @@
     };
     extraConfig =  {
       submodule.recurse = true;
-    }
+    };
   };
   programs.gh = {
     enable = true;
