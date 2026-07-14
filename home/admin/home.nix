@@ -6,6 +6,7 @@
     ./eza.nix
     ./oh-my-posh.nix
     ./zsh.nix
+    ./git.nix
   ];
 
   # Home Manager is pretty good at managing dotfiles. The primary way to manage
