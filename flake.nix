@@ -11,6 +11,7 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
     preservation.url = "github:nix-community/preservation";
+    nix-dokploy.url = "github:el-kurto/nix-dokploy";
     nix-flatpak = {
       url = "github:gmodena/nix-flatpak/v0.7.0";
       flake = false;
@@ -76,6 +77,7 @@
         };
         modules = [
           home-manager.nixosModules.home-manager
+          nix-dokploy.nixosModules.default
           nixosModule
           ./hosts/DemwEPC
           ./configuration.nix

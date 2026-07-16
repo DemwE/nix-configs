@@ -81,6 +81,8 @@
         "/var/lib/containers/storage"
         "/var/lib/iwd"
         "/var/lib/incus"
+        "/var/lib/secrets"
+        "/var/lib/dokploy"
         "/etc/NetworkManager/system-connections"
       ]
       ++ lib.optionals config.my.services.tailscale.enable [
