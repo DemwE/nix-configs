@@ -8,11 +8,11 @@
     preseed = {
       networks = [
         {
-          name = incusbr0;
+          name = "incusbr0";
           type = "bridge";
           config = {
             "ipv4.address" = "10.0.100.1/24"; "ipv4.nat" = "true";
-          }
+          };
         }
       ];
       storage-pools = [
@@ -21,7 +21,7 @@
           driver = "btrfs";
           config = {
             source = "/var/lib/incus/storage-pools/default";
-          }
+          };
         }
       ];
       # instances = [
@@ -39,6 +39,6 @@
       #     }
       #   }
       # ];
-    }
-  }
+    };
+  };
 }
