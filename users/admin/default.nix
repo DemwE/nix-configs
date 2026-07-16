@@ -25,6 +25,7 @@
         "input"
         "uucp"
         "adbusers"
+        "incus-admin"
       ];
       hashedPassword = "$6$wGYsg/EcdEhsP1AG$KzawdbGJRW.pKvqZFU0IzE38v9Aulb.tAq3cTwX5YO95qD5hFd28mq1Yp2flfFeKTKInVg/JQfJUBmBsOqlnz.";
       subUidRanges = [
