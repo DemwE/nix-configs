@@ -6,6 +6,5 @@
     ./hardware-configuration.nix
     ./preservation.nix
     ./users.nix
-    ./incus.nix
   ];
 }

@@ -35,5 +35,10 @@
     postgres.enable = false;
     wireshark.enable = true;
     ld.enable = true;
+
+    incus = {
+      enable = true;
+      ui.enable = true;
+    };
   };
 }
