@@ -8,6 +8,7 @@ let
     rust-rover = pkgs.custom.rust-rover;
     datagrip = pkgs.custom.datagrip;
     webstorm = pkgs.custom.webstorm;
+    goland = pkgs.custom.goland;
   };
 in
 {

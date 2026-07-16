@@ -15,7 +15,7 @@
     nvidia.prime.enable = false;
 
     syncthing.enable = true;
-    docker.enable = false;
+    docker.enable = true;
     podman.enable = true;
     nix-helper.enable = true;
     flatpak.enable = true;
@@ -32,5 +32,10 @@
     postgres.enable = false;
     wireshark.enable = true;
     ld.enable = true;
+
+    incus = {
+      enable = true;
+      ui.enable = true;
+    };
   };
 }
