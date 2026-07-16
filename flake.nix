@@ -26,6 +26,7 @@
       home-manager,
       preservation,
       nix-flatpak,
+      nix-dokploy,
     }:
     let
       systemVersion = "26.05";
@@ -63,6 +64,7 @@
         modules = [
           preservation.nixosModules.default
           home-manager.nixosModules.home-manager
+          nix-dokploy.nixosModules.default
           nixosModule
           ./hosts/NixBook
           ./configuration.nix
