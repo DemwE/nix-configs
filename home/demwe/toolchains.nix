@@ -11,7 +11,6 @@ let
     # haskell = pkgs.custom.toolchain-haskell;
     odin    = pkgs.custom.toolchain-odin;
     esp     = pkgs.custom.toolchain-esp;
-    go      = pkgs.custom.toolchain-go;
   };
 in
 {
