@@ -28,6 +28,8 @@
       unstable.unityhub
       unstable.opencode
       unstable.zed-editor
+      insomnia
+      postman
       # unstable.arduino-ide
 
       # Creativity
