@@ -28,7 +28,7 @@
       unstable.unityhub
       unstable.opencode
       unstable.zed-editor
-      postman
+      unstable.postman
       # unstable.arduino-ide
 
       # Creativity
