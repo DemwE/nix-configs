@@ -15,14 +15,13 @@ let
 in
 {
   # ~/.toolchains/<name> → nix store derivation
-  # Używamy mapAttrs' aby jawnie zdefiniować pełną ścieżkę jako klucz
   home.file = builtins.listToAttrs (builtins.map (name: {
     name = ".toolchains/${name}";
     value = { source = toolchains.${name}; };
   }) (builtins.attrNames toolchains));
 
   home.sessionPath = [
-    "$HOME/.cargo/bin"
-    "$HOME/.cabal/bin"
+    "$HOME/.cargo/bin" # Rust
+    "$HOME/.cabal/bin" # Haskell
   ] ++ (builtins.map (name: "$HOME/.toolchains/${name}/bin") (builtins.attrNames toolchains));
 }

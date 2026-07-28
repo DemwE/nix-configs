@@ -29,6 +29,8 @@
       unstable.opencode
       unstable.zed-editor
       unstable.postman
+      file
+      upx
       # unstable.arduino-ide
 
       # Creativity
@@ -37,14 +39,13 @@
       unstable.krita
       unstable.aseprite
       # unstable.freecad
+      # unstable.reaper
       unstable.audacity
-      unstable.reaper
 
       # Games
       unstable.prismlauncher
       # custom.vintage-story
       unstable.openrct2
-      lutris
 
       # Media
       mpv
@@ -63,7 +64,6 @@
       dust
       croc
       powertop
-      unstable.atlas
       unstable.gamescope
       speedtest-cli
       custom.ventoy
@@ -74,7 +74,6 @@
       unstable.cavalier
       file-roller
       alsa-utils
-      unstable.graphify
 
       # Java
       custom.java25-full.versioned
