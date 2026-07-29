@@ -94,6 +94,7 @@
         };
         modules = [
           home-manager.nixosModules.home-manager
+          nix-dokploy.nixosModules.default
           nixosModule
           ./hosts/N1
           ./configuration.nix
