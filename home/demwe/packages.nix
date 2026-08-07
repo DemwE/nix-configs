@@ -46,6 +46,7 @@
       unstable.prismlauncher
       # custom.vintage-story
       unstable.openrct2
+      gzdoom
 
       # Media
       mpv
@@ -62,7 +63,6 @@
       custom.battery-info
       custom.nvidia-offload
       dust
-      croc
       powertop
       unstable.gamescope
       speedtest-cli
@@ -71,6 +71,7 @@
       varia
       unstable.crosspipe
       custom.eartag
+      unstable.croc
       unstable.cavalier
       file-roller
       alsa-utils
