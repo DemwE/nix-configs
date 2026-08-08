@@ -19,7 +19,7 @@
     podman.enable = true;
     nix-helper.enable = true;
     flatpak.enable = true;
-    qemu.enable = false;
+    qemu.enable = true;
     polkit.enable = true;
     gdm.enable = true;
     gnome.enable = true;
