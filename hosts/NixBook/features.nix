@@ -17,22 +17,17 @@
     nvidia.prime.enable = true;
 
     syncthing.enable = true;
-    dokploy.enable = false;
     docker.enable = true;
     nix-helper.enable = true;
     podman.enable = true;
     flatpak.enable = true;
-    qemu.enable = false;
     polkit.enable = true;
     gdm.enable = true;
     gnome.enable = true;
     fprintd.enable = true;
-    iioSensorProxy.enable = false;
     steam.enable = true;
     obs.enable = true;
     supergfxd.enable = true;
-    ollama.enable = false;
-    postgres.enable = false;
     wireshark.enable = true;
     ld.enable = true;
 

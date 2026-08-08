@@ -11,8 +11,6 @@
 
   my.features = {
     nvidia.enable = true;
-    nvidia.runtimePowerManagement = false;
-    nvidia.prime.enable = false;
 
     syncthing.enable = true;
     docker.enable = true;
@@ -23,13 +21,8 @@
     polkit.enable = true;
     gdm.enable = true;
     gnome.enable = true;
-    fprintd.enable = false;
-    iioSensorProxy.enable = false;
     steam.enable = true;
     obs.enable = true;
-    supergfxd.enable = false;
-    ollama.enable = false;
-    postgres.enable = false;
     wireshark.enable = true;
     ld.enable = true;
 

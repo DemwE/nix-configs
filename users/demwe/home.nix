@@ -4,6 +4,7 @@ let
 in
 lib.mkIf config.my.users.demwe.enable {
   home-manager.useGlobalPkgs = true;
+  home-manager.useUserPackages = true;
   home-manager.extraSpecialArgs = { nixosConfig = config; };
   home-manager.sharedModules = [
     (import ../../paths.nix)
