@@ -25,6 +25,7 @@
     ./direnv.nix
     ./templates.nix
     ./packages.nix
+    ./hyprland
   ];
 
   # Home Manager is pretty good at managing dotfiles. The primary way to manage
