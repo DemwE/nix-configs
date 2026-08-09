@@ -34,6 +34,7 @@
 
     extraConfig = ''
       require("config.config")
+      require("config.windows")
       require("config.binds")
       require("config.rules")
     '';
