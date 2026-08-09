@@ -26,6 +26,8 @@
     ./templates.nix
     ./packages.nix
     ./hyprland
+    ./kitty.nix
+    ./quickshell
   ];
 
   # Home Manager is pretty good at managing dotfiles. The primary way to manage
