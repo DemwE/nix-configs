@@ -34,13 +34,13 @@
       # unstable.arduino-ide
 
       # Creativity
-      unstable.gimp
-      unstable.blender
-      unstable.krita
-      unstable.aseprite
+      gimp
+      blender
+      krita
+      aseprite
       # unstable.freecad
       # unstable.reaper
-      unstable.audacity
+      audacity
 
       # Games
       unstable.prismlauncher
