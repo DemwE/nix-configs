@@ -9,6 +9,9 @@
     jq # for parsing hyprctl JSON in binds
     swappy # used by grimblast edit
     eog # image viewer
+    wireplumber # wpctl for volume/mute binds
+    playerctl # media playback control binds
+    brightnessctl # screen + keyboard backlight binds
   ];
 
   # Clipboard history daemon (stores selections via wl-paste -> cliphist)
