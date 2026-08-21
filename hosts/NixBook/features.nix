@@ -30,8 +30,6 @@
     supergfxd.enable = true;
     wireshark.enable = true;
     ld.enable = true;
-    hyprland.enable = false;
-    xdg.enable = true;
 
     incus = {
       enable = true;

@@ -1,4 +1,4 @@
-{ pkgs, ... }:
+{ pkgs, config, ... }:
 let
   toolchains = {
     # Toolchains
@@ -21,7 +21,7 @@ in
   }) (builtins.attrNames toolchains));
 
   home.sessionPath = [
-    "$HOME/.cargo/bin" # Rust
-    "$HOME/.cabal/bin" # Haskell
-  ] ++ (builtins.map (name: "$HOME/.toolchains/${name}/bin") (builtins.attrNames toolchains));
+    "${config.home.homeDirectory}/.cargo/bin" # Rust
+    "${config.home.homeDirectory}/.cabal/bin" # Haskell
+  ] ++ (builtins.map (name: "${config.home.homeDirectory}/.toolchains/${name}/bin") (builtins.attrNames toolchains));
 }
