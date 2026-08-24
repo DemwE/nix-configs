@@ -6,5 +6,6 @@
     ./hardware-configuration.nix
     ./preservation.nix
     ./users.nix
+    ./snapshots.nix
   ];
 }
