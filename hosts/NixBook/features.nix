@@ -16,6 +16,8 @@
     nvidia.runtimePowerManagement = true;
     nvidia.prime.enable = true;
 
+    tlp.enable = true;
+
     syncthing.enable = true;
     docker.enable = true;
     nix-helper.enable = true;
