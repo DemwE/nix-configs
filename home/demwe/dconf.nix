@@ -25,6 +25,17 @@ in
       "org/gnome/shell" = {
         always-show-log-out = true;
       };
+
+      "org/gnome/settings-daemon/plugins/power" = {
+        idle-dim = true;
+        idle-delay = 300;
+        sleep-inactive-battery-type = "suspend";
+        sleep-inactive-battery-timeout = 900;
+        sleep-inactive-ac-type = "nothing";
+        sleep-inactive-ac-timeout = 0;
+        lid-close-ac-action = "suspend";
+        lid-close-battery-action = "suspend";
+      };
     };
   };
 }
