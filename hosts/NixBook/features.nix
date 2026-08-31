@@ -9,6 +9,7 @@
     storage.enable = true;
     thermald.enable = true;
     tailscale.enable = true;
+    fwupd.enable = true;
   };
 
   my.features = {
