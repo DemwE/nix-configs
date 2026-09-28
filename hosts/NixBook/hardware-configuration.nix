@@ -12,7 +12,6 @@
 let
   btrfsOpts = [
     "noatime"
-    "compress=zstd:1"
     "discard=async"
     "space_cache=v2"
   ];
@@ -37,32 +36,32 @@ in
   fileSystems."/" = {
     device = "/dev/disk/by-uuid/4749bcc1-1605-4812-9ae3-b3e733bb6dfa";
     fsType = "btrfs";
-    options = [ "subvol=@root" ] ++ btrfsOpts;
+    options = [ "subvol=@root" "nodatacow" ] ++ btrfsOpts;
   };
 
   fileSystems."/home" = {
     device = "/dev/disk/by-uuid/4749bcc1-1605-4812-9ae3-b3e733bb6dfa";
     fsType = "btrfs";
-    options = [ "subvol=@home" ] ++ btrfsOpts;
+    options = [ "subvol=@home" "compress=zstd:1" ] ++ btrfsOpts;
   };
 
   fileSystems."/nix" = {
     device = "/dev/disk/by-uuid/4749bcc1-1605-4812-9ae3-b3e733bb6dfa";
     fsType = "btrfs";
-    options = [ "subvol=@nix" ] ++ btrfsOpts;
+    options = [ "subvol=@nix" "compress=zstd:3" ] ++ btrfsOpts;
     neededForBoot = true;
   };
 
   fileSystems."/var/log" = {
     device = "/dev/disk/by-uuid/4749bcc1-1605-4812-9ae3-b3e733bb6dfa";
     fsType = "btrfs";
-    options = [ "subvol=@log" ] ++ btrfsOpts;
+    options = [ "subvol=@log" "compress=zstd:6" ] ++ btrfsOpts;
   };
 
   fileSystems."/persist" = {
     device = "/dev/disk/by-uuid/4749bcc1-1605-4812-9ae3-b3e733bb6dfa";
     fsType = "btrfs";
-    options = [ "subvol=@persist" ] ++ btrfsOpts;
+    options = [ "subvol=@persist" "compress=zstd:6" ] ++ btrfsOpts;
     neededForBoot = true;
   };
 
