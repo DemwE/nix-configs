@@ -75,6 +75,7 @@
       unstable.cavalier
       file-roller
       alsa-utils
+      termius
 
       # Java
       custom.java25-full.versioned
