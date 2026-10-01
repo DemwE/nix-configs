@@ -52,7 +52,6 @@
       };
 
       commonNixosModules = [
-        ./hosts/common.nix
         home-manager.nixosModules.home-manager
         nix-dokploy.nixosModules.default
         nixosModule
