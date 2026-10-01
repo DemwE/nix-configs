@@ -31,6 +31,7 @@
       unstable.postman
       file
       upx
+      unstable.devenv
       # unstable.arduino-ide
 
       # Creativity

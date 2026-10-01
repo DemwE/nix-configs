@@ -10,7 +10,6 @@ let
     bun     = pkgs.custom.toolchain-bun;
     # haskell = pkgs.custom.toolchain-haskell;
     nasm    = pkgs.custom.toolchain-nasm;
-    odin    = pkgs.custom.toolchain-odin;
     esp     = pkgs.custom.toolchain-esp;
   };
 in
