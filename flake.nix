@@ -29,77 +29,53 @@
       nix-dokploy,
     }:
     let
+      system = "x86_64-linux";
       systemVersion = "26.05";
 
-      # Dynamic overlay: exposes nixpkgs-unstable as pkgs.unstable
+      mkPkgsUnstable = s: import nixpkgs-unstable {
+        system = s;
+        config.allowUnfree = true;
+      };
+
       nixosModule =
         { ... }:
         {
           nixpkgs.overlays = [
             (final: prev: {
-              unstable = import nixpkgs-unstable {
-                system = prev.stdenv.hostPlatform.system;
-                config.allowUnfree = true;
-              };
+              unstable = mkPkgsUnstable prev.stdenv.hostPlatform.system;
             })
           ];
         };
 
-      mkPkgsUnstable = system: import nixpkgs-unstable {
-        inherit system;
-        config.allowUnfree = true;
-      };
-
       baseSpecialArgs = {
         inherit systemVersion nix-flatpak;
       };
+
+      commonNixosModules = [
+        ./hosts/common.nix
+        home-manager.nixosModules.home-manager
+        nix-dokploy.nixosModules.default
+        nixosModule
+        ./configuration.nix
+      ];
+
+      hosts = {
+        NixBook = [ preservation.nixosModules.default ];
+        DemwEPC = [ ];
+        N1 = [ ];
+      };
     in
     {
-      # Host: NixBook (laptop)
-      nixosConfigurations.NixBook = nixpkgs.lib.nixosSystem {
-        system = "x86_64-linux";
-        specialArgs = baseSpecialArgs // {
-          pkgs-unstable = mkPkgsUnstable "x86_64-linux";
-        };
-        modules = [
-          preservation.nixosModules.default
-          home-manager.nixosModules.home-manager
-          nix-dokploy.nixosModules.default
-          nixosModule
-          ./hosts/NixBook
-          ./configuration.nix
-        ];
-      };
-
-      # Host: DemwEPC (desktop)
-      nixosConfigurations.DemwEPC = nixpkgs.lib.nixosSystem {
-        system = "x86_64-linux";
-        specialArgs = baseSpecialArgs // {
-          pkgs-unstable = mkPkgsUnstable "x86_64-linux";
-        };
-        modules = [
-          home-manager.nixosModules.home-manager
-          nix-dokploy.nixosModules.default
-          nixosModule
-          ./hosts/DemwEPC
-          ./configuration.nix
-        ];
-      };
-
-      # Host: N1 (server)
-      nixosConfigurations.N1 = nixpkgs.lib.nixosSystem {
-        system = "x86_64-linux";
-        specialArgs = baseSpecialArgs // {
-          pkgs-unstable = mkPkgsUnstable "x86_64-linux";
-        };
-        modules = [
-          home-manager.nixosModules.home-manager
-          nix-dokploy.nixosModules.default
-          nixosModule
-          ./hosts/N1
-          ./configuration.nix
-        ];
-      };
+      nixosConfigurations = nixpkgs.lib.mapAttrs (
+        name: extraMods:
+        nixpkgs.lib.nixosSystem {
+          inherit system;
+          specialArgs = baseSpecialArgs // {
+            pkgs-unstable = mkPkgsUnstable system;
+          };
+          modules = extraMods ++ [ ./hosts/${name} ] ++ commonNixosModules;
+        }
+      ) hosts;
 
       devShells.x86_64-linux.default =
         let
