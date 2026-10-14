@@ -19,6 +19,7 @@
       unstable.gitkraken
       custom.rust-rover
       custom.webstorm
+      custom.phpstorm
       custom.pycharm
       custom.clion
       custom.rider
