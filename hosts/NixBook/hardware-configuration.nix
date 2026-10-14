@@ -65,6 +65,13 @@ in
     neededForBoot = true;
   };
 
+  fileSystems."/databases" = {
+    device = "/dev/disk/by-uuid/4749bcc1-1605-4812-9ae3-b3e733bb6dfa";
+    fsType = "btrfs";
+    options = [ "subvol=@databases" "nodatacow" ] ++ btrfsOpts;
+    neededForBoot = true;
+  };
+
   fileSystems."/boot" = {
     device = "/dev/disk/by-uuid/9447-9073";
     fsType = "vfat";

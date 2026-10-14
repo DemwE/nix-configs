@@ -74,7 +74,6 @@
       unstable.crosspipe
       custom.eartag
       unstable.croc
-      unstable.cavalier
       file-roller
       alsa-utils
       termius
