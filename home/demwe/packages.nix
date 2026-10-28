@@ -65,6 +65,7 @@
       custom.battery-info
       custom.nvidia-offload
       dust
+      filezilla
       powertop
       unstable.gamescope
       speedtest-cli
@@ -77,6 +78,7 @@
       file-roller
       alsa-utils
       termius
+      unstable.ani-cli
 
       # Java
       custom.java25-full.versioned
