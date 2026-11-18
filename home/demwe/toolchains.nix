@@ -11,6 +11,7 @@ let
     # haskell = pkgs.custom.toolchain-haskell;
     nasm    = pkgs.custom.toolchain-nasm;
     esp     = pkgs.custom.toolchain-esp;
+    php     = pkgs.custom.toolchain-php;
   };
 in
 {
