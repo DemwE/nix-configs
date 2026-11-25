@@ -1,7 +1,8 @@
-{ pkgs, ... }:
+{ pkgs, config, ... }:
 let
   ides = {
     # Ides
+    idea = pkgs.custom.idea;
     rider = pkgs.custom.rider;
     clion = pkgs.custom.clion;
     pycharm = pkgs.custom.pycharm;
@@ -20,7 +21,7 @@ in
     }) (builtins.attrNames ides)
   );
 
-  home.sessionPath = [
-  ]
-  ++ (builtins.map (name: "$HOME/.ides/${name}/bin") (builtins.attrNames ides));
+  home.sessionPath = builtins.map (
+    name: "${config.home.homeDirectory}/.ides/${name}/bin"
+  ) (builtins.attrNames ides);
 }

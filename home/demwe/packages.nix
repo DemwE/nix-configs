@@ -1,15 +1,18 @@
 {
   config,
+  lib,
   pkgs,
   options,
   nixosConfig,
   ...
 }:
 {
-  # The home.packages option allows you to install Nix packages into your environment.
-  home.packages =
-    with pkgs;
-    [
+  config = lib.mkMerge [
+    {
+      # The home.packages option allows you to install Nix packages into your environment.
+      home.packages =
+        with pkgs;
+        [
       # Browsers
       brave
       librewolf
@@ -28,6 +31,9 @@
       unstable.vscode
       unstable.unityhub
       unstable.opencode
+      unstable.antigravity-hub
+      unstable.antigravity-cli
+      unstable.antigravity-acp
       unstable.zed-editor
       unstable.postman
       file
@@ -108,13 +114,17 @@
       nucleus
       qbittorrent
     ]
-    ++ lib.optionals (nixosConfig.my.features.podman.enable or false) [
-      podman-desktop
-    ];
+        ++ lib.optionals (nixosConfig.my.features.podman.enable or false) [
+          podman-desktop
+        ];
+    }
 
-  # Flatpak packages
-  services.flatpak.packages = [
-    "com.discordapp.Discord"
-    "org.vinegarhq.Sober"
+    # Flatpak packages (only when nix-flatpak HM module is loaded)
+    (lib.optionalAttrs ((nixosConfig.my.features.flatpak.enable or false) && (options ? services && options.services ? flatpak)) {
+      services.flatpak.packages = [
+        "com.discordapp.Discord"
+        "org.vinegarhq.Sober"
+      ];
+    })
   ];
 }

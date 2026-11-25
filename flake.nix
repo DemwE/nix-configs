@@ -37,12 +37,18 @@
         config.allowUnfree = true;
       };
 
+      pkgsUnstable = mkPkgsUnstable system;
+
       nixosModule =
         { ... }:
         {
           nixpkgs.overlays = [
             (final: prev: {
-              unstable = mkPkgsUnstable prev.stdenv.hostPlatform.system;
+              unstable =
+                if prev.stdenv.hostPlatform.system == system then
+                  pkgsUnstable
+                else
+                  mkPkgsUnstable prev.stdenv.hostPlatform.system;
             })
           ];
         };
@@ -69,9 +75,7 @@
         name: extraMods:
         nixpkgs.lib.nixosSystem {
           inherit system;
-          specialArgs = baseSpecialArgs // {
-            pkgs-unstable = mkPkgsUnstable system;
-          };
+          specialArgs = baseSpecialArgs;
           modules = extraMods ++ [ ./hosts/${name} ] ++ commonNixosModules;
         }
       ) hosts;

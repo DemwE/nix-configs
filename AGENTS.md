@@ -1,19 +1,19 @@
 # NixOS Configuration — Agent Guide
 
 ## Repo structure
-- `flake.nix` — inputs, outputs (nixosConfigurations, homeConfigurations, devShells, apps), overlays
-- `flake.lock` — locked inputs (nie edytować ręcznie, używaj update-lock)
-- `configuration.nix` — główny entry point (importuje users, groups, paths, base config)
-- `modules/` — git submodule → `github:DemwE/nix-modules` (custom options, feature modules)
-- `users/` — definicje użytkowników (`demwe.nix`, `admin.nix`)
+- `flake.nix` — inputs, outputs (`nixosConfigurations`, `devShells`), overlay `pkgs.unstable`
+- `flake.lock` — locked inputs (nie edytować ręcznie, używaj `update-lock`)
+- `configuration.nix` — główny entry point (importuje `modules`, `users`, `groups.nix`, `paths.nix`)
+- `modules/` — git submodule → `github:DemwE/nix-modules` (custom options, feature modules, directives, overlays)
+- `users/` — definicje użytkowników (`demwe/`, `admin/`) oraz wspólna konfiguracja Home Manager (`default.nix`)
 - `hosts/` — per-host config (`NixBook/`, `DemwEPC/`, `N1/`), hardware configs (`hardware-configuration.nix`)
-- `home/` — Home Manager config dla `demwe` (homeConfigurations zintegrowane przez flake)
-- `resources/` — statyczne zasoby (avatary, tapety, theme)
+- `home/` — konfiguracje Home Manager dla `demwe/` i `admin/` (zintegrowane jako moduł NixOS)
+- `resources/` — statyczne zasoby (avatary, tapety, motywy, szablony)
 
 ## Kluczowe konwencje
 - Custom options pod namespacem `my.*` (np. `my.features.nvidia.enable`)
 - Feature flagi przez `mkEnableOption` + `mkIf` (moduły w `modules/`)
-- Overlay `pkgs.unstable` dostępny w każdym kontekście (dodatkowe overlays wg potrzeb w flake)
+- Overlay `pkgs.unstable` oraz `pkgs.custom` dostępne w każdym kontekście
 - `self.submodules = true` — moduły trzymane jako submodule, Nix widzi przez flake
 - `audio.quality`: domyślnie `"normal"`, host może ustawić `my.audio.quality = "high"`
 
@@ -23,19 +23,16 @@
 - **N1** (server): Intel, mdadm RAID, NFS exports, fancontrol
 
 ## Workflow
-- `switch <host>` — `nix run .#switch <host>` (flake app, wrapper `nh os switch`)
-- `boot <host>` — `nix run .#boot <host>` (flake app, wrapper `nh os boot`)
-- `update-lock` — `nix run .#update-lock` (flake app, `nh flake update`)
-- `update` — `nix run .#update` (flake app)
-- `remote-switch` — build/deploy przez SSH (remote switch via nh)
-- `vm <host>` — `nix run .#vm <host>` (test VM dla hosta)
-- `test` — `nix run .#test` (szybkie checki)
-- `clean` — `nix run .#clean` (czyszczenie)
-- `gc` — `nix run .#gc` (garbage collection)
+Narzędzia systemowe z `modules/directives/utils/` (dostępne w `$PATH` jako pakiety `custom.*`):
+- `switch <host>` — `nh os switch /home/nixos-configs --hostname <host>`
+- `boot <host>` — `nh os boot /home/nixos-configs --hostname <host>`
+- `remote-switch <host> <user@build-host>` — zdalny build i switch przez `nh`
+- `update-lock` — aktualizacja `flake.lock` (`nix flake update --flake /home/nixos-configs`)
+- `nh clean all` — ręczne czyszczenie generacji (automatyczne GC działa przez `programs.nh.clean`)
 
 ## Dev shell / tooling
 - Wejście do dev shell: `nix develop` (lub `nix develop .#default`)
-- Zawiera: pre-commit, nixpkgs-fmt, statix, deadnix, nh, nixvim i inne narzędzia przydatne przy pracy z configiem
+- Zawiera: `nixfmt`
 
 ## Ważne
 - Przed edycją w `modules/` sprawdź stan submodule: `git submodule status`. Upewnij się, że jest na właściwym commicie/branchu.

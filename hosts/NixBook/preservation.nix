@@ -45,12 +45,14 @@
       btrfs subvolume create /btrfs/@root
 
       echo "--> checking for old @root subvolumes to clean up..."
-      cd /btrfs/old_roots
-      ls -d @root_* | sort | head -n -4 | while read -r old_root; do
-          echo "--> removing old root subvolume: /btrfs/old_roots/$old_root"
-          btrfs subvolume delete -R "/btrfs/old_roots/$old_root"
-      done
-      cd /
+      if [ -d /btrfs/old_roots ]; then
+          cd /btrfs/old_roots
+          (ls -d @root_* 2>/dev/null || true) | sort | head -n -4 | while read -r old_root; do
+              echo "--> removing old root subvolume: /btrfs/old_roots/$old_root"
+              btrfs subvolume delete -R "/btrfs/old_roots/$old_root"
+          done
+          cd /
+      fi
 
       umount /btrfs
     '';
